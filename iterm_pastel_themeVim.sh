@@ -1,6 +1,6 @@
 #!/bin/bash
 
-PastelVim='{
+pastelVim='{
     "Ansi 0 Color" =         {
         "Blue Component" = 0.1490200;
         "Green Component" = 0.1490200;
@@ -67,9 +67,9 @@ PastelVim='{
         "Red Component" = 0.7764706;
     };
     "Ansi 7 Color" =         {
-        "Blue Component" = 0.9335317;
-        "Green Component" = 0.9335317;
-        "Red Component" = 0.9335317;
+        "Blue Component" = 0.7058800;
+        "Green Component" = 0.7058800;
+        "Red Component" = 0.7058800;
     };
     "Ansi 8 Color" =         {
         "Blue Component" = 0.4862745;
@@ -104,15 +104,15 @@ PastelVim='{
         "Green Component" = 1;
         "Red Component" = 1;
     };
-    "Disable Bold" = 0; 
-    Font = "Monaco 13";
+    "Disable Bold" = 0;
+    Font = "AndaleMono 13";
     "Foreground Color" =         {
-        "Blue Component" = 0.6588200;
+        "Blue Component" = 0.3764700;
         "Green Component" = 1;
-        "Red Component" = 0.3764700;
+        "Red Component" = 0.6588200;
     };
     "Horizontal Character Spacing" = 1;
-    NAFont = "Monaco 13";
+    NAFont = "AndaleMono 13";
     Rows = 24;
     "Selected Text Color" =         {
         "Blue Component" = 0.9476005;
@@ -120,19 +120,21 @@ PastelVim='{
         "Red Component" = 0.9476005;
     };
     "Selection Color" =         {
-        "Blue Component" = 0.2117600;
+        "Blue Component" = 0.5137300;
         "Green Component" = 0.2235300;
-        "Red Component" = 0.5137300;
+        "Red Component" = 0.2117600;
     };
-    Transparency = 0.1;
+    Transparency = 0.05;
     "Vertical Character Spacing" = 1;
 }'
 
+# Check ANSI COLOR MAP and SWATCHES HERE: http://goo.gl/A9jhn 
+
 # Add display profile
-defaults write net.sourceforge.iTerm Displays -dict-add PastelVim "$PASTELVIM"
-echo "PastelVim display profile added"
+defaults write net.sourceforge.iTerm Displays -dict-add pastelVim "$pastelVim"
+echo "pastelVim display profile added"
 
 # Set the default display profile
-#BOOKMARKS=`defaults read net.sourceforge.iTerm Bookmarks | sed 's/\("Display Profile" = \)"[^"]*";/\1"PastelVim";/'`
-#defaults write net.sourceforge.iTerm Bookmarks "$BOOKMARKS"
-#echo "PastelVim display profile installed as default"
+BOOKMARKS=`defaults read net.sourceforge.iTerm Bookmarks | sed 's/\("Display Profile" = \)"[^"]*";/\1"pastelVim";/'`
+defaults write net.sourceforge.iTerm Bookmarks "$BOOKMARKS"
+echo "pastelVim display profile installed as default"
