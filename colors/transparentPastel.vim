@@ -16,7 +16,7 @@ endif
 let g:colors_name="transparent"
 
 " default groups
-hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=White	guibg=#00002A
+hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=White	guibg=#1A1A1A
 
 hi Cursor										guifg=Black	guibg=Green
 "hi CursorIM			NONE							guifg=Black	guibg=Purple
