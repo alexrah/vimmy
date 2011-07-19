@@ -2,7 +2,7 @@ syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
 colorscheme transparentPastel " Set colorscheme from ~/.vim/color/
 set number " Show line numbers
-set mouse=a " Mouse pointer in CLI Option to go back in standard mode
+set mouse=a " Mouse pointer in CLI - Option to go back in standard mode
 
 " set bg=light " Background color now handled by colorscheme
 " highlight Comment ctermfg=red " Disabled Red coloring for Comments
@@ -69,3 +69,6 @@ call pathogen#runtime_append_all_bundles()
 set nofoldenable
 " Easy motion colors remap gray for background chars
 hi link EasyMotionShade  Exception
+" ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
+set ic
+set scs
