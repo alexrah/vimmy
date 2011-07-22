@@ -16,7 +16,7 @@ endif
 let g:colors_name="transparent"
 
 " default groups
-hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=#B5DCFF	guibg=#272727
+hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=#75DEF2      guibg=#272727
 
 hi Cursor										guifg=Black	guibg=Green
 "hi CursorIM			NONE							guifg=Black	guibg=Purple
@@ -25,7 +25,7 @@ hi DiffAdd			ctermfg=White	ctermbg=DarkCyan			guifg=White	guibg=DarkCyan
 hi DiffChange			ctermfg=Gray	ctermbg=Gray				guifg=Gray 	guibg=DarkGray
 hi DiffDelete			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=DarkRed
 hi DiffText	cterm=bold	ctermfg=White	ctermbg=Gray		gui=bold	guifg=White	guibg=DarkGray
-hi ErrorMsg			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=DarkRed
+hi ErrorMsg			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=#FC4384
 hi VertSplit	cterm=reverse						gui=reverse
 hi Folded	cterm=bold	ctermfg=DarkGray	ctermbg=DarkCyan 	gui=bold	guifg=Cyan	guibg=DarkCyan
 hi FoldColumn			ctermfg=Green	ctermbg=NONE				guifg=Green	guibg=#00002A
@@ -49,10 +49,10 @@ hi WildMenu	cterm=bold	ctermfg=Black	ctermbg=Yellow		gui=bold	guifg=Black	guibg=
 "hi Tooltip	
 
 " syntax highlighting groups
-hi Comment			ctermfg=LightCyan				 gui=bold   	guifg=#C6C5FE
+hi Comment			ctermfg=Cyan				 gui=bold   	guifg=#708387
 
 hi Constant			ctermfg=LightGreen					guifg=#A8FF60 " Green
-hi String			ctermfg=Yellow						guifg=#FFFFB6  
+hi String			ctermfg=Yellow						guifg=#FFA72B
 hi Character			ctermfg=Yellow						guifg=Yellow
 "hi Number
 "hi Boolean
@@ -61,7 +61,7 @@ hi Character			ctermfg=Yellow						guifg=Yellow
 hi Identifier			ctermfg=Magenta       guifg=Cyan
 hi Function			ctermfg=White						guifg=White
 
-hi Statement			ctermfg=Red					gui=bold      	guifg=#FF6C60
+hi Statement			ctermfg=Red					gui=bold      	guifg=#FC4384
 "hi Conditional
 "hi Repeat
 hi Label			ctermfg=White						guifg=White
@@ -69,20 +69,20 @@ hi Operator			ctermfg=Green						guifg=#A8FF60 " Green
 "hi Keyword
 hi Exception			ctermfg=Gray	ctermbg=Black				guifg=Gray	guibg=Black
 
-hi PreProc			ctermfg=Red              guifg=#FF73FD " Magenta
+hi PreProc			ctermfg=Magenta              guifg=#FF73FD " Magenta
 "hi Include
 "hi Define
 "hi Macro
 "hi PreCondit
 
-hi Type				ctermfg=Green						guifg=#FFB6B0
+hi Type				ctermfg=Green						guifg=#B2E43D
 "hi StorageClass
 "hi Structure
 hi Typedef			ctermfg=Red						guifg=Red
 
 hi Special			ctermfg=Magenta						guifg=#FF73FD
 "hi SpecialChar
-hi Tag				ctermfg=LightGreen					guifg=#FFB6B0
+hi Tag				ctermfg=LightGreen					guifg=#B2E43D
 hi Delimiter			ctermfg=Green						guifg=Green
 "hi SpecialComment
 hi Debug			ctermfg=White	ctermbg=Black				guifg=White	guibg=Black
