@@ -2,7 +2,10 @@ syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
 colorscheme transparentPastel " Set colorscheme from ~/.vim/color/
 set number " Show line numbers
-set mouse=a " Mouse pointer in CLI - Option to go back in standard mode
+set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
+" set term=ansi " add numeric pad support
+set diffopt=vertical " Diff mode horizontal spit
+set diffopt+=filler
 
 " set bg=light " Background color now handled by colorscheme
 " highlight Comment ctermfg=red " Disabled Red coloring for Comments
@@ -34,10 +37,11 @@ let OmniCpp_SelectFirstItem = 2 " select first item (but don't insert)
 let OmniCpp_NamespaceSearch = 2 " search namespaces in this and included files
 let OmniCpp_ShowPrototypeInAbbr = 1 " show function prototype (i.e. parameters) in popup window
 let OmniCpp_LocalSearchDecl = 1 " don't require special style of function opening braces
+let OmniCpp_GlobalScopeSearch = 0 " disable the global scope search
 " -- ctags --
 " map <ctrl>+F12 to generate ctags for current folder:
-" map <C-x><C-t> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
-map <C-x><C-t> :!ctags -f - --format=2 --excmd=pattern --fields=nks .<CR><CR>
+map <C-x><C-t> :!ctags -R --c++-kinds=+p --fields=+iaS --extra=+q .<CR><CR>
+" map <C-x><C-t> :!ctags -f - --format=2 --excmd=pattern --fields=nks .<CR><CR>
 " add current directory's generated tags file to available tags
 set tags+=./tags
  
@@ -72,3 +76,10 @@ hi link EasyMotionShade  Exception
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
+map <PageDown> <C-F>
+imap ll <Esc> 
+map ; :
+" noremap ;; ;
+autocmd filetype css setlocal equalprg=csstidy\ -\ --silent=true " press gg=G to get tidy CSS 
+autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
+
