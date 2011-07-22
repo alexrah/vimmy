@@ -76,7 +76,6 @@ hi link EasyMotionShade  Exception
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
-map <PageDown> <C-F>
 imap ll <Esc> 
 map ; :
 " noremap ;; ;
