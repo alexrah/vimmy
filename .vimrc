@@ -1,6 +1,6 @@
 syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
-colorscheme transparentPastel " Set colorscheme from ~/.vim/color/
+colorscheme transparentHardcore " Set colorscheme from ~/.vim/color/
 set number " Show line numbers
 set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
 " set term=ansi " add numeric pad support
@@ -76,9 +76,25 @@ hi link EasyMotionShade  Exception
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
-imap ll <Esc> 
+imap kk <Esc> 
 map ; :
-" noremap ;; ;
+map § $
+" zen coding expand abbreviation with ,,
+let g:user_zen_expandabbr_key = ',,'
+" Tab key in-context auto completion -> :SuperTabHelp
+let g:SuperTabDefaultCompletionType = "context"
+" remap Omnifunc in-context autocomplete to qq
+" ]] for keyword local autocomplete
+inoremap qq <C-x><C-o>
+imap ]] <C-X><C-P>
 autocmd filetype css setlocal equalprg=csstidy\ -\ --silent=true " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
+" built-in autocomplete omnifunc in-context for below filetypes
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete 
 

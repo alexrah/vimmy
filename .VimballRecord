@@ -1,1 +1,2 @@
 loremipsum.vba: call delete('/Users/ale/.vim/autoload/loremipsum.vim')|call delete('/Users/ale/.vim/autoload/loremipsum.txt')|call delete('/Users/ale/.vim/plugin/loremipsum.vim')|call delete('/Users/ale/.vim/doc/loremipsum.txt')
+supertab.vba: call delete('/Users/ale/.vim/doc/supertab.txt')|call delete('/Users/ale/.vim/plugin/supertab.vim')
