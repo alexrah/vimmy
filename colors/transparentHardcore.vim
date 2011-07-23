@@ -58,7 +58,7 @@ hi Character			ctermfg=Yellow						guifg=Yellow
 "hi Boolean
 "hi Float
 
-hi Identifier			ctermfg=Magenta       guifg=Cyan
+hi Identifier			ctermfg=Magenta       guifg=#AD86FF
 hi Function			ctermfg=White						guifg=White
 
 hi Statement			ctermfg=Red					gui=bold      	guifg=#FC4384
@@ -69,7 +69,7 @@ hi Operator			ctermfg=Green						guifg=#A8FF60 " Green
 "hi Keyword
 hi Exception			ctermfg=Gray	ctermbg=Black				guifg=Gray	guibg=Black
 
-hi PreProc			ctermfg=Magenta              guifg=#FF73FD " Magenta
+hi PreProc			ctermfg=Magenta              guifg=#AD86FF     " Magenta
 "hi Include
 "hi Define
 "hi Macro
@@ -80,7 +80,7 @@ hi Type				ctermfg=Green						guifg=#B2E43D
 "hi Structure
 hi Typedef			ctermfg=Red						guifg=Red
 
-hi Special			ctermfg=Magenta						guifg=#FF73FD
+hi Special			ctermfg=Magenta						guifg=#AD86FF
 "hi SpecialChar
 hi Tag				ctermfg=LightGreen					guifg=#B2E43D
 hi Delimiter			ctermfg=Green						guifg=Green
