@@ -47,6 +47,7 @@ hi WildMenu	cterm=bold	ctermfg=Black	ctermbg=Yellow		gui=bold	guifg=Black	guibg=
 "hi Menu	
 "hi Scrollbar	
 "hi Tooltip	
+hi Pmenu    ctermfg=DarkGray    ctermbg=Blue
 
 " syntax highlighting groups
 hi Comment			ctermfg=Cyan				 gui=bold   	guifg=#708387
