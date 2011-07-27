@@ -6,6 +6,7 @@ set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
 " set term=ansi " add numeric pad support
 set diffopt=vertical " Diff mode horizontal spit
 set diffopt+=filler
+set title " Add file name & location to titlebar
 
 " set bg=light " Background color now handled by colorscheme
 " highlight Comment ctermfg=red " Disabled Red coloring for Comments
