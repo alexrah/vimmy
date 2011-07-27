@@ -20,11 +20,11 @@ hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=#75DEF2      guibg=#272727
 
 hi Cursor										guifg=Black	guibg=Green
 "hi CursorIM			NONE							guifg=Black	guibg=Purple
-hi Directory			ctermfg=White						guifg=White
-hi DiffAdd			ctermfg=White	ctermbg=DarkCyan			guifg=White	guibg=DarkCyan
-hi DiffChange			ctermfg=Gray	ctermbg=Gray				guifg=Gray 	guibg=DarkGray
-hi DiffDelete			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=DarkRed
-hi DiffText	cterm=bold	ctermfg=White	ctermbg=Gray		gui=bold	guifg=White	guibg=DarkGray
+hi Directory			ctermfg=DarkCyan						guifg=White
+hi DiffAdd			ctermfg=DarkGray  	ctermbg=Green			guifg=Black   guibg=#A8FF60 " Green
+hi DiffChange			ctermfg=White  	ctermbg=Cyan				guifg=White 	guibg=#708387 " Cyan
+hi DiffDelete			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=#FC4384 " Red
+hi DiffText	cterm=bold	ctermfg=DarkGray 	ctermbg=Blue		gui=bold	guifg=Black	guibg=#75DEF2 " Blue
 hi ErrorMsg			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=#FC4384
 hi VertSplit	cterm=reverse						gui=reverse
 hi Folded	cterm=bold	ctermfg=DarkGray	ctermbg=DarkCyan 	gui=bold	guifg=Cyan	guibg=DarkCyan

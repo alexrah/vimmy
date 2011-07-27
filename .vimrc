@@ -82,12 +82,12 @@ map § $
 " zen coding expand abbreviation with ,,
 let g:user_zen_expandabbr_key = ',,'
 " Tab key in-context auto completion -> :SuperTabHelp
-let g:SuperTabDefaultCompletionType = "context"
+" let g:SuperTabDefaultCompletionType = "context"
 " remap Omnifunc in-context autocomplete to qq
 " ]] for keyword local autocomplete
 inoremap qq <C-x><C-o>
 imap ]] <C-X><C-P>
-autocmd filetype css setlocal equalprg=csstidy\ -\ --silent=true " press gg=G to get tidy CSS 
+autocmd filetype css setlocal equalprg=~/.vim/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -97,4 +97,4 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete 
-
+" autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
