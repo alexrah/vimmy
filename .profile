@@ -17,7 +17,8 @@ alias psx="ps -x"
 alias CS50="cd ~/Documents/CS50"
 alias grepp="grep -A 2 -B 2"
 alias gitw="git whatchanged -p --color"
-alias wget="curl -O"
+alias ipinfo="sh ~/.vim/ipinfo.sh"
+# alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt
 # export PS1='\u@\h:\w$';

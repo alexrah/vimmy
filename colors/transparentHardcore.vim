@@ -27,7 +27,7 @@ hi DiffDelete			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=#FC4384 " Red
 hi DiffText	cterm=bold	ctermfg=DarkGray 	ctermbg=Blue		gui=bold	guifg=Black	guibg=#75DEF2 " Blue
 hi ErrorMsg			ctermfg=White	ctermbg=DarkRed				guifg=White	guibg=#FC4384
 hi VertSplit	cterm=reverse						gui=reverse
-hi Folded	cterm=bold	ctermfg=DarkGray	ctermbg=DarkCyan 	gui=bold	guifg=Cyan	guibg=DarkCyan
+hi Folded	cterm=bold	ctermfg=White 	ctermbg=DarkCyan 	gui=bold	guifg=Cyan	guibg=DarkCyan
 hi FoldColumn			ctermfg=Green	ctermbg=NONE				guifg=Green	guibg=#00002A
 hi IncSearch			ctermfg=White	ctermbg=Black				guifg=White	guibg=Black
 hi LineNr			ctermfg=Gray 			ctermbg=DarkGray 			guifg=#B4B4B4   guibg=#363636
