@@ -18,6 +18,9 @@ alias CS50="cd ~/Documents/CS50"
 alias grepp="grep -A 2 -B 2"
 alias gitw="git whatchanged -p --color"
 alias ipinfo="sh ~/.vim/ipinfo.sh"
+alias web2png="python ~/.vim/webkit2png-0.5.py"
+alias svi="sudo vi"
+alias mdfindo="mdfind -onlyin"
 # alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt
