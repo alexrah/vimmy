@@ -67,27 +67,31 @@ set autoindent
 set smartindent
 " HTML indent & folding
 " let html_my_rendering=1
-" au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/plugin/XMLFolding.vim
+au BufNewFile,BufRead *.xml,*.htm,*.html so XMLFolding
 " Pathogen bundle plugin manager
 call pathogen#runtime_append_all_bundles()
 " Default NO Folding when opening a document
 set nofoldenable
 " Easy motion colors remap gray for background chars
 hi link EasyMotionShade  Exception
+let g:EasyMotion_keys = '1234567890abcdefghijklmnopqrstuvwxyz'
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
 imap kk <Esc> 
 map ; :
+" remap $ to move cursor to start line
 map § $
 " zen coding expand abbreviation with ,,
 let g:user_zen_expandabbr_key = ',,'
+" SUPER TAB CONFIG
 " Tab key in-context auto completion -> :SuperTabHelp
 " let g:SuperTabDefaultCompletionType = "context"
 " remap Omnifunc in-context autocomplete to qq
-" ]] for keyword local autocomplete
 inoremap qq <C-x><C-o>
+" ]] for keyword local autocomplete
 imap ]] <C-X><C-P>
+" tidy functions for css and html files PS: I need to add yuicompressor!
 autocmd filetype css setlocal equalprg=~/.vim/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
@@ -98,4 +102,10 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete 
-" autocmd BufEnter * let &titlestring = hostname() . "[vim(" . expand("%:t") . ")]"
+" automatically reload foldings
+au BufWinLeave * mkview
+au BufWinEnter * silent loadview
+" machit tag configuration
+let b:match_words = '<:>,<tag>:</tag>'
+" EasyMotion leader 
+" let mapleader = ","
