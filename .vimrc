@@ -109,3 +109,4 @@ au BufWinEnter * silent loadview
 let b:match_words = '<:>,<tag>:</tag>'
 " EasyMotion leader 
 " let mapleader = ","
+let g:EasyMotion_mapping_t = '_t'
