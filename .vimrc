@@ -110,3 +110,20 @@ let b:match_words = '<:>,<tag>:</tag>'
 " EasyMotion leader 
 " let mapleader = ","
 let g:EasyMotion_mapping_t = '_t'
+
+if has("cscope")
+  set csprg=/usr/bin/cscope
+  set csto=0
+  set cst
+  set nocsverb
+ " add any database in current directory
+if filereadable("cscope.out")
+  cs add cscope.out
+" else add database pointed to by environment
+elseif $CSCOPE_DB != ""
+  cs add $CSCOPE_DB
+endif
+  set csverb
+endif  
+map g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>                          
+map g<C-\> :cs find t <C-R>=expand("<cword>")<CR><CR>
