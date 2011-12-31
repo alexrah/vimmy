@@ -108,11 +108,10 @@ au BufWinEnter * silent loadview
 " machit tag configuration
 let b:match_words = '<:>,<tag>:</tag>'
 " EasyMotion leader 
-" let mapleader = ","
 let g:EasyMotion_mapping_t = '_t'
-
+" CSCOPE configuration
 if has("cscope")
-  set csprg=/usr/bin/cscope
+  set csprg=/usr/local/bin/cscope
   set csto=0
   set cst
   set nocsverb
@@ -125,5 +124,18 @@ elseif $CSCOPE_DB != ""
 endif
   set csverb
 endif  
-map g<C-]> :cs find c <C-R>=expand("<cword>")<CR><CR>                          
-map g<C-\> :cs find t <C-R>=expand("<cword>")<CR><CR>
+" Find function calling this function
+map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>          
+" Find function called by this function
+map <C-[> :cs find d <C-R>=expand("<cword>")<CR><CR>
+" END CSCOPE configuration
+" set the names of flags
+let Tlist_php_settings = 'php;c:class;f:function;d:constant'
+" close all folds except for current file
+let Tlist_File_Fold_Auto_Close = 1
+" make tlist pane active when opened
+let Tlist_GainFocus_On_ToggleOpen = 1
+" width of window
+let Tlist_WinWidth = 40
+" close tlist when a selection is made
+let Tlist_Close_On_Select = 1
