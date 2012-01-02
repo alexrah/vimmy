@@ -21,7 +21,7 @@ alias ipinfo="sh ~/.vim/ipinfo.sh"
 alias web2png="python ~/.vim/webkit2png-0.5.py"
 alias svi="sudo vi"
 alias mdfindo="mdfind -onlyin ./"
-alias csc="/usr/bin/find . -name '*.php' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
+alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
 # alias vi3="/usr/local/Cellar/vim/7.3.333/bin/vim -u ~/.vimrc"
 # alias wget="curl -O"
 # end alias PATH

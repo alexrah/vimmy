@@ -136,6 +136,18 @@ let Tlist_File_Fold_Auto_Close = 1
 " make tlist pane active when opened
 let Tlist_GainFocus_On_ToggleOpen = 1
 " width of window
-let Tlist_WinWidth = 40
+let Tlist_WinWidth = 35
 " close tlist when a selection is made
-let Tlist_Close_On_Select = 1
+let Tlist_Close_On_Select = 0
+" remap Tlist Open Close command to 
+nnoremap <silent> tt :TlistToggle<CR> 
+" ManPageView backup shortcut in case of K shortcut fails
+map <C-k> :Man <C-R>=expand("<cword>")<CR><CR>
+" remap NERDTree Open Close command to
+nnoremap <silent> tr :NERDTreeToggle<CR> 
+" NERDTree options
+let NERDTreeChristmasTree = 1
+let NERDTreeShowHidden = 1
+let NERDTreeWinSize = 25
+let NERDTreeDirArrows = 1
+let NERDTreeChDirMode = 2
