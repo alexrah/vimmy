@@ -66,8 +66,8 @@ set shiftwidth=2
 set autoindent
 set smartindent
 " HTML indent & folding
-" let html_my_rendering=1
-au BufNewFile,BufRead *.xml,*.htm,*.html so XMLFolding
+"let html_my_rendering=1
+"au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/phpcs/plugin/XMLFolding
 " Pathogen bundle plugin manager
 call pathogen#runtime_append_all_bundles()
 " Default NO Folding when opening a document
