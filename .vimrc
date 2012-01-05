@@ -151,3 +151,5 @@ let NERDTreeShowHidden = 1
 let NERDTreeWinSize = 25
 let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
+" Compress and Obfuscate CSS and JS files
+map <C-l> :!java -jar ~/.vim/yuicompressor-2.4.8pre.jar -o % %<CR>

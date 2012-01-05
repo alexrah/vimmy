@@ -22,7 +22,7 @@ alias web2png="python ~/.vim/webkit2png-0.5.py"
 alias svi="sudo vi"
 alias mdfindo="mdfind -onlyin ./"
 alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
-# alias vi3="/usr/local/Cellar/vim/7.3.333/bin/vim -u ~/.vimrc"
+alias yuic="java -jar ~/.vim/yuicompressor-2.4.8pre.jar"
 # alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt
