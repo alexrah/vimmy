@@ -24,11 +24,12 @@ alias svi="sudo vi"
 alias mdfindo="mdfind -onlyin ./"
 alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
 alias yuic="java -jar ~/.vim/yuicompressor-2.4.8pre.jar"
+alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 # alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt
 # export PS1='\u@\h:\w$';
-export PS1='\[\033[0;34m\]\u@\h:\w\[\033[0m\]\n > ';
+export PS1='\[\033[0;35m\]\u@\h:\w\[\033[0m\]\n > ';
 # end editing CLI prompt
 # START color CLI using Yellow for Directories
 export CLICOLOR=1

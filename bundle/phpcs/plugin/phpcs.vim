@@ -1,6 +1,6 @@
 function! RunPhpcs()
     let l:filename=@%
-    let l:phpcs_output=system('phpcs --report=emacs --standard=Zend '.l:filename)
+    let l:phpcs_output=system('phpcs --report=emacs --standard=drupalcs '.l:filename)
 "    echo l:phpcs_output
     let l:phpcs_list=split(l:phpcs_output, "\n")
     unlet l:phpcs_list[0]
