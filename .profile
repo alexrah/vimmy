@@ -25,6 +25,7 @@ alias mdfindo="mdfind -onlyin ./"
 alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
 alias yuic="java -jar ~/.vim/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
+alias top="top -o cpu"
 # alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt
