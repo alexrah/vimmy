@@ -129,6 +129,7 @@ map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
 " Find function called by this function
 map <C-[> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " END CSCOPE configuration
+" START CTAGS configuration
 " set the names of flags
 let Tlist_php_settings = 'php;c:class;f:function;d:constant'
 " close all folds except for current file
@@ -140,7 +141,8 @@ let Tlist_WinWidth = 35
 " close tlist when a selection is made
 let Tlist_Close_On_Select = 0
 " remap Tlist Open Close command to 
-nnoremap <silent> tt :TlistToggle<CR> 
+nnoremap <silent> ty :TlistToggle<CR> 
+" END CTAGS configuration
 " ManPageView backup shortcut in case of K shortcut fails
 map <C-k> :Man <C-R>=expand("<cword>")<CR><CR>
 " remap NERDTree Open Close command to
@@ -172,3 +174,9 @@ if has('statusline')
       set statusline+=%=%-14.(%l,%c%V%)\ %p%%  " Right aligned file nav info
     endif
 " END Syntastic configuration
+" START TAGBAR config
+let g:tagbar_left = 1
+let g:tagbar_width = 35
+let g:tagbar_expand = 1
+nnoremap <silent> tt :TagbarToggle<CR>
+" END TAGBAR config
