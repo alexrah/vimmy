@@ -13,3 +13,6 @@
 [submodule "bundle/tagbar"]
 	path = bundle/tagbar
 	url = https://github.com/majutsushi/tagbar.git
+[submodule "bundle/css-color2"]
+	path = bundle/css-color2
+	url = https://github.com/ap/vim-css-color.git
