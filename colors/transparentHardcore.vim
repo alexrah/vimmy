@@ -13,7 +13,7 @@ hi clear
 if exists("syntax_on")
     syntax reset
 endif
-let g:colors_name="transparent"
+let g:colors_name="transparentHardcore"
 
 " default groups
 hi Normal			ctermfg=LightBlue 	ctermbg=NONE				guifg=#75DEF2      guibg=#272727
