@@ -75,6 +75,10 @@ set nofoldenable
 " Easy motion colors remap gray for background chars
 hi link EasyMotionShade  Exception
 let g:EasyMotion_keys = '1234567890abcdefghijklmnopqrstuvwxyz'
+" EasyMotion remappings 
+let g:EasyMotion_mapping_t = '_t'
+let g:EasyMotion_mapping_b = '\e' 
+let g:EasyMotion_mapping_e = '_e'
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
@@ -109,8 +113,6 @@ au BufWinLeave ?* mkview 1
 
 " machit tag configuration
 let b:match_words = '<:>,<tag>:</tag>'
-" EasyMotion leader 
-let g:EasyMotion_mapping_t = '_t'
 " START CSCOPE configuration
 if has("cscope")
   set csprg=/usr/local/bin/cscope
@@ -188,3 +190,4 @@ function! MaximizeToggle()
   endif
 endfunction
 "END Maximize - Minimize in multi-panel view
+ 
