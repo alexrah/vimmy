@@ -109,7 +109,7 @@ au BufWinEnter ?* silent loadview 1
 let b:match_words = '<:>,<tag>:</tag>'
 " EasyMotion leader 
 let g:EasyMotion_mapping_t = '_t'
-" CSCOPE configuration
+" START CSCOPE configuration
 if has("cscope")
   set csprg=/usr/local/bin/cscope
   set csto=0
@@ -129,20 +129,6 @@ map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>
 " Find function called by this function
 map <C-[> :cs find d <C-R>=expand("<cword>")<CR><CR>
 " END CSCOPE configuration
-" START CTAGS configuration
-" set the names of flags
-let Tlist_php_settings = 'php;c:class;f:function;d:constant'
-" close all folds except for current file
-let Tlist_File_Fold_Auto_Close = 1
-" make tlist pane active when opened
-let Tlist_GainFocus_On_ToggleOpen = 1
-" width of window
-let Tlist_WinWidth = 35
-" close tlist when a selection is made
-let Tlist_Close_On_Select = 0
-" remap Tlist Open Close command to 
-nnoremap <silent> ty :TlistToggle<CR> 
-" END CTAGS configuration
 " ManPageView backup shortcut in case of K shortcut fails
 map <C-k> :Man <C-R>=expand("<cword>")<CR><CR>
 " remap NERDTree Open Close command to
