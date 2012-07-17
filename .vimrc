@@ -102,9 +102,11 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete 
-" automatically reload foldings
+" " automatically reload foldings
 au BufWinLeave ?* mkview 1
-au BufWinEnter ?* silent loadview 1
+" REMOVED THE LINE BELOW TO SOLVE XDEBUG ISSUE WITH PHP.DRUPAL
+" au BufWinEnter ?* silent loadview 1
+
 " machit tag configuration
 let b:match_words = '<:>,<tag>:</tag>'
 " EasyMotion leader 
