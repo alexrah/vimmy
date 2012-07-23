@@ -1,2 +1,8 @@
 view/*
 .netrwhist
+bundle/command-t/Makefile
+bundle/command-t/ext.bundle
+bundle/command-t/ext.o
+bundle/command-t/match.o
+bundle/command-t/matcher.o
+bundle/command-t/mkmf.log

@@ -65,6 +65,11 @@ set tabstop=2
 set shiftwidth=2
 set autoindent
 set smartindent
+function! HTMLSettings()
+setlocal foldmethod=indent
+endfunction
+au FileType HTML call HTMLSettings()
+au FileType XHTML call HTMLSettings()
 " HTML indent & folding
 "let html_my_rendering=1
 "au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/phpcs/plugin/XMLFolding
