@@ -79,6 +79,8 @@ let g:EasyMotion_keys = '1234567890abcdefghijklmnopqrstuvwxyz'
 let g:EasyMotion_mapping_t = '_t'
 let g:EasyMotion_mapping_b = '\e' 
 let g:EasyMotion_mapping_e = '_e'
+" Command-t remapping
+let g:CommandTAcceptSelectionSplitMap ='<C-X>'
 " ignorecase and smartcase, search with an uppercase character becomes a case sensitive search
 set ic
 set scs
@@ -107,7 +109,7 @@ autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete 
 " " automatically reload foldings
-au BufWinLeave ?* mkview 1
+" au BufWinLeave ?* mkview 1
 " REMOVED THE LINE BELOW TO SOLVE XDEBUG ISSUE WITH PHP.DRUPAL
 " au BufWinEnter ?* silent loadview 1
 
