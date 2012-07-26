@@ -12,6 +12,7 @@ export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # start alias PATH
 alias ls="ls -F"
 alias la="ls -lhAF"
+alias lr="find . -type d -maxdepth"
 alias www="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias psx="ps -Af"
 alias cs50="cd ~/Dropbox/PROJECTS/110715_CS50/"
