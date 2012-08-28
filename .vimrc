@@ -113,7 +113,6 @@ autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
 autocmd FileType c set omnifunc=ccomplete#Complete 
-autocmd FileType python set omnifunc=pythoncomplete#Complete 
 " " automatically reload foldings
 " au BufWinLeave ?* mkview 1
 " REMOVED THE LINE BELOW TO SOLVE XDEBUG ISSUE WITH PHP.DRUPAL
