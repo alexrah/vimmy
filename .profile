@@ -27,6 +27,7 @@ alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b
 alias yuic="java -jar ~/.vim/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias top="top -o cpu"
+alias duu="du -ch | grep total"
 # alias wget="curl -O"
 # end alias PATH
 # start editing CLI prompt

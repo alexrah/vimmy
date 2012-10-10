@@ -106,7 +106,8 @@ imap ]] <C-X><C-P>
 autocmd filetype css setlocal equalprg=~/.vim/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
-autocmd FileType python set omnifunc=pythoncomplete#Complete
+" autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType python set omnifunc=RopeOmni
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
 autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
