@@ -1,3 +1,5 @@
+# Override BSD commands with GNU Linux counterpart
+# source "/usr/local/Cellar/coreutils/8.12/aliases"
 # MacPorts Installer addition on 2011-03-02_at_03:29:48: adding an appropriate PATH variable for use with MacPorts.
 export PATH=/opt/local/bin:/opt/local/sbin:$PATH
 # Finished adapting your PATH environment variable for use with MacPorts.
@@ -10,8 +12,7 @@ export PATH=$PATH:/Applications/XAMPP/xamppfiles/drush
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # end drush PATH
 # start alias PATH
-alias ls="ls -F"
-alias la="ls -lhAF"
+alias la="ls -lhA"
 alias lr="find . -type d -maxdepth"
 alias www="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias psx="ps -Af"
@@ -35,7 +36,12 @@ alias duu="du -ch | grep total"
 export PS1='\[\033[0;35m\]\u@\h:\w\[\033[0m\]\n > ';
 # end editing CLI prompt
 # START color CLI using Yellow for Directories
-export CLICOLOR=1
-export LSCOLORS=dxfxcxdxbxegedabagacad
+# export CLICOLOR=1
+# export LSCOLORS=dxfxcxdxbxegedabagacad
+# eval 'dircolors ~/.dir_colors'
 # END color CLI using Yellow for Directories
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
+source "/usr/local/Cellar/coreutils/8.12/aliases"
+# Replace Color CLI for BSD (above) with GNU Linux dircolor
+# dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
+eval $(dircolors -b $HOME/.dir_colors)
