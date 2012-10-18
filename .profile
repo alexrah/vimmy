@@ -41,6 +41,8 @@ export PS1='\[\033[0;35m\]\u@\h:\w\[\033[0m\]\n > ';
 # eval 'dircolors ~/.dir_colors'
 # END color CLI using Yellow for Directories
 export PATH=$PATH:/Applications/Firefox.app/Contents/MacOS
+# source aliases for GNU Linux commands,
+# override standard BSD commands
 source "/usr/local/Cellar/coreutils/8.12/aliases"
 # Replace Color CLI for BSD (above) with GNU Linux dircolor
 # dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
