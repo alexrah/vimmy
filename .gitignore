@@ -6,4 +6,4 @@ bundle/command-t/ext.o
 bundle/command-t/match.o
 bundle/command-t/matcher.o
 bundle/command-t/mkmf.log
-/*bundle/python-mode/pylibs/*/
+bundle/python-mode/
