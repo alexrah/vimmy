@@ -52,7 +52,8 @@ alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b
 alias yuic="java -jar ~/.vim/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias top="top -o cpu"
-alias duu="du -ch | grep total"
+alias duu="du -ch | grep total" # calculate folder size 
+alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 source "/usr/local/Cellar/coreutils/8.12/aliases"
