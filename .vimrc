@@ -103,7 +103,7 @@ inoremap qq <C-x><C-o>
 " ]] for keyword local autocomplete
 imap ]] <C-X><C-P>
 " tidy functions for css and html files PS: I need to add yuicompressor!
-autocmd filetype css setlocal equalprg=~/.vim/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
+autocmd filetype css setlocal equalprg=~/.vim/command_line_tools/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -152,9 +152,9 @@ let NERDTreeWinSize = 25
 let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
 " Compress and Obfuscate CSS and JS files
-map <C-l> :!java -jar ~/.vim/yuicompressor-2.4.8pre.jar -o % %<CR>
+map <C-l> :!java -jar ~/.vim/command_line_tools/yuicompressor-2.4.8pre.jar -o % %<CR>
 " Compress HTML Files
-map <C-h> :!java -jar ~/.vim/htmlcompressor-1.5.2.jar -o % %<CR>
+map <C-h> :!java -jar ~/.vim/command_line_tools/htmlcompressor-1.5.2.jar -o % %<CR>
 " Syntastic PHP drupal coding standard
 let g:syntastic_phpcs_conf=" --standard=DrupalCodingStandard --extensions=php,module,inc,install,test,profile,theme"
 if has('statusline')
