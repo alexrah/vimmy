@@ -30,7 +30,7 @@ hi VertSplit	cterm=reverse						gui=reverse
 hi Folded	cterm=bold	ctermfg=White 	ctermbg=DarkCyan 	gui=bold	guifg=Cyan	guibg=DarkCyan
 hi FoldColumn			ctermfg=Green	ctermbg=NONE				guifg=Green	guibg=#00002A
 hi IncSearch			ctermfg=White	ctermbg=Black				guifg=White	guibg=Black
-hi LineNr			ctermfg=Gray 			ctermbg=DarkGray 			guifg=#B4B4B4   guibg=#363636
+hi LineNr			ctermfg=Gray 			ctermbg=Black 			guifg=#B4B4B4   guibg=#2c2c2c
 hi ModeMsg	cterm=bold	ctermfg=White				gui=bold	guifg=White
 hi MoreMsg	cterm=bold	ctermfg=White				gui=bold	guifg=White
 hi NonText			ctermfg=NONE						guifg=NONE
