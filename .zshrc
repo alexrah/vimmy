@@ -37,6 +37,7 @@ source $ZSH/oh-my-zsh.sh
 #
 # export PATH to MYSQL isntalled within xampp
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
+export PATH=$PATH:~/.gem/ruby/1.8/bin
 # start alias PATH
 alias la="ls -lhA"
 alias lr="find . -type d -maxdepth"
@@ -62,3 +63,11 @@ source "/usr/local/Cellar/coreutils/8.12/aliases"
 # Replace Color CLI for BSD (above) with GNU Linux dircolor
 # dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
 eval $(dircolors -b $HOME/.dir_colors)
+# ASCII art welcome screen
+printf '\033[0;32m%s\033[0m\n' '         __                                     __   '
+printf '\033[0;32m%s\033[0m\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
+printf '\033[0;32m%s\033[0m\n' ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
+printf '\033[0;32m%s\033[0m\n' '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
+printf '\033[0;32m%s\033[0m\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
+printf '\033[0;32m%s\033[0m\n' '                        /____/                       '
+
