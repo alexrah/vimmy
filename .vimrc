@@ -95,6 +95,13 @@ map ; :
 map § $
 " zen coding expand abbreviation with ,,
 let g:user_zen_expandabbr_key = ',,'
+" zen coding add support to css.drupal filetype
+" NOT WORKING! NEED A PATCH TO THE MODULE, FORKED
+" let g:user_zen_settings = {
+"       \  'css.drupal' : {
+"       \    'extends' : 'css',
+"       \  },
+"       \}
 " SUPER TAB CONFIG
 " Tab key in-context auto completion -> :SuperTabHelp
 " let g:SuperTabDefaultCompletionType = "context"
