@@ -205,4 +205,51 @@ function! MaximizeToggle()
   endif
 endfunction
 "END Maximize - Minimize in multi-panel view
- 
+
+" Add HTML support to Exuberant Ctags
+let g:tagbar_type_html = {
+  \ 'ctagstype' : 'HTML',
+    \ 'kinds'   : [
+      \ 'a:named anchors',
+      \ 'f:Javascript functions',
+      \ '1:h1 header',
+      \ '2:h2 header',
+      \ '3:h3 header',
+      \ '4:h4 header',
+      \ '5:h5 header',
+      \ '6:h6 header',
+      \ 'o:object',
+      \ 'c:class',
+    \ ]
+  \ }
+  "   \ 'kind2scope' : {
+  "     \ 'a' : 'named anchor',
+  "     \ 'f' : 'Javascript function',
+  "     \ 'r' : 'HRef',
+  "     \ 'r' : 'Image',
+  "     \ 'r' : 'Header',
+  "     \ 'r' : 'Div'
+  "   \ },
+  "   \ 'scope2kind' : {
+  "     \ 'named anchor' : 'a',
+  "     \ 'Javascript function' : 'f',
+  "     \ 'HRef' : 'r',
+  "     \ 'Image' : 'r',
+  "     \ 'Header' : 'r',
+  "     \ 'Div' : 'r'
+  "   \ }
+  " \ }
+" Add CSS support to Exuberant Ctags
+let g:tagbar_type_css = {
+      \ 'ctagstype' : 'css',
+  \ 'kinds'   : [
+    \ 'c:classes',
+    \ 's:selectors',
+    \ 'i:identities'
+  \ ]
+  \ }
+
+" Autoload closetag.vim plugin
+let g:closetag_html_style=1
+" au Filetype html,xml,xsl
+source ~/.vim/bundle/closetags/closetag.vim

@@ -1,0 +1,23 @@
+--langdef=markdown
+--langmap=markdown:.md.markdown.mdown.mkd.mkdn
+--regex-markdown=/^#[ \t]+([^#]*)/\1/h,heading1/
+--regex-markdown=/^##[ \t]+([^#]*)/. \1/h,heading2/
+--regex-markdown=/^###[ \t]+([^#]*)/.  \1/h,heading3/
+
+--langdef=css
+--langmap=css:.css
+--regex-css=/[ \t]*([^ \t\}]+)[ \t]*\{/\1/s,Selector/i
+
+--langdef=html
+--langmap=html:.htm.html
+--regex-html=/<h1[^>]*>(.*)<\/h1>/\1/1,h1 header/
+--regex-html=/<h2[^>]*>(.*)<\/h2>/. \1/2,h2 header/
+--regex-html=/<h3[^>]*>(.*)<\/h3>/.   \1/3,h3 header/
+--regex-html=/<h4[^>]*>(.*)<\/h4>/.     \1/4,h4 header/
+--regex-html=/<h5[^>]*>(.*)<\/h5>/.       \1/5,h5 header/
+--regex-html=/<h6[^>]*>(.*)<\/h6>/.         \1/6,h6 header/
+--regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+id='([^']+)'/\1#\2/o,object/
+--regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+id="([^"]+)"/\1#\2/o,object/
+--regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class='([^']+)'/\1.\2/c,class/
+--regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class="([^"]+)"/\1.\2/c,class/
+
