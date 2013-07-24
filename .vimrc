@@ -2,7 +2,18 @@ syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
 colorscheme transparentHardcore " Set colorscheme from ~/.vim/color/
 set number " Show line numbers
-set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
+" set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
+if has('mouse')
+  set mouse=a
+  if &term =~ "xterm" || &term =~ "screen"
+    " as of March 2013, this works:
+    set ttymouse=xterm2
+
+    " previously, I found that ttymouse was getting reset, so had
+    " to reapply it via an autocmd like this:
+    autocmd VimEnter,FocusGained,BufEnter * set ttymouse=xterm2
+  endif
+endif
 " set term=ansi " add numeric pad support
 set diffopt=vertical " Diff mode horizontal spit
 set diffopt+=filler
@@ -222,6 +233,23 @@ let g:tagbar_type_html = {
       \ 'c:class',
     \ ]
   \ }
+let g:tagbar_type_php = {
+  \ 'ctagstype' : 'PHP',
+    \ 'kinds'   : [
+      \ 'a:named anchors',
+      \ 'f:Javascript functions',
+      \ '1:h1 header',
+      \ '2:h2 header',
+      \ '3:h3 header',
+      \ '4:h4 header',
+      \ '5:h5 header',
+      \ '6:h6 header',
+      \ 'o:object',
+      \ 'c:class',
+    \ ]
+  \ }
+
+
   "   \ 'kind2scope' : {
   "     \ 'a' : 'named anchor',
   "     \ 'f' : 'Javascript function',
@@ -253,3 +281,12 @@ let g:tagbar_type_css = {
 let g:closetag_html_style=1
 " au Filetype html,xml,xsl
 source ~/.vim/bundle/closetags/closetag.vim
+
+" Persistent Undo (vim 7.3 and later)
+if !isdirectory("~/.vim_runtime/undodir")
+      call mkdir("~/.vim_runtime/undodir", "p")
+    endif
+if exists('&undofile') && !&undofile
+  set undodir=~/.vim_runtime/undodir
+  set undofile
+endif
