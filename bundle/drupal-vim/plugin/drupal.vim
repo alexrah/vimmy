@@ -136,7 +136,7 @@ function! s:DrupalInit()
   let b:Drupal_info = info
   " TODO:  If we are not inside a Drupal directory, maybe skip this.  Wait
   " until someone complains that we are munging his non-Drupal php files.
-  set ft+=.drupal
+  " set ft+=.drupal
 endfun
 " }}} }}}
 

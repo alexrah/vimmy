@@ -283,10 +283,13 @@ let g:closetag_html_style=1
 source ~/.vim/bundle/closetags/closetag.vim
 
 " Persistent Undo (vim 7.3 and later)
-if !isdirectory("~/.vim_runtime/undodir")
+if empty(glob('~/.vim_runtime/undodir'))
       call mkdir("~/.vim_runtime/undodir", "p")
     endif
 if exists('&undofile') && !&undofile
   set undodir=~/.vim_runtime/undodir
   set undofile
 endif
+
+" autoload debugger
+source ~/.vim/bundle/debugger/debugger.vim
