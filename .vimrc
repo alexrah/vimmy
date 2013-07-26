@@ -123,6 +123,7 @@ imap ]] <C-X><C-P>
 " tidy functions for css and html files PS: I need to add yuicompressor!
 autocmd filetype css setlocal equalprg=~/.vim/command_line_tools/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
+autocmd filetype xml setlocal equalprg=tidy\ --input-xml\ 1\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=RopeOmni
@@ -230,14 +231,17 @@ let g:tagbar_type_html = {
       \ '5:h5 header',
       \ '6:h6 header',
       \ 'o:object',
-      \ 'c:class',
+      \ 'c:class'
     \ ]
   \ }
 let g:tagbar_type_php = {
   \ 'ctagstype' : 'PHP',
     \ 'kinds'   : [
+      \ 'i:interfaces',
+      \ 'v:variables',
+      \ 'j:javascript functions',
       \ 'a:named anchors',
-      \ 'f:Javascript functions',
+      \ 'f:functions',
       \ '1:h1 header',
       \ '2:h2 header',
       \ '3:h3 header',
@@ -245,26 +249,32 @@ let g:tagbar_type_php = {
       \ '5:h5 header',
       \ '6:h6 header',
       \ 'o:object',
-      \ 'c:class',
+      \ 'c:class'
     \ ]
-  \ }
-
-
+  \}
   "   \ 'kind2scope' : {
-  "     \ 'a' : 'named anchor',
-  "     \ 'f' : 'Javascript function',
-  "     \ 'r' : 'HRef',
-  "     \ 'r' : 'Image',
-  "     \ 'r' : 'Header',
-  "     \ 'r' : 'Div'
-  "   \ },
+  "     \ 'a' : 'named anchors',
+  "     \ 'f' : 'functions',
+  "     \ '1' : 'h1 header',
+  "     \ '2' : 'h2 header',
+  "     \ '3' : 'h3 header',
+  "     \ '4' : 'h4 header',
+  "     \ '5' : 'h5 header',
+  "     \ '6' : 'h6 header',
+  "     \ 'o' : 'object',
+  "     \ 'c' : 'class'
+  "       \ },
   "   \ 'scope2kind' : {
-  "     \ 'named anchor' : 'a',
-  "     \ 'Javascript function' : 'f',
-  "     \ 'HRef' : 'r',
-  "     \ 'Image' : 'r',
-  "     \ 'Header' : 'r',
-  "     \ 'Div' : 'r'
+  "     \ 'a' : 'named anchors',
+  "     \ 'f' : 'functions',
+  "     \ '1' : 'h1 header',
+  "     \ '2' : 'h2 header',
+  "     \ '3' : 'h3 header',
+  "     \ '4' : 'h4 header',
+  "     \ '5' : 'h5 header',
+  "     \ '6' : 'h6 header',
+  "     \ 'o' : 'object',
+  "     \ 'c' : 'class'
   "   \ }
   " \ }
 " Add CSS support to Exuberant Ctags

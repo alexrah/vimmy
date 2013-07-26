@@ -250,7 +250,7 @@ fun! s:ManPageView(viamap,bknum,...) range
    	let ext = "pl"
 
    " filetype:  php
-   elseif &ft == "php.drupal"
+   elseif &ft == "php"
    	let ext = "php"
 
    " filetype: tex
