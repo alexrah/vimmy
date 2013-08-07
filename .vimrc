@@ -253,3 +253,7 @@ let g:tagbar_type_css = {
 let g:closetag_html_style=1
 " au Filetype html,xml,xsl
 source ~/.vim/bundle/closetags/closetag.vim
+
+" add shortcut for CtrlP plugin
+nnoremap <silent> <Leader>t :CtrlPMixed<CR>
+
