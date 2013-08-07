@@ -2,7 +2,18 @@ syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
 colorscheme transparentHardcore " Set colorscheme from ~/.vim/color/
 set number " Show line numbers
-set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
+" set mouse=a  " Mouse pointer in CLI - Option to go back in standard mode
+if has('mouse')
+  set mouse=a
+  if &term =~ "xterm" || &term =~ "screen"
+    " as of March 2013, this works:
+    set ttymouse=xterm2
+
+    " previously, I found that ttymouse was getting reset, so had
+    " to reapply it via an autocmd like this:
+    autocmd VimEnter,FocusGained,BufEnter * set ttymouse=xterm2
+  endif
+endif
 " set term=ansi " add numeric pad support
 set diffopt=vertical " Diff mode horizontal spit
 set diffopt+=filler
@@ -112,6 +123,7 @@ imap ]] <C-X><C-P>
 " tidy functions for css and html files PS: I need to add yuicompressor!
 autocmd filetype css setlocal equalprg=~/.vim/command_line_tools/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
+autocmd filetype xml setlocal equalprg=tidy\ --input-xml\ 1\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=RopeOmni
@@ -219,24 +231,50 @@ let g:tagbar_type_html = {
       \ '5:h5 header',
       \ '6:h6 header',
       \ 'o:object',
-      \ 'c:class',
+      \ 'c:class'
     \ ]
   \ }
+let g:tagbar_type_php = {
+  \ 'ctagstype' : 'PHP',
+    \ 'kinds'   : [
+      \ 'i:interfaces',
+      \ 'v:variables',
+      \ 'j:javascript functions',
+      \ 'a:named anchors',
+      \ 'f:functions',
+      \ '1:h1 header',
+      \ '2:h2 header',
+      \ '3:h3 header',
+      \ '4:h4 header',
+      \ '5:h5 header',
+      \ '6:h6 header',
+      \ 'o:object',
+      \ 'c:class'
+    \ ]
+  \}
   "   \ 'kind2scope' : {
-  "     \ 'a' : 'named anchor',
-  "     \ 'f' : 'Javascript function',
-  "     \ 'r' : 'HRef',
-  "     \ 'r' : 'Image',
-  "     \ 'r' : 'Header',
-  "     \ 'r' : 'Div'
-  "   \ },
+  "     \ 'a' : 'named anchors',
+  "     \ 'f' : 'functions',
+  "     \ '1' : 'h1 header',
+  "     \ '2' : 'h2 header',
+  "     \ '3' : 'h3 header',
+  "     \ '4' : 'h4 header',
+  "     \ '5' : 'h5 header',
+  "     \ '6' : 'h6 header',
+  "     \ 'o' : 'object',
+  "     \ 'c' : 'class'
+  "       \ },
   "   \ 'scope2kind' : {
-  "     \ 'named anchor' : 'a',
-  "     \ 'Javascript function' : 'f',
-  "     \ 'HRef' : 'r',
-  "     \ 'Image' : 'r',
-  "     \ 'Header' : 'r',
-  "     \ 'Div' : 'r'
+  "     \ 'a' : 'named anchors',
+  "     \ 'f' : 'functions',
+  "     \ '1' : 'h1 header',
+  "     \ '2' : 'h2 header',
+  "     \ '3' : 'h3 header',
+  "     \ '4' : 'h4 header',
+  "     \ '5' : 'h5 header',
+  "     \ '6' : 'h6 header',
+  "     \ 'o' : 'object',
+  "     \ 'c' : 'class'
   "   \ }
   " \ }
 " Add CSS support to Exuberant Ctags
@@ -253,6 +291,15 @@ let g:tagbar_type_css = {
 let g:closetag_html_style=1
 " au Filetype html,xml,xsl
 source ~/.vim/bundle/closetags/closetag.vim
+
+" Persistent Undo (vim 7.3 and later)
+if empty(glob('~/.vim_runtime/undodir'))
+      call mkdir("~/.vim_runtime/undodir", "p")
+    endif
+if exists('&undofile') && !&undofile
+  set undodir=~/.vim_runtime/undodir
+  set undofile
+endif
 
 " add shortcut for CtrlP plugin
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>

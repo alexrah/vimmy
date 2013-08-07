@@ -21,3 +21,16 @@
 --regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class='([^']+)'/\1.\2/c,class/
 --regex-html=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class="([^"]+)"/\1.\2/c,class/
 
+--langdef=php
+--langmap=php:.php.drupal
+--regex-php=/<h1[^>]*>(.*)<\/h1>/\1/1,h1 header/
+--regex-php=/<h2[^>]*>(.*)<\/h2>/. \1/2,h2 header/
+--regex-php=/<h3[^>]*>(.*)<\/h3>/.   \1/3,h3 header/
+--regex-php=/<h4[^>]*>(.*)<\/h4>/.     \1/4,h4 header/
+--regex-php=/<h5[^>]*>(.*)<\/h5>/.       \1/5,h5 header/
+--regex-php=/<h6[^>]*>(.*)<\/h6>/.         \1/6,h6 header/
+--regex-php=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+id='([^']+)'/\1#\2/o,object/
+--regex-php=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+id="([^"]+)"/\1#\2/o,object/
+--regex-php=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class='([^']+)'/\1.\2/c,class/
+--regex-php=/<([a-zA-Z][a-zA-Z0-9]*)[^>]*[ \t]+class="([^"]+)"/\1.\2/c,class/
+
