@@ -105,7 +105,7 @@ map ; :
 " remap $ to move cursor to start line
 map § $
 " zen coding expand abbreviation with ,,
-let g:user_zen_expandabbr_key = ',,'
+" let g:user_zen_expandabbr_key = ',,'
 " zen coding add support to css.drupal filetype
 " NOT WORKING! NEED A PATCH TO THE MODULE, FORKED
 " let g:user_zen_settings = {
@@ -113,6 +113,8 @@ let g:user_zen_expandabbr_key = ',,'
 "       \    'extends' : 'css',
 "       \  },
 "       \}
+" Emmet.io is the new zen coding, replace and add features, check emmet.io
+let g:user_emmet_expandabbr_key = ',,'
 " SUPER TAB CONFIG
 " Tab key in-context auto completion -> :SuperTabHelp
 " let g:SuperTabDefaultCompletionType = "context"
