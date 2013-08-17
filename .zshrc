@@ -29,7 +29,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx github)
+plugins=(git osx github colored-man bower gem web-search yum)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -60,14 +60,27 @@ alias duu="du -ch | grep total" # calculate folder size
 alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 # source aliases for GNU Linux commands,
 # override standard BSD commands
-source "/usr/local/Cellar/coreutils/8.12/aliases"
-# Replace Color CLI for BSD (above) with GNU Linux dircolor
+# source "/usr/local/Cellar/coreutils/8.12/aliases"
+PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
+# Add support for GNU Linux dircolor
 # dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
 eval $(dircolors -b $HOME/.dir_colors)
 # ASCII art welcome screen
-printf '\033[0;32m%s\033[0m\n' '         __                                     __   '
-printf '\033[0;32m%s\033[0m\n' '  ____  / /_     ____ ___  __  __   ____  _____/ /_  '
-printf '\033[0;32m%s\033[0m\n' ' / __ \/ __ \   / __ `__ \/ / / /  /_  / / ___/ __ \ '
-printf '\033[0;32m%s\033[0m\n' '/ /_/ / / / /  / / / / / / /_/ /    / /_(__  ) / / / '
-printf '\033[0;32m%s\033[0m\n' '\____/_/ /_/  /_/ /_/ /_/\__, /    /___/____/_/ /_/  '
-printf '\033[0;32m%s\033[0m\n' '                        /____/                       '
+printf '\033[0;34m%s\033[0m\n' '                      88                                    88                      '
+printf '\033[0;34m%s\033[0m\n' '                      88               aa                   ""                      '
+printf '\033[0;34m%s\033[0m\n' '                      88               88                                           '
+printf '\033[0;34m%s\033[0m\n' '888888888  ,adPPYba,  88,dPPYba,   aaaa88aaaa  8b       d8  88  88,dPYba,,adPYba,   '
+printf '\033[0;34m%s\033[0m\n' '     a8P"  I8[    ""  88P"    "8a  """"88""""  `8b     d8/  88  88P`   "88"    "8a  '
+printf '\033[0;34m%s\033[0m\n' '  ,d8P`     `"Y8ba,   88       88      88       `8b   d8/   88  88      88      88  '
+printf '\033[0;34m%s\033[0m\n' ',d8"       aa    ]8I  88       88      ""        `8b,d8/    88  88      88      88  '
+printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88                  "8"      88  88      88      88  '
+# printf '\033[0;36m%s\033[0m\n' '                           88                                                       '  
+# printf '\033[0;36m%s\033[0m\n' '      aa                   ""    ,d         aa                                      ' 
+# printf '\033[0;36m%s\033[0m\n' '      88                         88         88                                      '  
+# printf '\033[0;36m%s\033[0m\n' '  aaaa88aaaa   ,adPPYb,d8  88  MM88MMM  aaaa88aaaa  8b       d8   ,adPPYba,         '  
+# printf '\033[0;36m%s\033[0m\n' '  """"88""""  a8"    `Y88  88    88     """"88""""  `8b     d8`  a8"     "8a        '  
+# printf '\033[0;36m%s\033[0m\n' '      88      8b       88  88    88         88       `8b   d8`   8b       d8        '  
+# printf '\033[0;36m%s\033[0m\n' '      ""      "8a,   ,d88  88    88,        ""        `8b,d8"    "8a,   ,a8"        ' 
+# printf '\033[0;36m%s\033[0m\n' '               `"YbbdP"Y8  88    "Y888                  Y88/      `"YbbdP"`         '  
+# printf '\033[0;36m%s\033[0m\n' '               aa,    ,88                               d8`                         '  
+# printf '\033[0;36m%s\033[0m\n' '                "Y8bbdP"                               d8`                          '  
