@@ -39,9 +39,9 @@ source $ZSH/oh-my-zsh.sh
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
 # start alias PATH
+alias ls="ls --color=auto"
 alias la="ls -lhA"
 alias lr="find . -type d -maxdepth"
-alias www="cd /Applications/XAMPP/xamppfiles/htdocs/"
 alias psx="ps -Af"
 alias cs50="cd ~/Insync/alexrah@gmail.com/PROJECTS/110715_CS50/"
 alias grepp="grep -A 2 -B 2 -i"
@@ -66,14 +66,14 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
 eval $(dircolors -b $HOME/.dir_colors)
 # ASCII art welcome screen
-printf '\033[0;34m%s\033[0m\n' '                      88                                    88                      '
-printf '\033[0;34m%s\033[0m\n' '                      88               aa                   ""                      '
-printf '\033[0;34m%s\033[0m\n' '                      88               88                                           '
-printf '\033[0;34m%s\033[0m\n' '888888888  ,adPPYba,  88,dPPYba,   aaaa88aaaa  8b       d8  88  88,dPYba,,adPYba,   '
-printf '\033[0;34m%s\033[0m\n' '     a8P"  I8[    ""  88P"    "8a  """"88""""  `8b     d8/  88  88P`   "88"    "8a  '
-printf '\033[0;34m%s\033[0m\n' '  ,d8P`     `"Y8ba,   88       88      88       `8b   d8/   88  88      88      88  '
-printf '\033[0;34m%s\033[0m\n' ',d8"       aa    ]8I  88       88      ""        `8b,d8/    88  88      88      88  '
-printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88                  "8"      88  88      88      88  '
+printf '\033[0;34m%s\033[0m\n' '                      88                                    88                     '
+printf '\033[0;34m%s\033[0m\n' '                      88               aa                   ""                     '
+printf '\033[0;34m%s\033[0m\n' '                      88               88                                          '
+printf '\033[0;34m%s\033[0m\n' '888888888  ,adPPYba,  88,dPPYba,   aaaa88aaaa  8b       d8  88  88,dPYba,,adPYba,  '
+printf '\033[0;34m%s\033[0m\n' '     a8P"  I8[    ""  88P"    "8a  """"88""""  `8b     d8/  88  88P`   "88"    "8a '
+printf '\033[0;34m%s\033[0m\n' '  ,d8P`     `"Y8ba,   88       88      88       `8b   d8/   88  88      88      88 '
+printf '\033[0;34m%s\033[0m\n' ',d8"       aa    ]8I  88       88      ""        `8b,d8/    88  88      88      88 '
+printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88                  "8"      88  88      88      88 '
 # printf '\033[0;36m%s\033[0m\n' '                           88                                                       '  
 # printf '\033[0;36m%s\033[0m\n' '      aa                   ""    ,d         aa                                      ' 
 # printf '\033[0;36m%s\033[0m\n' '      88                         88         88                                      '  

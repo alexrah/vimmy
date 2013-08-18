@@ -1,3 +1,4 @@
+alias www="cd /Applications/XAMPP/xamppfiles/htdocs/"
 export JAVA_HOME="/Library/Java/Home"
 export EC2_HOME="/usr/local/ec2-api-tools-1.6.8.1"
 export AWS_ACCESS_KEY=AKIAIHXCKDW3QZKS4ARQ
