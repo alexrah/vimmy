@@ -4,3 +4,4 @@
 export PATH=$PATH:/cygdrive/c/xampp/
 export PATH=$PATH:~/.joomlacli/
 alias www="~/xampp/htdocs/"
+alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim73/gvim.exe"
