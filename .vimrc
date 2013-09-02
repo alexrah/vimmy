@@ -306,3 +306,4 @@ source ~/.vim/bundle/closetags/closetag.vim
 " add shortcut for CtrlP plugin
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
 
+source ~/.vim/bundle/debugger/debugger.vim
