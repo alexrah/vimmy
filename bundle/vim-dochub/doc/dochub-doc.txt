@@ -1,0 +1,56 @@
+dochub.txt   Search API documentation quickly
+
+Author:  Steve McKinney
+License: Same terms as Vim itself (see |license|)
+
+1. Introduction                                   |dochub|
+2. Confiuguration                                 |dochub-configuration|
+3. Copyright                                      |dochub-copyright|
+==========================================================================
+
+1. Introduction                                   *dochub*
+
+dochub.vim quickly opens documentation from DocHub.io (http://dochub.io) for:
+
+* CSS
+* DOM
+* HTML 
+* JavaScript
+* JQuery
+* PHP
+* Python
+
+dochub.vim is enabled by 'filetype'. While editing a supported file,
+simply place the cursor over a class, property, or method and type `JJ`.
+The plugin will then open a new tab in your browser (or a new instance of
+the browser) to the related docs. That's it.
+
+Documentation       Vim Filetypes
+CSS                 css
+TML                 eruby, html, htmldjango
+JavaScript          javascript
+PHP                 php
+Python              python
+
+The wildcards are documentation for DOM and JQuery, since they aren't
+associated to a 'filetype' they have their own mapping:
+
+* `JD` for DOM Documentation
+* `JQ` for JQuery Documentation
+
+2. Configuration                                  *dochub-configuration*
+
+By default, dochub.vim uses the 'open' command for OS X or the
+xdg-open <http://portland.freedesktop.org/xdg-utils-1.0/xdg-open.html>
+command for other OSes to look up the docs. You can easily change the command. 
+For exampe:
+                                                   *dochub_command*  >
+
+    let g:dochub_command='gnome-open'
+
+Furthermore you can choose your own mapping in the following way:
+                                                   *dochub_mapping*  >
+
+    let g:dochub_mapping='<C-h>'
+
+ vim:tw=78:ts=8:ft=help:norl:
