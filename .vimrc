@@ -291,19 +291,19 @@ let g:tagbar_type_css = {
 
 " Autoload closetag.vim plugin
 let g:closetag_html_style=1
-" au Filetype html,xml,xsl
+" au Filetype html,xml,xsl -> shortcut: <C-p>
 source ~/.vim/bundle/closetags/closetag.vim
 
 " Persistent Undo (vim 7.3 and later)
-" if empty(glob('~/.vim_runtime/undodir'))
-"       call mkdir("~/.vim_runtime/undodir", "p")
-"     endif
-" if exists('&undofile') && !&undofile
-"   set undodir=~/.vim_runtime/undodir
-"   set undofile
-" endif
+if empty(glob('$HOME/.vim_runtime/undodir'))
+      call mkdir('$HOME/.vim_runtime/undodir', "p")
+    endif
+if exists('&undofile') && !&undofile
+  set undodir=~/.vim_runtime/undodir
+  set undofile
+endif
 
-" add shortcut for CtrlP plugin
+" add shortcut for CtrlP plugin, CommandT replacement
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
-
+" add support for XDUBUG within Vim
 source ~/.vim/bundle/debugger/debugger.vim
