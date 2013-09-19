@@ -85,6 +85,7 @@ printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88               
 # printf '\033[0;36m%s\033[0m\n' '               aa,    ,88                               d8`                         '  
 # printf '\033[0;36m%s\033[0m\n' '                "Y8bbdP"                               d8`                          '  
 
+# CREATE a conditions to deal whith OS and the 'open' command
 case "$OSTYPE" in
    cygwin)
       alias open="cmd /c start";;
