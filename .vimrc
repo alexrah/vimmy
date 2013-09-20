@@ -303,6 +303,16 @@ if exists('&undofile') && !&undofile
   set undofile
 endif
 
+" Persistent Undo (vim 7.3 and later) WITH WINDOWS ENVIRONMENT VARIABLE
+" %HOMEPATH%  -> BUT STILL NOT WORKING
+" if empty(glob('%HOMEPATH%/.vim_runtime/undodir'))
+"       call mkdir('%HOMEPATH%/.vim_runtime/undodir', "p")
+"      endif
+" if exists('&undofile') && !&undofile
+"     set undodir=~/.vim_runtime/undodir
+"     set undofile
+"   endif
+
 " add shortcut for CtrlP plugin, CommandT replacement
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
 " add support for XDUBUG within Vim
