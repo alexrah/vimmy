@@ -294,10 +294,11 @@ let g:closetag_html_style=1
 " au Filetype html,xml,xsl -> shortcut: <C-p>
 source ~/.vim/bundle/closetags/closetag.vim
 
-" Persistent Undo (vim 7.3 and later)
-if empty(glob('$HOME/.vim_runtime/undodir'))
-      call mkdir('$HOME/.vim_runtime/undodir', "p")
-    endif
+" Persistent Undo (vim 7.3 and later) I STILL HAVE ISSUES RESOLVING
+" ENVIRONMENT VARIABLE $HOME AS I DID WITH ~  
+" if empty(glob('$HOME/.vim_runtime/undodir'))
+"       call mkdir('$HOME/.vim_runtime/undodir', "p")
+"     endif
 if exists('&undofile') && !&undofile
   set undodir=~/.vim_runtime/undodir
   set undofile
@@ -317,3 +318,6 @@ endif
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
 " add support for XDUBUG within Vim
 source ~/.vim/bundle/debugger/debugger.vim
+" DocHub.io CSS HTML JS PHP Python MANUALS
+let g:dochub_mapping='<C-k>'
+
