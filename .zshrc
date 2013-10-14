@@ -41,6 +41,7 @@ export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # start alias PATH
 alias ls="ls --color=auto"
 alias la="ls -lhA"
+alias lat="ls -lhA --sort=t"
 alias lr="find . -type d -maxdepth"
 alias psx="ps -Af"
 alias cs50="cd ~/Insync/alexrah@gmail.com/PROJECTS/110715_CS50/"
