@@ -16,3 +16,6 @@
 [submodule "bundle/emmet-vim"]
 	path = bundle/emmet-vim
 	url = https://github.com/mattn/emmet-vim.git
+[submodule "bundle/color_highlight"]
+	path = bundle/color_highlight
+	url = https://github.com/chrisbra/color_highlight.git
