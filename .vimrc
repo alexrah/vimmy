@@ -321,3 +321,4 @@ source ~/.vim/bundle/debugger/debugger.vim
 " DocHub.io CSS HTML JS PHP Python MANUALS
 let g:dochub_mapping='<C-k>'
 
+let g:colorizer_auto_filetype='css,html'
