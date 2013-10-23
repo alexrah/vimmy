@@ -59,6 +59,7 @@ alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias top="top -o cpu"
 alias duu="du -ch | grep total" # calculate folder size 
 alias duuu="du -a / | sort -n -r | head -n 10" # calculate top 10 biggest folder/files
+alias disk-size="df -H" # display all disks size
 alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.rb"
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
