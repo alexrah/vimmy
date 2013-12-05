@@ -289,6 +289,16 @@ let g:tagbar_type_css = {
   \ ]
   \ }
 
+let g:tagbar_type_scss = {
+      \ 'ctagstype' : 'scss',
+  \ 'kinds'   : [
+    \ 'c:classes',
+    \ 's:selectors',
+    \ 'i:identities'
+  \ ]
+  \ }
+
+
 " Autoload closetag.vim plugin
 let g:closetag_html_style=1
 " au Filetype html,xml,xsl -> shortcut: <C-p>
@@ -321,4 +331,4 @@ source ~/.vim/bundle/debugger/debugger.vim
 " DocHub.io CSS HTML JS PHP Python MANUALS
 let g:dochub_mapping='<C-k>'
 
-let g:colorizer_auto_filetype='css,html'
+let g:colorizer_auto_filetype='css,html,scss'

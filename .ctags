@@ -8,6 +8,11 @@
 --langmap=css:.css
 --regex-css=/[ \t]*([^ \t\}]+)[ \t]*\{/\1/s,Selector/i
 
+--langdef=scss
+--langmap=scss:.scss
+--regex-scss=/[ \t]*([^ \t\}]+)[ \t]*\{/\1/s,Selector/i
+
+
 --langdef=html
 --langmap=html:.htm.html
 --regex-html=/<h1[^>]*>(.*)<\/h1>/\1/1,h1 header/
