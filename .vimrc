@@ -284,8 +284,8 @@ let g:tagbar_type_css = {
       \ 'ctagstype' : 'css',
   \ 'kinds'   : [
     \ 'c:classes',
+    \ 'i:identities',
     \ 's:selectors',
-    \ 'i:identities'
   \ ]
   \ }
 
@@ -293,8 +293,8 @@ let g:tagbar_type_scss = {
       \ 'ctagstype' : 'scss',
   \ 'kinds'   : [
     \ 'c:classes',
+    \ 'i:identities',
     \ 's:selectors',
-    \ 'i:identities'
   \ ]
   \ }
 
