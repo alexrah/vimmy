@@ -283,9 +283,11 @@ let g:tagbar_type_php = {
 let g:tagbar_type_css = {
       \ 'ctagstype' : 'css',
   \ 'kinds'   : [
-    \ 'c:classes',
-    \ 'i:identities',
-    \ 's:selectors',
+    \ 't:Table of Contents',
+    \ 'i:Identities',
+    \ 'c:Classes',
+    \ 'm:Media',
+    \ 's:Selectors',
   \ ]
   \ }
 
