@@ -6,13 +6,13 @@
 
 --langdef=css
 --langmap=css:.css
---regex-css=/^[ \t]*@media\s+([A-Za-z0-9_-]+)/\1/m,Media/ 
+--regex-scss=/^[\t]*@media\s+([A-Za-z0-9_-][^{]+)/\1/m,Media/ 
 --regex-css=/\/\*\*([^*]*)/\1/t,Comment/
-/*--regex-css=/^/\*[^*]*\*+([^/\*][^*]*\*+)*\/\1/m,Comments/*/
 
 --langdef=scss
 --langmap=scss:.scss
---regex-scss=/[ \t]*([^ \t\}]+)[ \t]*\{/\1/s,Selector/i
+--regex-scss=/\/\*\*([^*]*)/\1/t,Comment/
+--regex-scss=/^[\t]*@media\s+([A-Za-z0-9_-][^{]+)/\1/m,Media/ 
 
 
 --langdef=html

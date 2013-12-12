@@ -294,8 +294,10 @@ let g:tagbar_type_css = {
 let g:tagbar_type_scss = {
       \ 'ctagstype' : 'scss',
   \ 'kinds'   : [
-    \ 'c:classes',
-    \ 'i:identities',
+    \ 't:Table of Contents',
+    \ 'i:Identities',
+    \ 'c:Classes',
+    \ 'm:Media',
     \ 's:selectors',
   \ ]
   \ }
