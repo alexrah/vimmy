@@ -295,6 +295,8 @@ let g:tagbar_type_scss = {
       \ 'ctagstype' : 'scss',
   \ 'kinds'   : [
     \ 't:Table of Contents',
+    \ 'x:Mixins',
+    \ 'v:Variables',
     \ 'i:Identities',
     \ 'c:Classes',
     \ 'm:Media',
