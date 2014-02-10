@@ -316,6 +316,7 @@ endif
 
 " add shortcut for CtrlP plugin, CommandT replacement
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
+let g:ctrlp_show_hidden = 1
 " add support for XDUBUG within Vim
 source ~/.vim/bundle/debugger/debugger.vim
 " DocHub.io CSS HTML JS PHP Python MANUALS
