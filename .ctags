@@ -6,7 +6,16 @@
 
 --langdef=css
 --langmap=css:.css
---regex-css=/[ \t]*([^ \t\}]+)[ \t]*\{/\1/s,Selector/i
+--regex-scss=/^[\t]*@media\s+([A-Za-z0-9_-][^{]+)/\1/m,Media/ 
+--regex-css=/\/\*\*([^*]*)/\1/t,Comment/
+
+--langdef=scss
+--langmap=scss:.scss
+--regex-scss=/\/\*\*([^*]*)/\1/t,Comment/
+--regex-scss=/^[\t]*@media\s+([A-Za-z0-9_-][^{]+)/\1/m,Media/ 
+--regex-scss=/@mixin ([^{]+)/\1/x,Mixin/ 
+--regex-scss=/^[\s]{0,2}\$(.*);/\1/v,Variables/
+
 
 --langdef=html
 --langmap=html:.htm.html

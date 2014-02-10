@@ -283,11 +283,27 @@ let g:tagbar_type_php = {
 let g:tagbar_type_css = {
       \ 'ctagstype' : 'css',
   \ 'kinds'   : [
-    \ 'c:classes',
-    \ 's:selectors',
-    \ 'i:identities'
+    \ 't:Table of Contents',
+    \ 'i:Identities',
+    \ 'c:Classes',
+    \ 'm:Media',
+    \ 's:Selectors',
   \ ]
   \ }
+
+let g:tagbar_type_scss = {
+      \ 'ctagstype' : 'scss',
+  \ 'kinds'   : [
+    \ 't:Table of Contents',
+    \ 'x:Mixins',
+    \ 'v:Variables',
+    \ 'i:Identities',
+    \ 'c:Classes',
+    \ 'm:Media',
+    \ 's:selectors',
+  \ ]
+  \ }
+
 
 " Autoload closetag.vim plugin
 let g:closetag_html_style=1
