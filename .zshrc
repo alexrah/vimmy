@@ -66,6 +66,7 @@ alias disk-size="df -H" # display all disks size
 alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
 alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.rb"
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
+alias free="python ~/.vim/command_line_tools/free.py"
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 # source "/usr/local/Cellar/coreutils/8.12/aliases"
