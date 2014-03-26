@@ -337,5 +337,7 @@ let g:ctrlp_show_hidden = 1
 source ~/.vim/bundle/debugger/debugger.vim
 " DocHub.io CSS HTML JS PHP Python MANUALS
 let g:dochub_mapping='<C-k>'
-
+" ENABLE COLORING HEX COLOR CODES
 let g:colorizer_auto_filetype='css,html,scss'
+" MAP handlebars template files to html syntax
+autocmd BufNewFile,BufRead *.hbs set syntax=html
