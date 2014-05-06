@@ -128,6 +128,7 @@ inoremap qf <C-x><C-f>
 autocmd filetype css setlocal equalprg=~/.vim/command_line_tools/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
 autocmd filetype xml setlocal equalprg=tidy\ --input-xml\ 1\ % " press gg=G to get tidy HTML
+autocmd filetype javascript setlocal equalprg=tidy\ --input-xml\ 1\ % " press gg=G to get tidy HTML
 " built-in autocomplete omnifunc in-context for below filetypes
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=RopeOmni
