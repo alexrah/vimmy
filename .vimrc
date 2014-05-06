@@ -122,6 +122,8 @@ let g:user_emmet_expandabbr_key = ',,'
 inoremap qq <C-x><C-o>
 " ]] for keyword local autocomplete
 imap ]] <C-X><C-P>
+" NEW qf shortcut for file path autocompletion
+inoremap qf <C-x><C-f>
 " tidy functions for css and html files PS: I need to add yuicompressor!
 autocmd filetype css setlocal equalprg=~/.vim/command_line_tools/csstidy.php\ -\ -t\ default\ -l\ LF " press gg=G to get tidy CSS 
 autocmd filetype html setlocal equalprg=tidy\ -mi\ % " press gg=G to get tidy HTML
