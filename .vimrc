@@ -1,3 +1,5 @@
+" Pathogen bundle plugin manager
+call pathogen#runtime_append_all_bundles()
 syntax on " Syntax Highlighting
 set guioptions-=T " Keep MacVim Toolbar closed
 colorscheme transparentHardcore " Set colorscheme from ~/.vim/color/
@@ -84,8 +86,6 @@ au FileType XHTML call HTMLSettings()
 " HTML indent & folding
 "let html_my_rendering=1
 "au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/phpcs/plugin/XMLFolding
-" Pathogen bundle plugin manager
-call pathogen#runtime_append_all_bundles()
 " Default NO Folding when opening a document
 set nofoldenable
 " Easy motion colors remap gray for background chars
