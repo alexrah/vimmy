@@ -1,1 +1,2 @@
 alias www=/Applications/XAMPP/htdocs
+alias free="python ~/.vim/command_line_tools/free.py"
