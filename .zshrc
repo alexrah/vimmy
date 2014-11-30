@@ -40,6 +40,7 @@ source $ZSH/oh-my-zsh.sh
 # export PATH to MYSQL isntalled within xampp
 export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
+# export PATH=$PATH:./node/
 # start alias PATH
 alias ls="ls --color=auto"
 alias la="ls -lhA"
