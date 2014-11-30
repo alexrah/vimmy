@@ -75,8 +75,8 @@ if !exists("g:manpageview_pgm_pl")
  let g:manpageview_pgm_pl     = "perldoc"
  let g:manpageview_options_pl = ";-f;-q"
 endif
-if !exists("g:manpageview_pgm_php") && executable("links")
- let g:manpageview_pgm_php    = "open http://www.php.net/"
+if !exists("g:manpageview_pgm_php") && executable("elinks")
+ let g:manpageview_pgm_php    = "elinks http://www.php.net/"
  let g:manpageview_nospace_php= 1
  let g:manpageview_syntax_php = "manphp"
  let g:manpageview_K_php      = "<sid>ManPagePhp()"
