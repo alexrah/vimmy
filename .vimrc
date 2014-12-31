@@ -344,3 +344,10 @@ let g:dochub_mapping='<C-k>'
 let g:colorizer_auto_filetype='css,html,scss'
 " MAP handlebars template files to html syntax
 autocmd BufNewFile,BufRead *.hbs set syntax=html
+" ULTISNIPS snippets engine expand keyword
+let g:UltiSnipsExpandTrigger=".."
+" WORDPRESS plugin: codex search
+:nnoremap <leader>co :Wcodexsearch<CR>
+
+
+
