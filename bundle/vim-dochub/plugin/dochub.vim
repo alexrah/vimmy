@@ -71,7 +71,7 @@ endfunction
 
 " Example: http://dochub.io/#css/background
 function! s:Searchdochub(doc_type, keyword)
-  let url = '"http://dochub.io/\#'.a:doc_type.'/'.a:keyword.'"'
+  let url = '"http://dochub.ml/\#'.a:doc_type.'/'.a:keyword.'"'
   call s:execute(g:dochub_command.' '.url)
 endfunction
 
