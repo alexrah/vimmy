@@ -69,7 +69,7 @@ function! CompleteTab()
   endif
 endfunction
  
-" inoremap <tab> <c-r>=CompleteTab()<c-r>
+inoremap <tab> <c-r>=CompleteTab()<c-r>
 " START auto indent
 filetype indent on
 set expandtab
@@ -350,8 +350,16 @@ let g:UltiSnipsExpandTrigger=".."
 " WORDPRESS plugin: codex search
 :nnoremap <leader>co :Wcodexsearch<CR>
 
-
+" NeoComplete autocompletion engine configuration
 let g:neocomplete#enable_at_startup =1
 let g:neocomplete#enable_ignore_case =1
 let g:neocomplete#enable_fuzzy_completion =1
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+"
+" Vim CSS colors configuration
+let g:cssColorVimDoNotMessMyUpdatetime = 1
+set t_Co=256
+
+let g:phpcomplete_search_tags_for_variables = 1
+let g:phpcomplete_parse_docblock_comments = 1
 
