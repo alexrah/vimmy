@@ -69,8 +69,7 @@ function! CompleteTab()
   endif
 endfunction
  
-inoremap <tab> <c-r>=CompleteTab()<cr>
-
+" inoremap <tab> <c-r>=CompleteTab()<c-r>
 " START auto indent
 filetype indent on
 set expandtab
@@ -180,7 +179,9 @@ map <C-l> :!java -jar ~/.vim/command_line_tools/yuicompressor-2.4.8pre.jar -o % 
 " Compress HTML Files
 map <C-h> :!java -jar ~/.vim/command_line_tools/htmlcompressor-1.5.2.jar -o % %<CR>
 " Syntastic PHP drupal coding standard
-let g:syntastic_phpcs_conf=" --standard=DrupalCodingStandard --extensions=php,module,inc,install,test,profile,theme"
+let g:syntastic_php_checkers = ['phpmd', 'phpcs', 'php' ]
+let g:syntastic_phpcs_conf=" --standard=WordPress --extensions=php,module,inc,install,test,profile,theme"
+let g:syntastic_phpmd_conf="text codesize,design,unusedcode,naming"
 if has('statusline')
       set laststatus=2
       " Broken down into easily includeable segments
@@ -350,4 +351,7 @@ let g:UltiSnipsExpandTrigger=".."
 :nnoremap <leader>co :Wcodexsearch<CR>
 
 
+let g:neocomplete#enable_at_startup =1
+let g:neocomplete#enable_ignore_case =1
+let g:neocomplete#enable_fuzzy_completion =1
 
