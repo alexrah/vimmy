@@ -1,7 +1,13 @@
 # Windows Cygwin specific configuration
 # export TEMP=$TEMP:/cygdrive/c/Temp/
 # export TMP=$TMP:/cygdrive/c/Temp/
-export PATH=$PATH:/cygdrive/c/xampp/
-export PATH=$PATH:~/.joomlacli/
-alias www="~/xampp/htdocs/"
-alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim73/gvim.exe"
+# export PATH=$PATH:/cygdrive/c/xampp
+# export PATH=$PATH:~/.joomlacli/
+
+# export PATH=$PATH:/cygdrive/c/xampp/php
+# alias www="~/xampp/htdocs/"
+alias www="/cygdrive/c/xampp/htdocs/"
+# alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim73/gvim.exe"
+alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim74/gvim.exe"
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
