@@ -132,7 +132,7 @@ autocmd filetype javascript setlocal equalprg=tidy\ --input-xml\ 1\ % " press gg
 " autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType python set omnifunc=RopeOmni
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
-autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+" autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
 autocmd FileType css set omnifunc=csscomplete#CompleteCSS
 autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
@@ -362,4 +362,10 @@ set t_Co=256
 
 let g:phpcomplete_search_tags_for_variables = 1
 let g:phpcomplete_parse_docblock_comments = 1
+let g:phpcomplete_enhance_jump_to_definition = 1
+let g:phpcomplete_mappings = {
+   \ 'jump_to_def': '<C-]>',
+   \ 'jump_to_def_split': '<C-W><C-]>',
+   \ 'jump_to_def_vsplit': '<C-W><C-\>',
+   \}
 
