@@ -10,4 +10,4 @@ export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 alias www="/cygdrive/c/xampp/htdocs/"
 # alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/vim73/gvim.exe"
 alias gvim="/cygdrive/c/Program\ Files\ \(x86\)/Vim/gvim.exe"
-alias home="/cygdrive/c/Users/ale"
+alias home="/cygdrive/c/Users/alxmobile"
