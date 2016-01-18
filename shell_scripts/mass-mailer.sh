@@ -8,7 +8,8 @@
     
  echo "Write the number of emails to send"
  read count
-        for i in `seq 1 $count`;
-        do
-                echo $i ":" $result
-        done  
+  for i in `seq 1 $count`;
+    do
+      echo $i ":" $result "sent"
+      mail -s "test from command" $result < /dev/null
+    done  
