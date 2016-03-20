@@ -79,9 +79,11 @@ set autoindent
 set smartindent
 function! HTMLSettings()
 setlocal foldmethod=indent
+setlocal foldnestmax=1
 endfunction
 au FileType HTML call HTMLSettings()
 au FileType XHTML call HTMLSettings()
+au FileType php.wordpress call HTMLSettings()
 " HTML indent & folding
 "let html_my_rendering=1
 "au BufNewFile,BufRead *.xml,*.htm,*.html so ~/.vim/bundle/phpcs/plugin/XMLFolding
