@@ -11,6 +11,7 @@ ln -s .vim/.vimrc
 ln -s .vim/.ctags
 ln -s .vim/.dir_colors.NEW .dir_colors
 ln -s .vim/.tmux.conf
+mkdir -p ~/.vim_runtime/undodir
 cd .vim
 git submodule update --init
 chsh -s /bin/zsh
