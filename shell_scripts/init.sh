@@ -1,3 +1,7 @@
+#!/bin/bash
+sudo apt-get install zsh
+sudo apt-get install vim
+sudo apt-get install tmux
 cd ~
 git clone https://alexrah@github.com/alexrah/vimmy .vim
 git clone https://alexrah@github.com/alexrah/oh-my-zsh .oh-my-zsh
