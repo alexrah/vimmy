@@ -42,11 +42,13 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
 # export PATH=$PATH:./node/
 # start alias PATH
+alias wpscan="~/wpscan/wpscan.rb"
 alias ls="ls --color=auto"
 alias la="ls -lhA"
 alias lat="ls -lhA --sort=t"
 alias lr="find . -type d -maxdepth"
 alias psx="ps -Af"
+alias psxg="ps -Af | grep"
 alias cs50="cd ~/Insync/alexrah@gmail.com/PROJECTS/110715_CS50/"
 alias grepp="grep -A 2 -B 2 -i"
 alias grepi="grep -i"
@@ -56,7 +58,7 @@ alias ipinfo="sh ~/.vim/command_line_tools/ipinfo.sh"
 alias web2png="~/.vim/command_line_tools/webkit2png-0.8.py"
 alias svi="sudo vim"
 alias mdfindo="mdfind -onlyin ./"
-alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/local/bin/cscope -b;rm ./cscope.files"
+alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/bin/cscope -b;rm ./cscope.files"
 alias yuic="java -jar ~/.vim/command_line_tools/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias top="top -o cpu"

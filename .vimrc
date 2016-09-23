@@ -149,7 +149,7 @@ autocmd FileType c set omnifunc=ccomplete#Complete
 let b:match_words = '<:>,<tag>:</tag>'
 " START CSCOPE configuration
 if has("cscope")
-  set csprg=/usr/local/bin/cscope
+  set csprg=/usr/bin/cscope
   set csto=0
   set cst
   set nocsverb
@@ -354,10 +354,10 @@ let g:UltiSnipsExpandTrigger=".."
 :nnoremap <leader>co :Wcodexsearch<CR>
 
 " NeoComplete autocompletion engine configuration
-let g:neocomplete#enable_at_startup =1
-let g:neocomplete#enable_ignore_case =1
-let g:neocomplete#enable_fuzzy_completion =1
-inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
+" let g:neocomplete#enable_at_startup =1
+" let g:neocomplete#enable_ignore_case =1
+" let g:neocomplete#enable_fuzzy_completion =1
+" inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 "
 " Vim CSS colors configuration
 let g:cssColorVimDoNotMessMyUpdatetime = 1
@@ -365,10 +365,12 @@ set t_Co=256
 
 let g:phpcomplete_search_tags_for_variables = 1
 let g:phpcomplete_parse_docblock_comments = 1
-let g:phpcomplete_enhance_jump_to_definition = 1
+let g:phpcomplete_enhance_jump_to_definition = 5
 let g:phpcomplete_mappings = {
    \ 'jump_to_def': '<C-]>',
-   \ 'jump_to_def_split': '<C-W><C-]>',
+   \ 'jump_to_def_split': '<leader>]>',
    \ 'jump_to_def_vsplit': '<C-W><C-\>',
    \}
+nnoremap <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
+
 
