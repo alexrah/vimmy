@@ -61,7 +61,6 @@ alias mdfindo="mdfind -onlyin ./"
 alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/bin/cscope -b;rm ./cscope.files"
 alias yuic="java -jar ~/.vim/command_line_tools/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
-alias top="top -o cpu"
 alias folder-size="du -ch | grep total" # calculate folder size 
 alias top-ten-global="du -a / | sort -n -r | head -n 10" # calculate top 10 biggest folder/files on disk
 alias top-ten-local="du -a ./ | sort -n -r | head -n 10" # calculate top 10 biggest folder/files in working directory
