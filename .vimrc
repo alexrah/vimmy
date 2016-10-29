@@ -163,9 +163,9 @@ endif
   set csverb
 endif  
 " Find function calling this function
-map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>          
+" map <C-\> :cs find c <C-R>=expand("<cword>")<CR><CR>          
 " Find function called by this function
-map <C-[> :cs find d <C-R>=expand("<cword>")<CR><CR>
+map <C-[> :cs find g <C-R>=expand("<cword>")<CR><CR>
 " END CSCOPE configuration
 " ManPageView backup shortcut in case of K shortcut fails
 map <C-k> :!pman <C-R>=expand("<cword>")<CR><CR>
@@ -340,6 +340,7 @@ endif
 " add shortcut for CtrlP plugin, CommandT replacement
 nnoremap <silent> <Leader>t :CtrlPMixed<CR>
 let g:ctrlp_show_hidden = 1
+let g:ctrlp_working_path_mode = 'ra'
 " add support for XDUBUG within Vim
 source ~/.vim/bundle/debugger/debugger.vim
 " DocHub.io CSS HTML JS PHP Python MANUALS
@@ -366,11 +367,16 @@ set t_Co=256
 let g:phpcomplete_search_tags_for_variables = 1
 let g:phpcomplete_parse_docblock_comments = 1
 let g:phpcomplete_enhance_jump_to_definition = 5
-let g:phpcomplete_mappings = {
-   \ 'jump_to_def': '<C-]>',
-   \ 'jump_to_def_split': '<leader>]>',
-   \ 'jump_to_def_vsplit': '<C-W><C-\>',
-   \}
+" let g:phpcomplete_mappings = {
+"    \ 'jump_to_def': '<C-]>',
+"    \ 'jump_to_def_split': '<leader>]>',
+"    \ 'jump_to_def_vsplit': '<C-W><C-\>',
+"    \}
 nnoremap <leader>] :vsp <CR>:exec("tag ".expand("<cword>"))<CR>
 
-
+"GNU Global configuration
+source ~/.vim/bundle/gtags-cscope.vim
+let GtagsCscope_Auto_Load = 1
+let GtagsCscope_Auto_Map = 1
+let GtagsCscope_Quiet = 1
+set cscopetag
