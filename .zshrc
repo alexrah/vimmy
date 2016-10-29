@@ -69,6 +69,7 @@ alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 
 alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.rb"
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
 alias speedtest="~/.vim/command_line_tools/speedtest_cli.py"
+alias composer="php /usr/local/bin/composer.phar"
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 # source "/usr/local/Cellar/coreutils/8.12/aliases"
