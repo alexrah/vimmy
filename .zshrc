@@ -105,6 +105,8 @@ case "$OSTYPE" in
       alias start="gnome-open"
       alias open="gnome-open";;
    darwin*)
-      alias start="open";;
+      alias start="open"
+      export LC_ALL=en_US.UTF-8
+      export LANG=en_US.UTF-8;;
   esac
 
