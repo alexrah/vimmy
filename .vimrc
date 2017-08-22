@@ -168,7 +168,7 @@ endif
 map <C-[> :cs find g <C-R>=expand("<cword>")<CR><CR>
 " END CSCOPE configuration
 " ManPageView backup shortcut in case of K shortcut fails
-map <C-k> :!pman <C-R>=expand("<cword>")<CR><CR>
+" map <C-k> :!pman <C-R>=expand("<cword>")<CR><CR>
 " remap NERDTree Open Close command to
 nnoremap <silent> tr :NERDTreeToggle<CR> 
 " NERDTree options
