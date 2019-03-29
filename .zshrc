@@ -70,6 +70,25 @@ alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
 alias speedtest="~/.vim/command_line_tools/speedtest_cli.py"
 # alias composer="php /usr/local/bin/composer.phar"
+
+# Git aliases - ref: https://githowto.com/aliases
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias go='git checkout '
+alias gk='gitk --all&'
+alias gx='gitx --all'
+
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 # source "/usr/local/Cellar/coreutils/8.12/aliases"
