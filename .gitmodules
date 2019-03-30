@@ -34,3 +34,6 @@
 [submodule "bundle/vim-php-manual"]
 	path = bundle/vim-php-manual
 	url = https://github.com/alvan/vim-php-manual
+[submodule "bundle/vim-symfony"]
+	path = bundle/vim-symfony
+	url = https://github.com/docteurklein/vim-symfony

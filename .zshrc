@@ -42,6 +42,7 @@ source $ZSH/oh-my-zsh.sh
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
 # export PATH=$PATH:./node/
 # start alias PATH
+export EDITOR=vim
 alias wpscan="~/wpscan/wpscan.rb"
 alias ls="ls --color=auto"
 alias la="ls -lhA"
