@@ -31,7 +31,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx github colored-man bower gem web-search yum)
+plugins=(git osx github colored-man-pages bower gem web-search yum zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -46,6 +46,7 @@ set -o vi
 # export PATH=$PATH:./node/
 # start alias PATH
 export EDITOR=vim
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
 alias wpscan="~/wpscan/wpscan.rb"
 alias ls="ls --color=auto"
 alias la="ls -lhA"
