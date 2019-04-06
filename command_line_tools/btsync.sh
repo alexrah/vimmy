@@ -1,3 +1,3 @@
 #!/bin/sh
-cd /usr/local/bin/
-./btsync --config sync.conf
+cd ~/.vim/command_line_tools/
+btsync --config sync.conf
