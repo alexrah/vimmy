@@ -9,6 +9,7 @@ cd .oh-my-zsh
 git fetch --all
 git branch --all
 git checkout origin/theme-dstkph
+git submodule update --init
 cd ..
 ln -s .vim/.zshrc
 ln -s .vim/.vimrc
