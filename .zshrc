@@ -86,6 +86,7 @@ alias go='git checkout'
 alias gf='git fetch'
 alias gk='gitk --all&'
 alias gx='gitx --all'
+alias gm='git submodule foreach git checkout master; git submodule foreach git pull origin master'
 
 # source aliases for GNU Linux commands,
 # override standard BSD commands
