@@ -80,13 +80,15 @@ alias speedtest="~/.vim/command_line_tools/speedtest_cli.py"
 alias gs='git status'
 alias ga='git add'
 alias gb='git branch'
-alias gc='git commit -a -m'
+alias gca='git commit -a -m'
+alias gc='git commit -m'
 alias gd='git diff'
 alias go='git checkout'
 alias gf='git fetch'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gm='git submodule foreach git checkout master; git submodule foreach git pull origin master'
+alias gl='git log'
 
 # source aliases for GNU Linux commands,
 # override standard BSD commands
