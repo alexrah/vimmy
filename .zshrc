@@ -74,6 +74,7 @@ alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 
 alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.rb"
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
 alias speedtest="~/.vim/command_line_tools/speedtest_cli.py"
+alias netspeed="~/.vim/command_line_tools/netspeed.sh"
 # alias composer="php /usr/local/bin/composer.phar"
 
 # Git aliases - ref: https://githowto.com/aliases
