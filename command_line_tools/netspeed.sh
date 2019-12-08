@@ -19,8 +19,8 @@ do
         sleep 1
         R2=`cat /sys/class/net/$1/statistics/rx_bytes`
         T2=`cat /sys/class/net/$1/statistics/tx_bytes`
-        TBPS=`expr $T2 - $T1`
-        RBPS=`expr $R2 - $R1`
+        TBPS=$(($T2 - $T1))
+        RBPS=$(($R2 - $R1))
         TKBPS=`printf %.2f "$((10**9 * $TBPS / 1000000 * 8))e-9"`
         RKBPS=`printf %.2f "$((10**9 * $RBPS / 1000000 * 8))e-9"`
         echo "$1 - Upload: $TKBPS Mbit/s - Download: $RKBPS Mbit/s"
