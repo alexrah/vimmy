@@ -91,6 +91,19 @@ alias gx='gitx --all'
 alias gm='git submodule foreach git checkout master; git submodule foreach git pull origin master'
 alias gl='git log'
 
+# Fuzzy search shortcuts
+# NeoVim + RipGrep + FZF
+alias nvf='nvim $(rg --files --hidden | fzf)'
+
+# cd + RipGrep + xargs + uniq + FZF
+alias cdf='cd $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
+
+# la + RipGrep + xargs + FZF
+alias laf='la $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
+
+#  
+alias fp='rg --files | fzf --preview "cat {}"'
+
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 # source "/usr/local/Cellar/coreutils/8.12/aliases"
