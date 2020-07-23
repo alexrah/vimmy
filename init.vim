@@ -22,8 +22,16 @@ map ; :
 " map 0 $
 set noshowmode
 
-" VISTA CONFIG START
+" OMNIFUNC CONFIG START
+" remap Omnifunc in-context autocomplete to qo
+inoremap qo <C-x><C-o>
+" qp for keyword local autocomplete
+inoremap qp <C-X><C-P>
+" NEW qf shortcut for file path autocompletion
+inoremap qf <C-x><C-f>
+" OMNIFUNC CONFIG END
 
+" VISTA CONFIG START
 nnoremap <silent> tt :Vista!!<CR>
 
 function! NearestMethodOrFunction() abort
