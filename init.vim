@@ -7,9 +7,14 @@ Plug 'pechorin/any-jump.vim'
 Plug 'https://github.com/easymotion/vim-easymotion'
 Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
-Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+Plug 'junegunn/fzf.vim'
 Plug 'kaicataldo/material.vim'
 Plug 'ryanoasis/vim-devicons'
+Plug 'mattn/emmet-vim'
+Plug 'SirVer/ultisnips'
+Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'tpope/vim-commentary'
 call plug#end()
 
 let mapleader = ","
@@ -100,12 +105,11 @@ let NERDTreeDirArrows = 1
 let NERDTreeChDirMode = 2
 " NERDTREE END
 
-" CtrlP START
+" FZF START
 " add shortcut for CtrlP plugin, CommandT replacement
-nnoremap <silent> <Leader>t :CtrlPMixed<CR>
-let g:ctrlp_show_hidden = 1
-let g:ctrlp_working_path_mode = 'ra'
-" CtrlP END
+nnoremap <silent> <Leader>f :Files<CR>
+let $FZF_DEFAULT_COMMAND = 'rg --hidden --files'
+" FZF END
 
 " MATERIAL.VIM START
 colorscheme material
@@ -116,3 +120,27 @@ endif
 let g:material_theme_style = 'ocean' 
 let g:material_terminal_italics = 1
 
+" COC CONFIG START
+let g:coc_global_extensions = [
+  \ 'coc-phpls', 
+  \ 'coc-python',
+  \ 'coc-sh',
+  \ 'coc-tsserver',
+  \ 'coc-html',
+  \ 'coc-git',
+  \ 'coc-emmet',
+  \ 'coc-css',
+  \ 'coc-snippets',
+  \ ]
+" COC CONFIG END
+
+" EMMET CONFIG START
+" Emmet.io is the new zen coding, replace and add features, check emmet.io
+let g:user_emmet_expandabbr_key = ',,'
+" EMMET CONFIG END
+
+" ULTISNIPS CONFIG START
+" ULTISNIPS snippets engine expand keyword
+let g:UltiSnipsExpandTrigger=".."
+" ULTISNIPS CONFIG END
+"
