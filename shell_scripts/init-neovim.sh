@@ -16,6 +16,5 @@ pip3 install neovim
 npm install -g neovim
 gem install neovim
 
-#NeoVim Intellisense with LSP for PHP & Python - @see https://github.com/neoclide/coc.nvim/wiki/Using-coc-extensions 
-nvim -c 'CocInstall -sync coc-phpls coc-python coc-sh coc-tsserver coc-html coc-git coc-emmet coc-css coc-snippets'
-
+ln -s ~/.vim/init.vim ~/.config/nvim/init.vim
+ln -s ~/.vim/coc-settings.json ~/.config/nvim/coc-settings.json

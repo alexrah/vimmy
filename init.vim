@@ -1,6 +1,7 @@
-
 call plug#begin(stdpath('data') . '/plugged')
-Plug 'liuchengxu/eleline.vim'
+" Plug 'liuchengxu/eleline.vim'
+Plug 'vim-airline/vim-airline'
+Plug 'pacha/vem-tabline'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'liuchengxu/vista.vim'
 Plug 'pechorin/any-jump.vim'
@@ -10,11 +11,13 @@ Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
 Plug 'kaicataldo/material.vim'
-Plug 'ryanoasis/vim-devicons'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'tpope/vim-commentary'
+Plug 'ryanoasis/vim-devicons'
+Plug 'https://github.com/zenbro/mirror.vim'
+Plug 'tpope/vim-fugitive'
 call plug#end()
 
 let mapleader = ","
@@ -26,6 +29,11 @@ map ; :
 " map 1 0
 " map 0 $
 set noshowmode
+" switch buffers without having to save their changes before.
+set hidden
+
+set nocompatible    " disable backward compatibility with Vi
+set foldmethod=indent 
 
 " OMNIFUNC CONFIG START
 " remap Omnifunc in-context autocomplete to qo
@@ -65,9 +73,11 @@ let g:vista#renderer#enable_icon = 1
 
 " EASYMOTION START
 " default usage: <Leader><Leader>s
+" change default usage to <Leader>s
+map <Leader> <Plug>(easymotion-prefix)
 " Easy motion colors remap gray for background chars
 " hi link EasyMotionShade  Exception
-" let g:EasyMotion_keys = '1234567890abcdefghijklmnopqrstuvwxyz'
+let g:EasyMotion_keys = '1234567890abcdefghijklmnopqrstuvwxyz'
 " EasyMotion remappings
 " let g:EasyMotion_mapping_t = '_t'
 " let g:EasyMotion_mapping_b = '\e'
@@ -131,7 +141,31 @@ let g:coc_global_extensions = [
   \ 'coc-emmet',
   \ 'coc-css',
   \ 'coc-snippets',
+  \ 'coc-json',
+  \ 'coc-sql',
+  \ 'coc-db'
   \ ]
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> <C-q> :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  else
+    call CocAction('doHover')
+  endif
+endfunction
+
+" Highlight the symbol and its references when holding the cursor.
+autocmd CursorHold * silent call CocActionAsync('highlight')
+
 " COC CONFIG END
 
 " EMMET CONFIG START
@@ -144,3 +178,53 @@ let g:user_emmet_expandabbr_key = ',,'
 let g:UltiSnipsExpandTrigger=".."
 " ULTISNIPS CONFIG END
 "
+" shift+arrow selection
+nmap <S-Up> v<Up>
+nmap <S-Down> v<Down>
+nmap <S-Left> v<Left>
+nmap <S-Right> v<Right>
+vmap <S-Up> <Up>
+vmap <S-Down> <Down>
+vmap <S-Left> <Left>
+vmap <S-Right> <Right>
+imap <S-Up> <Esc>v<Up>
+imap <S-Down> <Esc>v<Down>
+imap <S-Left> <Esc>v<Left>
+imap <S-Right> <Esc>v<Right>
+
+vmap <C-c> "+y<Esc>i
+vmap <C-x> "+d<Esc>i
+map <C-v> pi
+imap <C-v> <Esc>pi
+imap <C-z> <Esc>ui
+
+" AIRLINE CONFIG START
+let g:airline#extensions#tabline#enabled = 0
+" AIRLINE CONFIG END
+
+" TABLINE CONFIG START
+let g:vem_tabline_show = 1
+" TABLINE CONFIG END
+
+" Persistent Undo (vim 7.3 and later) I STILL HAVE ISSUES RESOLVING
+" ENVIRONMENT VARIABLE $HOME AS I DID WITH ~  
+" if empty(glob('$HOME/.vim_runtime/undodir'))
+"       call mkdir('$HOME/.vim_runtime/undodir', "p")
+"     endif
+if exists('&undofile') && !&undofile
+  set undodir=~/.vim_runtime/undodir
+  set undofile
+endif
+
+" MIRROR CONFIG START
+
+function! MirrorPathFunction() abort
+  return get(b:, 'pwd', '') + '/.mirrors'
+endfunction
+
+" let g:mirror#config_path = MirrorPathFunction()
+
+nnoremap <silent> do :diffoff<CR>
+nnoremap <silent> md :MirrorDiff<CR>
+nnoremap <silent> mp :MirrorPush<CR>
+" MIRROR CONFIG END
