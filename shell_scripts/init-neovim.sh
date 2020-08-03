@@ -5,6 +5,7 @@
 # MacOS
 brew install ripgrep
 brew install fzf
+brew install bat
 
 # add scripting provider - check what's supported :checkhealth provider
 # install pip @see https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
