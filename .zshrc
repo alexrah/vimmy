@@ -104,6 +104,8 @@ alias laf='la $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
 #  
 alias fp='rg --files | fzf --preview "cat {}"'
 
+alias phps='open -na "PhpStorm.app" --args "$@"'
+
 # source aliases for GNU Linux commands,
 # override standard BSD commands
 # source "/usr/local/Cellar/coreutils/8.12/aliases"
