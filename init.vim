@@ -10,7 +10,11 @@ Plug 'https://github.com/airblade/vim-gitgutter'
 Plug 'preservim/nerdtree'
 Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 Plug 'junegunn/fzf.vim'
-Plug 'kaicataldo/material.vim'
+" THEMES START
+" Plug 'kaicataldo/material.vim'
+" Plug 'https://github.com/joshdick/onedark.vim'
+" THEMES END
+Plug 'https://github.com/rakr/vim-one'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
@@ -18,6 +22,7 @@ Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
 Plug 'tpope/vim-fugitive'
+Plug 'terryma/vim-expand-region'
 call plug#end()
 
 let mapleader = ","
@@ -34,6 +39,7 @@ set hidden
 
 set nocompatible    " disable backward compatibility with Vi
 set foldmethod=indent 
+" set foldmethod=syntax 
 
 set wrap linebreak nolist
 command! -nargs=* Wrap set wrap linebreak nolist
@@ -110,6 +116,7 @@ let g:any_jump_colors = {
 " NERDTREE START
  " remap NERDTree Open Close command to
 nnoremap <silent> tr :NERDTreeToggle<CR>
+nnoremap <silent> tf :NERDTreeFind<CR>
 " NERDTree options
 let NERDTreeChristmasTree = 1
 let NERDTreeShowHidden = 1
@@ -125,13 +132,19 @@ let $FZF_DEFAULT_COMMAND = 'rg --hidden --files'
 " FZF END
 
 " MATERIAL.VIM START
-colorscheme material
+" let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
+let g:material_theme_style = 'default' 
+" let g:material_terminal_italics = 1
+" let g:onedark_terminal_italics = 1
+let g:one_allow_italics = 1
+" colorscheme material
+" colorscheme onedark
+colorscheme one
+set background=dark
 if (has('termguicolors'))
   set termguicolors
 endif
-" let g:material_theme_style = 'default' | 'palenight' | 'ocean' | 'lighter' | 'darker'
-let g:material_theme_style = 'ocean' 
-let g:material_terminal_italics = 1
+" MATERIAL.VIM END
 
 " COC CONFIG START
 let g:coc_global_extensions = [
