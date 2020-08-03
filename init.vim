@@ -35,6 +35,9 @@ set hidden
 set nocompatible    " disable backward compatibility with Vi
 set foldmethod=indent 
 
+set wrap linebreak nolist
+command! -nargs=* Wrap set wrap linebreak nolist
+
 " OMNIFUNC CONFIG START
 " remap Omnifunc in-context autocomplete to qo
 inoremap qo <C-x><C-o>
@@ -152,7 +155,7 @@ nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
 
-" Use K to show documentation in preview window.
+" Use <C-q> as in PHPStorm to show documentation in preview window.
 nnoremap <silent> <C-q> :call <SID>show_documentation()<CR>
 
 function! s:show_documentation()
@@ -253,6 +256,7 @@ endfunction
 
 " let g:mirror#config_path = MirrorPathFunction()
 
+nnoremap <silent> dt :windo diffthis<CR>
 nnoremap <silent> do :diffoff<CR>
 nnoremap <silent> md :MirrorDiff<CR>
 nnoremap <silent> mp :MirrorPush<CR>
