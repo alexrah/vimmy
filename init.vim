@@ -37,6 +37,9 @@ set noshowmode
 " switch buffers without having to save their changes before.
 set hidden
 
+" close buffer by pressing mm in normal mode
+nnoremap <silent> mm :bd<CR>
+
 set nocompatible    " disable backward compatibility with Vi
 set foldmethod=indent 
 " set foldmethod=syntax 
@@ -274,3 +277,7 @@ nnoremap <silent> do :diffoff<CR>
 nnoremap <silent> md :MirrorDiff<CR>
 nnoremap <silent> mp :MirrorPush<CR>
 " MIRROR CONFIG END
+
+" FUGITIVE CONFIG START
+nnoremap <silent> gd :Gvdiffsplit<CR>
+" FUGITIVE CONFIG END
