@@ -108,7 +108,8 @@ else
 fi
 
 # Symlinks init.vim & coc-settings.json
-
+echo "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
+echo "================================\n"
 ln -s ~/.vim/init.vim ~/$NVIM_CONFIG_PATH/init.vim
 ln -s ~/.vim/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
 
