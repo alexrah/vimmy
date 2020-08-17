@@ -10,6 +10,3 @@
 [submodule "bundle/vim-symfony"]
 	path = bundle/vim-symfony
 	url = https://github.com/docteurklein/vim-symfony
-[submodule "bundle/youcompleteme"]
-	path = bundle/youcompleteme
-	url = https://github.com/Valloric/YouCompleteMe
