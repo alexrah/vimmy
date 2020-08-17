@@ -23,6 +23,7 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
 Plug 'tpope/vim-fugitive'
 Plug 'terryma/vim-expand-region'
+Plug 'https://github.com/jelera/vim-javascript-syntax'
 call plug#end()
 
 let mapleader = ","
