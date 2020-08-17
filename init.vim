@@ -260,8 +260,9 @@ let g:vem_tabline_show = 1
 "       call mkdir('$HOME/.vim_runtime/undodir', "p")
 "     endif
 if exists('&undofile') && !&undofile
-  set undodir=~/.vim_runtime/undodir
-  set undofile
+  	" set undodir=~/.vim_runtime/undodir
+	set undodir=~/.local/share/nvim/undodir"
+  	set undofile
 endif
 
 " MIRROR CONFIG START
