@@ -27,6 +27,7 @@ Plug 'terryma/vim-expand-region'
 Plug 'https://github.com/jelera/vim-javascript-syntax'
 Plug 'https://github.com/othree/javascript-libraries-syntax.vim'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
+Plug 'https://github.com/tpope/vim-surround'
 call plug#end()
 
 let mapleader = ","
