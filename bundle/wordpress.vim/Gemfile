@@ -6,7 +6,7 @@ gem 'rspec-expectations', '~> 2.14.5'
 gem 'rspec-mocks', '~> 2.14.6'
 
 gem 'builder', '~> 3.2.2'
-gem 'nokogiri', '~> 1.6.1'
+gem 'nokogiri', '~> 1.6.8'
 gem 'sax-machine', '~> 0.2.1'
 gem 'encase', '~> 0.1.2'
 
