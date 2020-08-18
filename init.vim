@@ -17,6 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/rakr/vim-one'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
+Plug 'honza/vim-snippets'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 Plug 'tpope/vim-commentary'
 Plug 'ryanoasis/vim-devicons'
