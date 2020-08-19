@@ -167,7 +167,9 @@ let g:coc_global_extensions = [
   \ 'coc-snippets',
   \ 'coc-json',
   \ 'coc-sql',
-  \ 'coc-db'
+  \ 'coc-db',
+  \ 'coc-webpack',
+  \ 'coc-highlight'
   \ ]
 
 " GoTo code navigation.
