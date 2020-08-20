@@ -44,6 +44,7 @@ set hidden
 
 " close buffer by pressing mm in normal mode
 nnoremap <silent> mm :bd<CR>
+nnoremap <silent> mn :bNext<CR>
 
 set nocompatible    " disable backward compatibility with Vi
 set foldmethod=indent 
@@ -134,9 +135,19 @@ let NERDTreeChDirMode = 2
 " NERDTREE END
 
 " FZF START
-" add shortcut for CtrlP plugin, CommandT replacement
 nnoremap <silent> <Leader>f :Files<CR>
 let $FZF_DEFAULT_COMMAND = 'rg --hidden --files'
+
+function! RipgrepFzf(query, fullscreen)
+  let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
+  let initial_command = printf(command_fmt, shellescape(a:query))
+  let reload_command = printf(command_fmt, '{q}')
+  let spec = {'options': ['--phony', '--query', a:query, '--bind', 'change:reload:'.reload_command]}
+  call fzf#vim#grep(initial_command, 1, fzf#vim#with_preview(spec), a:fullscreen)
+endfunction
+
+command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
+nnoremap <silent> <Leader>r :RG<CR>
 " FZF END
 
 " MATERIAL.VIM START
