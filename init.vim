@@ -19,7 +19,8 @@ Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'tpope/vim-commentary'
+" Plug 'tpope/vim-commentary'
+Plug 'https://github.com/tomtom/tcomment_vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
 Plug 'tpope/vim-fugitive'
@@ -148,6 +149,7 @@ endfunction
 
 command! -nargs=* -bang RG call RipgrepFzf(<q-args>, <bang>0)
 nnoremap <silent> <Leader>r :RG<CR>
+nnoremap <silent> <Leader>h :History<CR>
 " FZF END
 
 " MATERIAL.VIM START
