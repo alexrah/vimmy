@@ -1,9 +1,9 @@
 #!/bin/bash
 
 # CREATE a condition to deal with OS
-echo "start installing packages...\n"
-echo "OS: "$OSTYPE"\n"
-echo "================================\n"
+printf "start installing packages...\n"
+printf "OS: "$OSTYPE"\n"
+printf "================================\n"
 case "$OSTYPE" in
 	cygwin)
 		# WINDOWS CygWin
@@ -36,8 +36,8 @@ $PACKAGE_MANAGER install bat
 
 
 #ZSH & DOTFILES
-echo "clone alexrah/vimmy & alexrah/oh-my-zsh, config zsh, tmux, vim (legacy)\n"
-echo "================================\n"
+printf "clone alexrah/vimmy & alexrah/oh-my-zsh, config zsh, tmux, vim (legacy)\n"
+printf "================================\n"
 cd ~
 git clone https://alexrah@github.com/alexrah/vimmy .vim
 git clone https://alexrah@github.com/alexrah/oh-my-zsh .oh-my-zsh
@@ -59,23 +59,23 @@ chsh -s /bin/zsh
 
 
 # NEOVIM 
-echo "NeoVIM configurations: Python, Python3, NodeJS, Ruby, CoC\n"
-echo "================================\n"
+printf "NeoVIM configurations: Python, Python3, NodeJS, Ruby, CoC\n"
+printf "================================\n"
 # add scripting provider - check what's supported :checkhealth provider
 # install pip @see https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
 
 # PYTHON SUPPORT
 if ! command -v pip3 &> /dev/null
 then
-	echo "pip3 not found, installing...\n"
+	printf "pip3 not found, installing...\n"
 	wget https://bootstrap.pypa.io/get-pip.py
 	sudo python3 get-pip.py
 fi
 
 # sudo python get-pip.py
 # pip2 install virtualenv
-echo "Python: install virtualenv & create .virtualenvs for neovim python & python3 support...\n"
-echo "================================\n"
+printf "Python: install virtualenv & create .virtualenvs for neovim python & python3 support...\n"
+printf "================================\n"
 pip3 install virtualenv
 
 # PYTHON VIRTUALENV SUPPORT
@@ -92,33 +92,33 @@ source py3/bin/activate
 pip install neovim
 
 # NODE SUPPORT
-echo "NodeJS: install neovim support (required by CoC)\n"
-echo "================================\n"
+printf "NodeJS: install neovim support (required by CoC)\n"
+printf "================================\n"
 npm install -g neovim
 
 # RUBY SUPPORT
-echo "Ruby: install neovim support\n"
-echo "================================\n"
+printf "Ruby: install neovim support\n"
+printf "================================\n"
 if ! command -v gem &> /dev/null
 then
-	echo "gem could not be found\n"
+	printf "gem could not be found\n"
 	exit
 else
 	gem install neovim
 fi
 
 # Symlinks init.vim & coc-settings.json
-echo "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
-echo "================================\n"
+printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
+printf "================================\n"
 ln -s ~/.vim/init.vim ~/$NVIM_CONFIG_PATH/init.vim
 ln -s ~/.vim/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
 
 # install vim-plug @see https://github.com/junegunn/vim-plug
-echo "Installing NeoVim plugin manager: junegunn/vim-plug...\n"
-echo "================================\n"
+printf "Installing NeoVim plugin manager: junegunn/vim-plug...\n"
+printf "================================\n"
 sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
        https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
-echo "NOTE: run :PlugInstall first time launching nvim\n"
-echo "DONE!\n"
+printf "NOTE: run :PlugInstall first time launching nvim\n"
+printf "DONE!\n"
 zsh
