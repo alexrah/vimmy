@@ -19,7 +19,6 @@ Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-" Plug 'tpope/vim-commentary'
 Plug 'https://github.com/tomtom/tcomment_vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
@@ -29,10 +28,16 @@ Plug 'https://github.com/jelera/vim-javascript-syntax'
 Plug 'https://github.com/othree/javascript-libraries-syntax.vim'
 Plug 'python-mode/python-mode', { 'for': 'python', 'branch': 'develop' }
 Plug 'https://github.com/tpope/vim-surround'
+Plug 'https://github.com/907th/vim-auto-save'
+" post install (yarn install | npm install) then load plugin only for editing supported files
+Plug 'prettier/vim-prettier', {
+  \ 'do': 'npm install',
+  \ 'for': ['javascript', 'typescript', 'css', 'less', 'scss', 'json', 'graphql', 'markdown', 'vue', 'yaml', 'html'] }
 call plug#end()
 
 let mapleader = ","
 set number
+set mouse=a
 set ic
 set scs
 imap kk <Esc>
@@ -47,9 +52,17 @@ set hidden
 nnoremap <silent> mm :bd<CR>
 nnoremap <silent> mn :bNext<CR>
 
+" Tabs shortcuts
+" map <C-t><up> :tabr<cr>
+" map <C-t><down> :tabc<cr>
+map <C-Left> :tabp<cr>
+map <C-Right> :tabn<cr>
+
+
 set nocompatible    " disable backward compatibility with Vi
 set foldmethod=indent 
 " set foldmethod=syntax 
+autocmd BufRead * normal zR
 
 set wrap linebreak nolist
 command! -nargs=* Wrap set wrap linebreak nolist
@@ -308,3 +321,6 @@ let g:python_host_prog = '~/.virtualenvs/neovim-python2/py2/bin/python'
 let g:python3_host_prog = '~/.virtualenvs/neovim-python3/py3/bin/python3'
 " PYTHON VIRTUALENV SUPPORT END
 "
+" VIM-AUTO-SAVE START
+let g:auto_save = 1  " enable AutoSave on Vim startup
+" VIM-AUTO-SAVE END
