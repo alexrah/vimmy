@@ -15,6 +15,7 @@ Plug 'junegunn/fzf.vim'
 " Plug 'https://github.com/joshdick/onedark.vim'
 " THEMES END
 Plug 'https://github.com/rakr/vim-one'
+Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
@@ -171,6 +172,7 @@ let g:material_theme_style = 'default'
 " let g:material_terminal_italics = 1
 " let g:onedark_terminal_italics = 1
 let g:one_allow_italics = 1
+syntax on
 " colorscheme material
 " colorscheme onedark
 colorscheme one
