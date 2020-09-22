@@ -249,6 +249,10 @@ if exists('*complete_info')
 else
   inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
 endif
+
+" add shortcut command to list all errors in current buffer
+:command Errors CocList diagnostics
+
 " COC CONFIG END
 
 " EMMET CONFIG START
