@@ -73,5 +73,6 @@
 		"zlib",
 		"wordpress"
 	],
-	 "diagnostic.checkCurrentLine": true
+	 "diagnostic.checkCurrentLine": true,
+	 "suggest.noselect": false
 }
