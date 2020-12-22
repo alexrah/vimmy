@@ -61,9 +61,6 @@ map <C-Right> :tabn<cr>
 
 
 set nocompatible    " disable backward compatibility with Vi
-set foldmethod=indent 
-" set foldmethod=syntax 
-autocmd BufRead * normal zR
 
 set wrap linebreak nolist
 command! -nargs=* Wrap set wrap linebreak nolist
@@ -330,3 +327,30 @@ let g:python3_host_prog = '~/.virtualenvs/neovim-python3/py3/bin/python3'
 " VIM-AUTO-SAVE START
 let g:auto_save = 1  " enable AutoSave on Vim startup
 " VIM-AUTO-SAVE END
+"
+" FOLDING
+
+autocmd BufRead * normal zR
+
+function! VimFolds(lnum)
+    " get content of current line and the line below
+    let l:cur_line = getline(a:lnum)
+    let l:next_line = getline(a:lnum+1)
+
+    if l:cur_line =~# '{'
+        return '>' . (matchend(l:cur_line, '{*') - 1)
+    else
+        if l:cur_line ==# '' && (matchend(l:next_line, '{*') - 1) == 1
+            return 0
+        else
+            return '='
+        endif
+    endif
+endfunction
+
+set foldmethod=indent 
+" set foldmethod=syntax 
+" set foldmethod=expr
+" set foldexpr=VimFolds(v:lnum)
+
+
