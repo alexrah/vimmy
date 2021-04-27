@@ -75,6 +75,8 @@ alias tmux-persistence="~/.vim/command_line_tools/tmux-persistence/tmux-persist.
 alias tmux-session="~/.vim/command_line_tools/tmux-persistence/tmux-session"
 alias speedtest="~/.vim/command_line_tools/speedtest_cli.py"
 alias netspeed="~/.vim/command_line_tools/netspeed.sh"
+# reverse engineer Dockerfile from Docker image
+alias dfimage="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
 # alias composer="php /usr/local/bin/composer.phar"
 
 # Git aliases - ref: https://githowto.com/aliases
