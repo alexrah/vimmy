@@ -102,7 +102,7 @@ alias cdf='cd $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
 alias laf='la $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
 
 #  
-alias fp='rg --files | fzf --preview "cat {}"'
+alias fp='rg --files | fzf --preview "bat {}"'
 
 alias phps='open -na "PhpStorm.app" --args "$@"'
 
