@@ -53,7 +53,10 @@ set hidden
 
 " close buffer by pressing mm in normal mode
 nnoremap <silent> mm :bd<CR>
-nnoremap <silent> mn :bNext<CR>
+" go to next tab by pressing mn in normal mode
+nnoremap <silent> mn :tabnext<CR>
+" go to previous tab by pressing m, in normal mode
+nnoremap <silent> m, :tabprevious<CR>
 
 " Tabs shortcuts
 " map <C-t><up> :tabr<cr>
