@@ -29,17 +29,23 @@ esac
 
 printf "=========> install git...\n"
 $PACKAGE_MANAGER -y install git
+
 printf "=========> install zsh...\n"
 $PACKAGE_MANAGER -y install zsh
+
 printf "=========> install neovim...\n"
-$PACKAGE_MANAGER -y install neovim
+# $PACKAGE_MANAGER -y install neovim
+curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+chmod 755 nvim.appimage
+mv nvim.appimage /usr/local/bin/nvim
+
 printf "=========> install tmux...\n"
 $PACKAGE_MANAGER -y install tmux
 
 printf "=========> install ripgrep...\n"
 # $PACKAGE_MANAGER install ripgrep
 yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-sudo yum install ripgrep
+$PACKAGE_MANAGER -y install ripgrep
 
 printf "=========> install fzf...\n"
 # $PACKAGE_MANAGER install fzf
@@ -60,7 +66,7 @@ printf "=========> install bat...\n"
 wget -O bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz
 tar xvzf bat.tar.gz
 cd bat/
-sudo mv bat /usr/local/bin/bat
+mv bat /usr/local/bin/bat
 cd ~
 
 
