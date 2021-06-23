@@ -6,52 +6,56 @@ printf "OS: "$OSTYPE"\n"
 printf "================================\n"
 case "$OSTYPE" in
 	cygwin)
-		# WINDOWS CygWin
+		printf "OS DETECTED: WINDOWS CygWin\n"
 		;;
 	linux)
-		# DEBIAN/UBUNTU
+		printf "OS DETECTED: DEBIAN/UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
 		export NVIM_CONFIG_PATH=.config/nvim;;
 	linux-gnu)
-		# DEBIAN/UBUNTU
+		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER=yum
 		export NVIM_CONFIG_PATH=.config/nvim;;
 
 	linux-android)
-		# TERMUX
+		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=apt
 		export NVIM_CONFIG_PATH=.config/nvim;;
 	darwin*)
-		# MacOS
+		printf "OS DETECTED: MacOS\n"
 		export PACKAGE_MANAGER=brew
 		export NVIM_CONFIG_PATH=.config/nvim;;
 esac
 
+printf "=========> install git...\n"
 # $PACKAGE_MANAGER install git
+printf "=========> install zsh...\n"
 # $PACKAGE_MANAGER install zsh
+printf "=========> install neovim...\n"
 # $PACKAGE_MANAGER install neovim
-printf "install tmux...\n"
+printf "=========> install tmux...\n"
 $PACKAGE_MANAGER install tmux
 
-printf "install ripgrep...\n"
+printf "=========> install ripgrep...\n"
 # $PACKAGE_MANAGER install ripgrep
 yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 sudo yum install ripgrep
 
-printf "install fzf...\n"
+printf "=========> install fzf...\n"
 # $PACKAGE_MANAGER install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git ~/fzf
 cd fzf/
 ./install
 cd ~
 
-printf "install nodejs...\n"
+printf "=========> install nodejs...\n"
 $PACKAGE_MANAGER install nodejs
 
 # $PACKAGE_MANAGER install python
 # $PACKAGE_MANAGER install python3
 # $PACKAGE_MANAGER install ruby
 
+printf "=========> install bat...\n"
 # $PACKAGE_MANAGER install bat
 wget -O bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz
 tar xvzf bat.tar.gz
