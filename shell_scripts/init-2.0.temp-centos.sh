@@ -28,13 +28,13 @@ case "$OSTYPE" in
 esac
 
 printf "=========> install git...\n"
-# $PACKAGE_MANAGER install git
+$PACKAGE_MANAGER -y install git
 printf "=========> install zsh...\n"
-# $PACKAGE_MANAGER install zsh
+$PACKAGE_MANAGER -y install zsh
 printf "=========> install neovim...\n"
-# $PACKAGE_MANAGER install neovim
+$PACKAGE_MANAGER -y install neovim
 printf "=========> install tmux...\n"
-$PACKAGE_MANAGER install tmux
+$PACKAGE_MANAGER -y install tmux
 
 printf "=========> install ripgrep...\n"
 # $PACKAGE_MANAGER install ripgrep
@@ -49,7 +49,7 @@ cd fzf/
 cd ~
 
 printf "=========> install nodejs...\n"
-$PACKAGE_MANAGER install nodejs
+$PACKAGE_MANAGER -y install nodejs
 
 # $PACKAGE_MANAGER install python
 # $PACKAGE_MANAGER install python3
