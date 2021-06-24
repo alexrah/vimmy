@@ -80,21 +80,22 @@ mv bat /usr/local/bin/bat
 #ZSH & DOTFILES
 printf "clone alexrah/vimmy & alexrah/oh-my-zsh, config zsh, tmux, vim (legacy)\n"
 printf "================================\n"
+cd $INSTALLERS_FOLDER
+git clone https://alexrah@github.com/alexrah/vimmy 
 cd ~
-git clone https://alexrah@github.com/alexrah/vimmy .vim
 git clone https://alexrah@github.com/alexrah/oh-my-zsh .oh-my-zsh
 cd .oh-my-zsh
 git fetch --all
 git branch --all
 git checkout origin/theme-dstkph
 git submodule update --init
-cd ..
-ln -s .vim/.zshrc
-ln -s .vim/.vimrc
-ln -s .vim/.dir_colors.NEW .dir_colors
-ln -s .vim/.tmux.conf
+cd ~
+ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
+ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
+ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
+ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
 mkdir -p ~/.vim_runtime/undodir
-cd .vim
+cd $INSTALLERS_FOLDER/vimmy
 git submodule update --init
 chsh -s /bin/zsh
 cd ~
@@ -112,8 +113,8 @@ npm install -g neovim
 printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
 printf "================================\n"
 mkdir -p ~/$NVIM_CONFIG_PATH
-ln -s ~/.vim/init.vim ~/$NVIM_CONFIG_PATH/init.vim
-ln -s ~/.vim/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
+ln -s $INSTALLERS_FOLDER/vimmy/init.vim ~/$NVIM_CONFIG_PATH/init.vim
+ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
 
 # install vim-plug @see https://github.com/junegunn/vim-plug
 printf "Installing NeoVim plugin manager: junegunn/vim-plug...\n"
