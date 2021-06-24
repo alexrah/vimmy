@@ -64,8 +64,17 @@ curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 $PACKAGE_MANAGER -y install nodejs
 
 
+printf "=========> install yarn...\n"
+cd $INSTALLERS_FOLDER
+curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+$PACKAGE_MANAGER -y install yarn
+
 # $PACKAGE_MANAGER install python
-# $PACKAGE_MANAGER install python3
+
+printf "=========> install python3...\n"
+$PACKAGE_MANAGER -y install python3
+
 # $PACKAGE_MANAGER install ruby
 
 printf "=========> install bat...\n"
