@@ -27,6 +27,10 @@ case "$OSTYPE" in
 		export NVIM_CONFIG_PATH=.config/nvim;;
 esac
 
+export INSTALLERS_FOLDER=~/.dotfiles_installers
+mkdir $INSTALLERS_FOLDER
+cd $INSTALLERS_FOLDER
+
 printf "=========> install git...\n"
 $PACKAGE_MANAGER -y install git
 
@@ -44,18 +48,21 @@ $PACKAGE_MANAGER -y install tmux
 
 printf "=========> install ripgrep...\n"
 # $PACKAGE_MANAGER install ripgrep
+# TODO: below line is CENTOS specific!
 yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 $PACKAGE_MANAGER -y install ripgrep
 
 printf "=========> install fzf...\n"
 # $PACKAGE_MANAGER install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git ~/fzf
-cd fzf/
-./install
-cd ~
+git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
+cd $INSTALLERS_FOLDER/fzf
+./install --all --no-update-rc
+cp bin/fzf /usr/local/bin/fzf
 
 printf "=========> install nodejs...\n"
+curl -sL https://rpm.nodesource.com/setup_14.x | bash -
 $PACKAGE_MANAGER -y install nodejs
+
 
 # $PACKAGE_MANAGER install python
 # $PACKAGE_MANAGER install python3
@@ -63,11 +70,11 @@ $PACKAGE_MANAGER -y install nodejs
 
 printf "=========> install bat...\n"
 # $PACKAGE_MANAGER install bat
-wget -O bat.tar.gz https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz
+cd $INSTALLERS_FOLDER
+curl -L https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
 tar xvzf bat.tar.gz
-cd bat/
+cd bat-v0.7.1-x86_64-unknown-linux-musl
 mv bat /usr/local/bin/bat
-cd ~
 
 
 #ZSH & DOTFILES
@@ -90,7 +97,7 @@ mkdir -p ~/.vim_runtime/undodir
 cd .vim
 git submodule update --init
 chsh -s /bin/zsh
-
+cd ~
 
 # NEOVIM 
 printf "NeoVIM configurations: NodeJS, CoC\n"
@@ -104,6 +111,7 @@ npm install -g neovim
 # Symlinks init.vim & coc-settings.json
 printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
 printf "================================\n"
+mkdir -p ~/$NVIM_CONFIG_PATH
 ln -s ~/.vim/init.vim ~/$NVIM_CONFIG_PATH/init.vim
 ln -s ~/.vim/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
 
