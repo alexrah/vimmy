@@ -121,14 +121,14 @@ PATH="/usr/local/opt/coreutils/libexec/gnubin:$PATH"
 # dircolors colors alias, original saved in .vim/.dir_colors to synch with Git repo
 eval $(dircolors -b $HOME/.dir_colors)
 # ASCII art welcome screen
-printf '\033[0;34m%s\033[0m\n' '                      88                                    88                     '
-printf '\033[0;34m%s\033[0m\n' '                      88               aa                   ""                     '
-printf '\033[0;34m%s\033[0m\n' '                      88               88                                          '
-printf '\033[0;34m%s\033[0m\n' '888888888  ,adPPYba,  88,dPPYba,   aaaa88aaaa  8b       d8  88  88,dPYba,,adPYba,  '
-printf '\033[0;34m%s\033[0m\n' '     a8P"  I8[    ""  88P"    "8a  """"88""""  `8b     d8/  88  88P`   "88"    "8a '
-printf '\033[0;34m%s\033[0m\n' '  ,d8P`     `"Y8ba,   88       88      88       `8b   d8/   88  88      88      88 '
-printf '\033[0;34m%s\033[0m\n' ',d8"       aa    ]8I  88       88      ""        `8b,d8/    88  88      88      88 '
-printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88                  "8"      88  88      88      88 '
+# printf '\033[0;34m%s\033[0m\n' '                      88                                    88                     '
+# printf '\033[0;34m%s\033[0m\n' '                      88               aa                   ""                     '
+# printf '\033[0;34m%s\033[0m\n' '                      88               88                                          '
+# printf '\033[0;34m%s\033[0m\n' '888888888  ,adPPYba,  88,dPPYba,   aaaa88aaaa  8b       d8  88  88,dPYba,,adPYba,  '
+# printf '\033[0;34m%s\033[0m\n' '     a8P"  I8[    ""  88P"    "8a  """"88""""  `8b     d8/  88  88P`   "88"    "8a '
+# printf '\033[0;34m%s\033[0m\n' '  ,d8P`     `"Y8ba,   88       88      88       `8b   d8/   88  88      88      88 '
+# printf '\033[0;34m%s\033[0m\n' ',d8"       aa    ]8I  88       88      ""        `8b,d8/    88  88      88      88 '
+# printf '\033[0;35m%s\033[0m\n' '888888888  `"YbbdP"`  88       88                  "8"      88  88      88      88 '
 # printf '\033[0;36m%s\033[0m\n' '                           88                                                       '  
 # printf '\033[0;36m%s\033[0m\n' '      aa                   ""    ,d         aa                                      ' 
 # printf '\033[0;36m%s\033[0m\n' '      88                         88         88                                      '  
