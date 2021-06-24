@@ -94,6 +94,7 @@ ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
 ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
 ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
 ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
+ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
 mkdir -p ~/.vim_runtime/undodir
 cd $INSTALLERS_FOLDER/vimmy
 git submodule update --init

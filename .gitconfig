@@ -1,0 +1,11 @@
+[core]
+	autocrlf = false
+	eol = lf
+	editor = nvim
+[push]
+	default = matching
+[color]
+	ui = auto
+
+[log]
+	decorate = true
