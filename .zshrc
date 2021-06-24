@@ -86,7 +86,8 @@ alias gb='git branch'
 alias gca='git commit -a -m'
 alias gc='git commit -m'
 alias gd='git diff --submodule=log'
-alias go='git checkout'
+# Conflict with golang command
+# alias go='git checkout'
 alias gf='git fetch'
 alias gk='gitk --all&'
 alias gx='gitx --all'
@@ -107,6 +108,10 @@ alias laf='la $(rg --hidden --files --null | xargs -0 dirname | uniq | fzf)'
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
 
 alias phps='open -na "PhpStorm.app" --args "$@"'
+
+# Auto-completion (worsks with ** + TAB)
+# ---------------
+source ~/.dotfiles_installers/vimmy/completion.zsh
 
 # source aliases for GNU Linux commands,
 # override standard BSD commands
