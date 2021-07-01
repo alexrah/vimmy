@@ -1,5 +1,40 @@
 #!/bin/bash
 
+# let's check if arg passed, otherwise set it to all
+# possible args:
+#   all
+#     
+#
+#
+#
+#
+#
+#   tools
+#   dotfiles 
+#   symlinks
+#   uninstall
+#   uninstall_legacy
+
+
+if [ $1 == "help" ]
+then
+  printf "Please provide one of the following option:\n"
+  printf "all : install everything if not already installed\n"
+  printf "tools : install only git, zsh, nvim, tmux, ripgrep, fzf, nodejs, yarn, python3, bat\n"
+  printf "dotfiles : install repos alexrah/vimmy & alexrah/oh-my-zsh\n"
+  printf "symlinks : add symlinks from .dotfiles to ~\n"
+  printf "nvim_support : install nvim support for \n"
+  printf "uninstall\n"
+  printf "uninstall_legacy\n"
+fi
+
+if ! test -n "$1"
+then
+  $1 == 'all'
+fi
+
+printf "install: $1\n"
+
 # CREATE a condition to deal with OS
 printf "start installing packages...\n"
 printf "OS: "$OSTYPE"\n"
@@ -15,8 +50,10 @@ case "$OSTYPE" in
 	linux-gnu)
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER=yum
-		export NVIM_CONFIG_PATH=.config/nvim;;
-
+		export NVIM_CONFIG_PATH=.config/nvim
+    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
+    rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo;;
 	linux-android)
 		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=apt
@@ -27,7 +64,7 @@ case "$OSTYPE" in
 		export NVIM_CONFIG_PATH=.config/nvim;;
 esac
 
-export INSTALLERS_FOLDER=~/.dotfiles_installers
+export INSTALLERS_FOLDER=~/.dotfiles
 mkdir $INSTALLERS_FOLDER
 cd $INSTALLERS_FOLDER
 
@@ -48,8 +85,6 @@ $PACKAGE_MANAGER -y install tmux
 
 printf "=========> install ripgrep...\n"
 # $PACKAGE_MANAGER install ripgrep
-# TODO: below line is CENTOS specific!
-yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
 $PACKAGE_MANAGER -y install ripgrep
 
 printf "=========> install fzf...\n"
@@ -66,8 +101,6 @@ $PACKAGE_MANAGER -y install nodejs
 
 printf "=========> install yarn...\n"
 cd $INSTALLERS_FOLDER
-curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
-rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
 $PACKAGE_MANAGER -y install yarn
 
 # $PACKAGE_MANAGER install python
