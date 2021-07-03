@@ -46,22 +46,22 @@ case "$OSTYPE" in
 	linux)
 		printf "OS DETECTED: DEBIAN/UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
-		export NVIM_CONFIG_PATH=.config/nvim;;
+		export NVIM_CONFIG_PATH=~/.config/nvim;;
 	linux-gnu)
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER=yum
-		export NVIM_CONFIG_PATH=.config/nvim
+		export NVIM_CONFIG_PATH=~/.config/nvim
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
     rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
     yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo;;
 	linux-android)
 		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=apt
-		export NVIM_CONFIG_PATH=.config/nvim;;
+		export NVIM_CONFIG_PATH=~/.config/nvim;;
 	darwin*)
 		printf "OS DETECTED: MacOS\n"
 		export PACKAGE_MANAGER=brew
-		export NVIM_CONFIG_PATH=.config/nvim;;
+		export NVIM_CONFIG_PATH=~/.config/nvim;;
 esac
 
 export INSTALLERS_FOLDER=~/.dotfiles
@@ -91,7 +91,7 @@ printf "=========> install fzf...\n"
 # $PACKAGE_MANAGER install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
 cd $INSTALLERS_FOLDER/fzf
-./install --all --no-update-rc
+./install --bin
 cp bin/fzf /usr/local/bin/fzf
 
 printf "=========> install nodejs...\n"
@@ -195,9 +195,9 @@ fi
 # Symlinks init.vim & coc-settings.json
 printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
 printf "================================\n"
-mkdir -p ~/$NVIM_CONFIG_PATH
-ln -s $INSTALLERS_FOLDER/vimmy/init.vim ~/$NVIM_CONFIG_PATH/init.vim
-ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json ~/$NVIM_CONFIG_PATH/coc-settings.json
+mkdir -p $NVIM_CONFIG_PATH
+ln -s $INSTALLERS_FOLDER/vimmy/init.vim $NVIM_CONFIG_PATH/init.vim
+ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json $NVIM_CONFIG_PATH/coc-settings.json
 
 # install vim-plug @see https://github.com/junegunn/vim-plug
 printf "Installing NeoVim plugin manager: junegunn/vim-plug...\n"
