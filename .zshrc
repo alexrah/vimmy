@@ -111,7 +111,7 @@ alias phps='open -na "PhpStorm.app" --args "$@"'
 
 # Auto-completion (worsks with ** + TAB)
 # ---------------
-source ~/.dotfiles_installers/vimmy/completion.zsh
+source ~/.dotfiles/fzf/shell/completion.zsh
 
 # source aliases for GNU Linux commands,
 # override standard BSD commands
