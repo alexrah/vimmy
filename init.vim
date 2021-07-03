@@ -51,18 +51,28 @@ set noshowmode
 " switch buffers without having to save their changes before.
 set hidden
 
+" TAB as 2 spaces
+filetype plugin indent on
+" On pressing tab, insert 2 spaces
+" show existing tab with 2 spaces width
+set tabstop=2 softtabstop=2 shiftwidth=2 expandtab smarttab
+
 " close buffer by pressing mm in normal mode
 nnoremap <silent> mm :bd<CR>
-" go to next tab by pressing mn in normal mode
-nnoremap <silent> mn :tabnext<CR>
+" go to previous tab by pressing mn in normal mode
+nnoremap <silent> mn :bprevious<CR>
 " go to previous tab by pressing m, in normal mode
-nnoremap <silent> m, :tabprevious<CR>
+nnoremap <silent> m, :bnext<CR>
 
 " Tabs shortcuts
 " map <C-t><up> :tabr<cr>
 " map <C-t><down> :tabc<cr>
-map <C-Left> :tabp<cr>
-map <C-Right> :tabn<cr>
+nnoremap <silent> <C-Left> :tabprevious<cr>
+map <C-Left> :tabprevious<cr>
+inoremap <C-Left> :tabprevious<cr>
+noremap <C-Right> :tabnext<cr>
+inoremap <C-Right> :tabnext<cr>
+map <C-Right> :tabnext<cr>
 
 
 set nocompatible    " disable backward compatibility with Vi
@@ -357,5 +367,4 @@ set foldmethod=indent
 " set foldmethod=syntax 
 " set foldmethod=expr
 " set foldexpr=VimFolds(v:lnum)
-
 
