@@ -45,8 +45,9 @@ set -o vi
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
 # export PATH=$PATH:./node/
 # start alias PATH
-export EDITOR=vim
+export EDITOR=nvim
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
+export DOTFILES=~/.dotfiles
 alias wpscan="~/wpscan/wpscan.rb"
 alias ls="ls --color=auto"
 alias la="ls -lhA"
@@ -99,7 +100,8 @@ alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}
 
 alias phps='open -na "PhpStorm.app" --args "$@"'
 
-
+# Git Repo Cleaner - @see https://rtyley.github.io/bfg-repo-cleaner/
+alias bfg='java -jar $DOTFILES/bfg.jar'
 
 # Auto-completion (worsks with ** + TAB)
 # ---------------
