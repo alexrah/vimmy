@@ -10,3 +10,6 @@
 
 [log]
 	decorate = true
+[user]
+	email = alexrah@gmail.com
+	name = Alessandro Stoppato
