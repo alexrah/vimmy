@@ -37,24 +37,37 @@ printf "install: $1\n"
 
 # CREATE a condition to deal with OS
 printf "start installing packages...\n"
-printf "OS: "$OSTYPE"\n"
+if [[ test -e /etc/os-release ]]
+then
+  os_type=$(cat /etc/os-release | head -n 1 | sed -r 's/.*"(.*)\"/\1/g')
+else
+  os_type=$OSTYPE
+fi
+
+printf "OS: "$os_type"\n"
 printf "================================\n"
-case "$OSTYPE" in
-	cygwin)
-		printf "OS DETECTED: WINDOWS CygWin\n"
-		;;
-	linux)
+case "$os_type" in
+	"cygwin")
+		printf "OS DETECTED: WINDOWS CygWin\n";;
+	"Ubuntu")
 		printf "OS DETECTED: DEBIAN/UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
-		export NVIM_CONFIG_PATH=~/.config/nvim;;
-	linux-gnu)
+		export NVIM_CONFIG_PATH=~/.config/nvim
+    curl -fsSL https://deb.nodesource.com/setup_16.x | sudo -E bash -
+    echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+    sudo add-apt-repository ppa:x4121/ripgrep
+    sudo apt-get update
+    ;;
+	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER=yum
 		export NVIM_CONFIG_PATH=~/.config/nvim
+    curl -sL https://rpm.nodesource.com/setup_14.x | bash -
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | tee /etc/yum.repos.d/yarn.repo
     rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo;;
-	linux-android)
+    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    ;;
+	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=apt
 		export NVIM_CONFIG_PATH=~/.config/nvim;;
@@ -69,26 +82,26 @@ mkdir $INSTALLERS_FOLDER
 cd $INSTALLERS_FOLDER
 
 printf "=========> install git...\n"
-$PACKAGE_MANAGER -y install git
+sudo $PACKAGE_MANAGER -y install git
 
 printf "=========> install zsh...\n"
-$PACKAGE_MANAGER -y install zsh
+sudo $PACKAGE_MANAGER -y install zsh
 
 printf "=========> install neovim...\n"
-# $PACKAGE_MANAGER -y install neovim
+# sudo $PACKAGE_MANAGER -y install neovim
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
 chmod 755 nvim.appimage
 mv nvim.appimage /usr/local/bin/nvim
 
 printf "=========> install tmux...\n"
-$PACKAGE_MANAGER -y install tmux
+sudo $PACKAGE_MANAGER -y install tmux
 
 printf "=========> install ripgrep...\n"
-# $PACKAGE_MANAGER install ripgrep
-$PACKAGE_MANAGER -y install ripgrep
+# sudo $PACKAGE_MANAGER install ripgrep
+sudo $PACKAGE_MANAGER -y install ripgrep
 
 printf "=========> install fzf...\n"
-# $PACKAGE_MANAGER install fzf
+# sudo $PACKAGE_MANAGER install fzf
 git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
 cd $INSTALLERS_FOLDER/fzf
 ./install --bin
@@ -96,22 +109,22 @@ cp bin/fzf /usr/local/bin/fzf
 
 printf "=========> install nodejs...\n"
 curl -sL https://rpm.nodesource.com/setup_14.x | bash -
-$PACKAGE_MANAGER -y install nodejs
+sudo $PACKAGE_MANAGER -y install nodejs
 
 
 printf "=========> install yarn...\n"
 cd $INSTALLERS_FOLDER
-$PACKAGE_MANAGER -y install yarn
+sudo $PACKAGE_MANAGER -y install yarn
 
-# $PACKAGE_MANAGER install python
+# sudo $PACKAGE_MANAGER install python
 
 printf "=========> install python3...\n"
-$PACKAGE_MANAGER -y install python3
+sudo $PACKAGE_MANAGER -y install python3
 
-# $PACKAGE_MANAGER install ruby
+# sudo $PACKAGE_MANAGER install ruby
 
 printf "=========> install bat...\n"
-# $PACKAGE_MANAGER install bat
+# sudo $PACKAGE_MANAGER install bat
 cd $INSTALLERS_FOLDER
 curl -L https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
 tar xvzf bat.tar.gz
@@ -179,7 +192,7 @@ pip install neovim
 # NODE SUPPORT
 printf "NodeJS: install neovim support (required by CoC)\n"
 printf "================================\n"
-npm install -g neovim
+sudo npm install -g neovim
 
 # RUBY SUPPORT
 printf "Ruby: install neovim support\n"
