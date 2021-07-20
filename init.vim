@@ -195,6 +195,7 @@ endif
 " MATERIAL.VIM END
 
 " COC CONFIG START
+let g:coc_node_path = trim(system('which node'))
 let g:coc_global_extensions = [
   \ 'coc-phpls', 
   \ 'coc-python',
