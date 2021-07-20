@@ -44,6 +44,7 @@ set -o vi
 # export PATH=$PATH:/Applications/XAMPP/xamppfiles/bin
 # export PATH=$PATH:~/.gem/ruby/1.8/bin
 # export PATH=$PATH:./node/
+export PATH=$PATH:~/.local/bin
 # start alias PATH
 export EDITOR=nvim
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=6'
