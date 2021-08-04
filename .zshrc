@@ -159,4 +159,5 @@ if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
 
+# to generate it, got to: https://patorjk.com/software/taag/#p=display&c=echo&f=Big&t=MacBookPro
 source /etc/host.ascii
