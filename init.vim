@@ -336,8 +336,8 @@ nnoremap <silent> gd :Gvdiffsplit<CR>
 " FUGITIVE CONFIG END
 
 " PYTHON VIRTUALENV SUPPORT START
-let g:python_host_prog = '~/.virtualenvs/neovim-python2/py2/bin/python'
-let g:python3_host_prog = '~/.virtualenvs/neovim-python3/py3/bin/python3'
+" let g:python_host_prog = '~/.virtualenvs/neovim-python2/py2/bin/python'
+" let g:python3_host_prog = '~/.virtualenvs/neovim-python3/py3/bin/python3'
 " PYTHON VIRTUALENV SUPPORT END
 "
 " VIM-AUTO-SAVE START
