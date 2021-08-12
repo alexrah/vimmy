@@ -91,11 +91,11 @@ alias gc='git commit -m'
 alias gd='git diff --submodule=log'
 # Conflict with golang command
 # alias go='git checkout'
-alias gf='git fetch'
+alias gf='git fetch --all'
 alias gk='gitk --all&'
 alias gx='gitx --all'
 alias gm='git submodule foreach git checkout master; git submodule foreach git pull origin master'
-alias gl='git log'
+alias gl='git log --graph --all'
 
 # Fuzzy search preview files
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
