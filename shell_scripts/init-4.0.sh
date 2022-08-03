@@ -10,7 +10,7 @@ then
   printf "zsh : install only zsh\n"
   printf "zsh-default : set zsh as default shell\n"
   printf "tools : (fzf requires git) install tmux, ripgrep, fzf, bat\n"
-  printf "dotfiles : install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
+  printf "dotfiles : (requires git) install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
   printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
   printf "python : install python pip, python3, pip3 and neovim support\n"
   printf "ruby : install ruby and neovim support\n"
