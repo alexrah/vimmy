@@ -3,7 +3,7 @@
 if [ "$1" == "help" ] || !( test -n "$1" )
 then
   printf "========================\n"
-  printf "IMPORTANT: user needs to be inside sudoers to be able to install packages\n" 
+  printf "IMPORTANT: user (dont use root) needs to be inside sudoers to be able to install packages\n"
   printf "all : install everything if not already installed\n"
   printf "help : show this message\n"
   printf "Please provide one of the following option or comma separated list of options to install specific packages:\n"
@@ -36,7 +36,7 @@ else
   os_type=$OSTYPE
 fi
 
-printf "OS: "$os_type"\n"
+printf "OS: $os_type\n"
 printf "================================\n"
 case "$os_type" in
 	"cygwin")
