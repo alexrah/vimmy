@@ -14,7 +14,7 @@ then
   printf "dotfiles : (requires git) install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
   printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
   printf "python : install python pip, python3, pip3 and neovim support\n"
-  printf "ruby : install ruby and neovim support\n"
+  # printf "ruby : install ruby and neovim support\n"
   printf "neovim : install or update nvim, configuration files, plugin manager\n"
   printf "example: ./init-4.0.sh all #install everything\n"
   printf "example: ./init-4.0.sh help #show this message\n"
@@ -45,10 +45,7 @@ case "$os_type" in
 		printf "OS DETECTED: DEBIAN/UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
 		export NVIM_CONFIG_PATH=~/.config/nvim
-    curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | gpg --dearmor | sudo tee /usr/share/keyrings/yarnkey.gpg >/dev/null
-    echo "deb [signed-by=/usr/share/keyrings/yarnkey.gpg] https://dl.yarnpkg.com/debian stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
     sudo add-apt-repository ppa:x4121/ripgrep
-    curl -sL https://deb.nodesource.com/setup_14.x | sudo bash -
     sudo add-apt-repository ppa:git-core/ppa
     sudo apt-get update
     ;;
@@ -56,8 +53,6 @@ case "$os_type" in
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER=yum
 		export NVIM_CONFIG_PATH=~/.config/nvim
-    curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-    sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
     sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     ;;
 	"linux-android")
@@ -83,7 +78,7 @@ then
     printf "=========> install git...\n"
     sudo $PACKAGE_MANAGER -y install git
   else
-    printf "---------- git already installed, skipping...\n"
+    printf "=========> git already installed, skipping...\n"
   fi
 fi
 
@@ -94,7 +89,7 @@ then
     printf "=========> install zsh...\n"
     sudo $PACKAGE_MANAGER -y install zsh
   else
-    printf "---------- zsh already installed, skipping...\n"
+    printf "=========> zsh already installed, skipping...\n"
   fi
 fi
 
@@ -105,7 +100,7 @@ then
     printf "=========> install tmux...\n"
     sudo $PACKAGE_MANAGER -y install tmux
   else
-    printf "---------- tmux already installed, skipping...\n"
+    printf "=========> tmux already installed, skipping...\n"
   fi
 
   if !(command -v "rg" &> /dev/null)
@@ -113,7 +108,7 @@ then
     printf "=========> install ripgrep...\n"
     sudo $PACKAGE_MANAGER -y install ripgrep
   else
-    printf "---------- ripgrep already installed, skipping...\n"
+    printf "=========> ripgrep already installed, skipping...\n"
   fi
 
   if !(command -v "fzf" &> /dev/null)
@@ -122,9 +117,9 @@ then
     git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
     cd $INSTALLERS_FOLDER/fzf
     ./install --bin
-    cp bin/fzf /usr/local/bin/fzf
+    sudo cp bin/fzf /usr/local/bin/fzf
   else
-    printf "---------- fzf already installed, skipping...\n"
+    printf "=========> fzf already installed, skipping...\n"
   fi
 
   if !(command -v "bat" &> /dev/null)
@@ -136,7 +131,7 @@ then
     cd bat-v0.7.1-x86_64-unknown-linux-musl
     sudo mv bat /usr/local/bin/bat
   else
-    printf "---------- bat already installed, skipping...\n"
+    printf "=========> bat already installed, skipping...\n"
   fi
 fi
 
@@ -156,7 +151,7 @@ then
     ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
     ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
   else
-    printf "---------- folder vimmy already exists, skipping...\n"
+    printf "=========> folder vimmy already exists, skipping...\n"
   fi
   cd $INSTALLERS_FOLDER
   if !(test -d oh-my-zsh)
@@ -169,7 +164,7 @@ then
     git checkout origin/theme-dstkph
     git submodule update --init
   else
-    printf "---------- folder oh-my-zsh already exists, skipping...\n"
+    printf "=========> folder oh-my-zsh already exists, skipping...\n"
   fi
 fi
 
@@ -186,25 +181,25 @@ then
     [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
     [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   else
-    printf "---------- nvm already installed, skipping...\n"
+    printf "=========> nvm already installed, skipping...\n"
   fi
   if !(command -v "node" &> /dev/null)
   then
     printf "=========> install node...\n"
     nvm install --lts
   else
-    printf "---------- node already installed, skipping...\n"
+    printf "=========> node already installed, skipping...\n"
   fi
   if !(command -v "yarn" &> /dev/null)
   then
     printf "=========> install yarn...\n"
-    sudo $PACKAGE_MANAGER -y install yarn
+    corepack enable
   else
-    printf "---------- yarn already installed, skipping...\n"
+    printf "=========> yarn already installed, skipping...\n"
   fi
 
   printf "=========> install node neovim support...\n"
-  npm install -g neovim
+  npm install --location=global neovim
 
 fi
 
@@ -218,7 +213,7 @@ then
     curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
 	  sudo python get-pip2.py
   else
-    printf "---------- pip already installed, skipping...\n"
+    printf "=========> pip already installed, skipping...\n"
   fi
   
   printf "=========> install python neovim support...\n"
@@ -229,7 +224,7 @@ then
     printf "=========> install python3...\n"
     sudo $PACKAGE_MANAGER -y install python3
   else
-    printf "---------- python3 already installed, skipping...\n"
+    printf "=========> python3 already installed, skipping...\n"
   fi
 
   if !(command -v "pip3" &> /dev/null)
@@ -238,7 +233,7 @@ then
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip3.py
 	  sudo python3 get-pip3.py
   else
-    printf "---------- pip3 already installed, skipping...\n"
+    printf "=========> pip3 already installed, skipping...\n"
   fi
 
   printf "=========> install python3 neovim support...\n"
@@ -261,20 +256,19 @@ then
 # pip install neovim
 fi
 
-if [[ " ${aArgs[*]} " =~ "ruby" ]] || [[ $1 == "all" ]]
-then
-  # RUBY SUPPORT
-  if !(command -v "ruby" &> /dev/null)
-  then
-    printf "=========> install ruby...\n"
-    sudo $PACKAGE_MANAGER -y install ruby
-  else
-    printf "---------- ruby already installed, skipping...\n"
-  fi
-
-  printf "=========> install ruby neovim support...\n"
-  gem install neovim
-fi
+# if [[ " ${aArgs[*]} " =~ "ruby" ]] || [[ $1 == "all" ]]
+# then
+#   if !(command -v "ruby" &> /dev/null)
+#   then
+#     printf "=========> install ruby...\n"
+#     sudo $PACKAGE_MANAGER -y install ruby
+#   else
+#     printf "=========> ruby already installed, skipping...\n"
+#   fi
+#
+#   printf "=========> install ruby neovim support...\n"
+#   gem install neovim
+# fi
 
 if [[ " ${aArgs[*]} " =~ "neovim" ]] || [[ $1 == "all" ]]
 then
@@ -294,7 +288,7 @@ then
     printf "=========> install which (required by CoC plugin)...\n"
     sudo $PACKAGE_MANAGER -y install which
   else
-    printf "---------- which already installed, skipping...\n"
+    printf "=========> which already installed, skipping...\n"
   fi
 
   # install vim-plug @see https://github.com/junegunn/vim-plug
