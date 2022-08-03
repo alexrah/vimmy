@@ -155,8 +155,6 @@ then
     ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
     ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
     ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
-    zsh
-    source .zshrc
   else
     printf "---------- folder vimmy already exists, skipping...\n"
   fi
@@ -170,22 +168,12 @@ then
     git branch --all
     git checkout origin/theme-dstkph
     git submodule update --init
-    cd ~
-    zsh
-    source .zshrc
   else
     printf "---------- folder oh-my-zsh already exists, skipping...\n"
   fi
 fi
 
 cd $INSTALLERS_FOLDER
-
-if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
-then
-  printf "=========> set zsh as default shell...\n"
-  chsh -s /bin/zsh
-  zsh
-fi
 
 if [[ " ${aArgs[*]} " =~ "node" ]] || [[ $1 == "all" ]]
 then
@@ -194,6 +182,7 @@ then
   then
     printf "=========> install nvm (Node Version Manager)...\n"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+    export NVM_DIR="$HOME/.nvm"
   else
     printf "---------- nvm already installed, skipping...\n"
   fi
@@ -213,7 +202,7 @@ then
   fi
 
   printf "=========> install node neovim support...\n"
-  sudo npm install -g neovim
+  npm install -g neovim
 
 fi
 
@@ -298,12 +287,26 @@ then
   ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json $NVIM_CONFIG_PATH/coc-settings.json
   mkdir -p ~/.vim_runtime/undodir
 
+  if !(command -v "which" &> /dev/null)
+  then
+    printf "=========> install which (required by CoC plugin)...\n"
+    sudo $PACKAGE_MANAGER -y install which
+  else
+    printf "---------- which already installed, skipping...\n"
+  fi
+
   # install vim-plug @see https://github.com/junegunn/vim-plug
-  printf "=========> instal NeoVim plugin manager: junegunn/vim-plug...\n"
+  printf "=========> install NeoVim plugin manager: junegunn/vim-plug...\n"
   sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
   printf "=========> NOTE: run :PlugInstall first time launching nvim\n"
+fi
+
+if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
+then
+  printf "=========> set zsh as default shell...\n"
+  chsh -s /bin/zsh
 fi
 
 printf "========= DONE! =========\n"
