@@ -40,3 +40,13 @@ example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )
 example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles
 ========================
 ```
+
+### Examples
+
+`./init-4.0.sh all #install everything`
+
+`./init-4.0.sh help #show this message`
+
+`./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )`
+
+`./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles`
