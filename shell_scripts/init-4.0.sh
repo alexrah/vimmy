@@ -2,6 +2,7 @@
 
 if [ "$1" == "help" ] || !( test -n "$1" )
 then
+  printf "========================\n"
   printf "IMPORTANT: user needs to be inside sudoers to be able to install packages\n" 
   printf "all : install everything if not already installed\n"
   printf "help : show this message\n"
@@ -15,10 +16,12 @@ then
   printf "python : install python pip, python3, pip3 and neovim support\n"
   printf "ruby : install ruby and neovim support\n"
   printf "neovim : install or update nvim, configuration files, plugin manager\n"
-  printf "example: ./init-4.0.sh all #install everything"
-  printf "example: ./init-4.0.sh help #show this message"
-  printf "example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )"
-  printf "example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles"
+  printf "example: ./init-4.0.sh all #install everything\n"
+  printf "example: ./init-4.0.sh help #show this message\n"
+  printf "example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )\n"
+  printf "example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles\n"
+  printf "========================\n"
+  exit
 fi
 
 printf "install: $1\n"
@@ -26,7 +29,7 @@ printf "install: $1\n"
 IFS=',' read -ra aArgs <<< "$1"
 
 # CREATE a condition to deal with OS
-if [[ test -e /etc/os-release ]]
+if ( test -e /etc/os-release )
 then
   os_type=$(cat /etc/os-release | head -n 1 | sed -r 's/.*"(.*)\"/\1/g')
 else
