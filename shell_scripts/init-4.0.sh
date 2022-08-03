@@ -109,17 +109,6 @@ cd $INSTALLERS_FOLDER/fzf
 ./install --bin
 cp bin/fzf /usr/local/bin/fzf
 
-printf "=========> install nvm (Node Version Manager)...\n"
-
-
-printf "=========> install nodejs...\n"
-# sudo $PACKAGE_MANAGER -y install nodejs
-
-
-printf "=========> install yarn...\n"
-cd $INSTALLERS_FOLDER
-sudo $PACKAGE_MANAGER -y install yarn
-
 # sudo $PACKAGE_MANAGER install python
 
 printf "=========> install python3...\n"
@@ -153,6 +142,19 @@ ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
 ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
 ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
 ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
+zsh
+source .zshrc
+
+# Need to be done after sourcing .zshrc because NVM need enviroment var $NVM_DIR
+printf "=========> install nvm (Node Version Manager)...\n"
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+
+printf "=========> install nodejs...\n"
+nvm install --lts
+
+printf "=========> install yarn...\n"
+cd $INSTALLERS_FOLDER
+sudo $PACKAGE_MANAGER -y install yarn
 
 # Symlinks init.vim & coc-settings.json
 printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
