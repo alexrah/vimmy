@@ -14,7 +14,7 @@ then
   printf "dotfiles : (requires git) install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
   printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
   printf "python : install python pip, python3, pip3 and neovim support\n"
-  # printf "ruby : install ruby and neovim support\n"
+  #  printf "ruby : install ruby and neovim support\n"
   printf "neovim : install or update nvim, configuration files, plugin manager\n"
   printf "example: ./init-4.0.sh all #install everything\n"
   printf "example: ./init-4.0.sh help #show this message\n"
