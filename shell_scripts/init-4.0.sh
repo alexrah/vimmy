@@ -98,13 +98,6 @@ then
   fi
 fi
 
-if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
-then
-  printf "=========> set zsh as default shell...\n"
-  chsh -s /bin/zsh
-  zsh
-fi
-
 if [[ " ${aArgs[*]} " =~ "tools" ]] || [[ $1 == "all" ]]
 then
   if !(command -v "tmux" &> /dev/null)
@@ -170,6 +163,7 @@ then
   cd $INSTALLERS_FOLDER
   if !(test -d oh-my-zsh)
   then
+    printf "=========> clone alexrah/oh-my-zsh in oh-my-zsh folder...\n"
     git clone https://alexrah@github.com/alexrah/oh-my-zsh oh-my-zsh
     cd oh-my-zsh
     git fetch --all
@@ -185,6 +179,13 @@ then
 fi
 
 cd $INSTALLERS_FOLDER
+
+if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
+then
+  printf "=========> set zsh as default shell...\n"
+  chsh -s /bin/zsh
+  zsh
+fi
 
 if [[ " ${aArgs[*]} " =~ "node" ]] || [[ $1 == "all" ]]
 then
