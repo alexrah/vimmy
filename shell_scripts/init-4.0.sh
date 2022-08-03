@@ -273,10 +273,14 @@ fi
 
 if [[ " ${aArgs[*]} " =~ "neovim" ]] || [[ $1 == "all" ]]
 then
-  printf "=========> install neovim...\n"
-  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-  chmod 755 nvim.appimage
-  sudo mv nvim.appimage /usr/local/bin/nvim
+
+  if !(command -v "nvim" &> /dev/null)
+  then
+    printf "=========> install neovim...\n"
+    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    chmod 755 nvim.appimage
+    sudo mv nvim.appimage /usr/local/bin/nvim
+  fi
 
   printf "=========> install symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
   mkdir -p $NVIM_CONFIG_PATH
