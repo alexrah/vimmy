@@ -1,42 +1,31 @@
 #!/bin/bash
 
-# let's check if arg passed, otherwise set it to all
-# possible args:
-#   all
-#     
-#
-#
-#
-#
-#
-#   tools
-#   dotfiles 
-#   symlinks
-#   uninstall
-#   uninstall_legacy
-
-
-if [ $1 == "help" ]
+if [ "$1" == "help" ] || !( test -n "$1" )
 then
-  printf "Please provide one of the following option:\n"
+  printf "IMPORTANT: user needs to be inside sudoers to be able to install packages\n" 
   printf "all : install everything if not already installed\n"
-  printf "tools : install only git, zsh, nvim, tmux, ripgrep, fzf, nodejs, yarn, python3, bat\n"
-  printf "dotfiles : install repos alexrah/vimmy & alexrah/oh-my-zsh\n"
-  printf "symlinks : add symlinks from .dotfiles to ~\n"
-  printf "nvim_support : install nvim support for \n"
-  printf "uninstall\n"
-  printf "uninstall_legacy\n"
-fi
-
-if ! test -n "$1"
-then
-  $1 == 'all'
+  printf "help : show this message\n"
+  printf "Please provide one of the following option or comma separated list of options to install specific packages:\n"
+  printf "git : install only git\n"
+  printf "zsh : install only zsh\n"
+  printf "zsh-default : set zsh as default shell\n"
+  printf "tools : (fzf requires git) install tmux, ripgrep, fzf, bat\n"
+  printf "dotfiles : install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
+  printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
+  printf "python : install python pip, python3, pip3 and neovim support\n"
+  printf "ruby : install ruby and neovim support\n"
+  printf "neovim : install or update nvim, configuration files, plugin manager\n"
+  printf "example: ./init-4.0.sh all #install everything"
+  printf "example: ./init-4.0.sh help #show this message"
+  printf "example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )"
+  printf "example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles"
 fi
 
 printf "install: $1\n"
 
+IFS=',' read -ra aArgs <<< "$1"
+
 # CREATE a condition to deal with OS
-printf "start installing packages...\n"
 if [[ test -e /etc/os-release ]]
 then
   os_type=$(cat /etc/os-release | head -n 1 | sed -r 's/.*"(.*)\"/\1/g')
@@ -79,121 +68,187 @@ case "$os_type" in
 		export NVIM_CONFIG_PATH=~/.config/nvim;;
 esac
 
+printf "start installing packages...\n"
+
 export INSTALLERS_FOLDER=~/.dotfiles
 mkdir $INSTALLERS_FOLDER
 cd $INSTALLERS_FOLDER
 
-printf "=========> install git...\n"
-sudo $PACKAGE_MANAGER -y install git
+if [[ " ${aArgs[*]} " =~ "git" ]] || [[ $1 == "all" ]]
+then
+  if !(command -v "git" &> /dev/null)
+  then
+    printf "=========> install git...\n"
+    sudo $PACKAGE_MANAGER -y install git
+  else
+    printf "---------- git already installed, skipping...\n"
+  fi
+fi
 
-printf "=========> install zsh...\n"
-sudo $PACKAGE_MANAGER -y install zsh
+if [[ " ${aArgs[*]} " =~ "zsh" ]] || [[ $1 == "all" ]]
+then
+  if !(command -v "zsh" &> /dev/null)
+  then
+    printf "=========> install zsh...\n"
+    sudo $PACKAGE_MANAGER -y install zsh
+  else
+    printf "---------- zsh already installed, skipping...\n"
+  fi
+fi
 
-printf "=========> install neovim...\n"
-# sudo $PACKAGE_MANAGER -y install neovim
-curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod 755 nvim.appimage
-sudo mv nvim.appimage /usr/local/bin/nvim
+if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
+then
+  printf "=========> set zsh as default shell...\n"
+  chsh -s /bin/zsh
+  zsh
+fi
 
-printf "=========> install tmux...\n"
-sudo $PACKAGE_MANAGER -y install tmux
+if [[ " ${aArgs[*]} " =~ "tools" ]] || [[ $1 == "all" ]]
+then
+  if !(command -v "tmux" &> /dev/null)
+  then
+    printf "=========> install tmux...\n"
+    sudo $PACKAGE_MANAGER -y install tmux
+  else
+    printf "---------- tmux already installed, skipping...\n"
+  fi
 
-printf "=========> install ripgrep...\n"
-# sudo $PACKAGE_MANAGER install ripgrep
-sudo $PACKAGE_MANAGER -y install ripgrep
+  if !(command -v "rg" &> /dev/null)
+  then
+    printf "=========> install ripgrep...\n"
+    sudo $PACKAGE_MANAGER -y install ripgrep
+  else
+    printf "---------- ripgrep already installed, skipping...\n"
+  fi
 
-printf "=========> install fzf...\n"
-# sudo $PACKAGE_MANAGER install fzf
-git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
-cd $INSTALLERS_FOLDER/fzf
-./install --bin
-cp bin/fzf /usr/local/bin/fzf
+  if !(command -v "fzf" &> /dev/null)
+  then
+    printf "=========> install fzf...\n"
+    git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
+    cd $INSTALLERS_FOLDER/fzf
+    ./install --bin
+    cp bin/fzf /usr/local/bin/fzf
+  else
+    printf "---------- fzf already installed, skipping...\n"
+  fi
 
-# sudo $PACKAGE_MANAGER install python
+  if !(command -v "bat" &> /dev/null)
+  then
+    printf "=========> install bat...\n"
+    cd $INSTALLERS_FOLDER
+    curl -L https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
+    tar xvzf bat.tar.gz
+    cd bat-v0.7.1-x86_64-unknown-linux-musl
+    sudo mv bat /usr/local/bin/bat
+  else
+    printf "---------- bat already installed, skipping...\n"
+  fi
+fi
 
-printf "=========> install python3...\n"
-sudo $PACKAGE_MANAGER -y install python3
+if [[ " ${aArgs[*]} " =~ "dotfiles" ]] || [[ $1 == "all" ]]
+then
+  #ZSH & DOTFILES
+  printf "=========> install dotfiles...\n"
+  cd $INSTALLERS_FOLDER
+  if !(test -d vimmy)
+  then
+    printf "=========> clone alexrah/vimmy in vimmy folder...\n"
+    git clone https://alexrah@github.com/alexrah/vimmy 
+    cd ~
+    ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
+    # ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
+    ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
+    ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
+    ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
+    zsh
+    source .zshrc
+  else
+    printf "---------- folder vimmy already exists, skipping...\n"
+  fi
+  cd $INSTALLERS_FOLDER
+  if !(test -d oh-my-zsh)
+  then
+    git clone https://alexrah@github.com/alexrah/oh-my-zsh oh-my-zsh
+    cd oh-my-zsh
+    git fetch --all
+    git branch --all
+    git checkout origin/theme-dstkph
+    git submodule update --init
+    cd ~
+    zsh
+    source .zshrc
+  else
+    printf "---------- folder oh-my-zsh already exists, skipping...\n"
+  fi
+fi
 
-# sudo $PACKAGE_MANAGER install ruby
-
-printf "=========> install bat...\n"
-# sudo $PACKAGE_MANAGER install bat
 cd $INSTALLERS_FOLDER
-curl -L https://github.com/sharkdp/bat/releases/download/v0.7.1/bat-v0.7.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
-tar xvzf bat.tar.gz
-cd bat-v0.7.1-x86_64-unknown-linux-musl
-sudo mv bat /usr/local/bin/bat
 
+if [[ " ${aArgs[*]} " =~ "node" ]] || [[ $1 == "all" ]]
+then
+  # Need to be done after sourcing .zshrc because NVM need enviroment var $NVM_DIR
+  if !(command -v "nvm" &> /dev/null)
+  then
+    printf "=========> install nvm (Node Version Manager)...\n"
+    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+  else
+    printf "---------- nvm already installed, skipping...\n"
+  fi
+  if !(command -v "node" &> /dev/null)
+  then
+    printf "=========> install node...\n"
+    nvm install --lts
+  else
+    printf "---------- node already installed, skipping...\n"
+  fi
+  if !(command -v "yarn" &> /dev/null)
+  then
+    printf "=========> install yarn...\n"
+    sudo $PACKAGE_MANAGER -y install yarn
+  else
+    printf "---------- yarn already installed, skipping...\n"
+  fi
 
-#ZSH & DOTFILES
-printf "clone alexrah/vimmy & alexrah/oh-my-zsh, config zsh, tmux, vim (legacy)\n"
-printf "================================\n"
-cd $INSTALLERS_FOLDER
-git clone https://alexrah@github.com/alexrah/vimmy 
-git clone https://alexrah@github.com/alexrah/oh-my-zsh oh-my-zsh
-cd oh-my-zsh
-git fetch --all
-git branch --all
-git checkout origin/theme-dstkph
-git submodule update --init
-cd ~
-ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
-# ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
-ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
-ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
-ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
-zsh
-source .zshrc
+  printf "=========> install node neovim support...\n"
+  sudo npm install -g neovim
 
-# Need to be done after sourcing .zshrc because NVM need enviroment var $NVM_DIR
-printf "=========> install nvm (Node Version Manager)...\n"
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+fi
 
-printf "=========> install nodejs...\n"
-nvm install --lts
+if [[ " ${aArgs[*]} " =~ "python" ]] || [[ $1 == "all" ]]
+then
 
-printf "=========> install yarn...\n"
-cd $INSTALLERS_FOLDER
-sudo $PACKAGE_MANAGER -y install yarn
-
-# Symlinks init.vim & coc-settings.json
-printf "symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
-printf "================================\n"
-mkdir -p $NVIM_CONFIG_PATH
-ln -s $INSTALLERS_FOLDER/vimmy/init.vim $NVIM_CONFIG_PATH/init.vim
-ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json $NVIM_CONFIG_PATH/coc-settings.json
-
-mkdir -p ~/.vim_runtime/undodir
-cd ~
-
-# NEOVIM 
-printf "NeoVIM configurations: Python, Python3, NodeJS, Ruby, CoC\n"
-printf "================================\n"
-# add scripting provider - check what's supported :checkhealth provider
-# install pip @see https://www.gungorbudak.com/blog/2018/08/02/correct-installation-and-configuration-of-pip2-and-pip3/
-
-cd $INSTALLERS_FOLDER
-
-
-printf "Python: install pip & pip3, add neovim python & python3 support...\n"
-printf "================================\n" 
 # PYTHON2 SUPPORT
-if ! command -v pip &> /dev/null
-then
-	printf "pip not found, installing...\n"
-  curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
-	sudo python get-pip2.py
-fi
+  if !(command -v "pip" &> /dev/null)
+  then
+    printf "=========> install pip...\n"
+    curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
+	  sudo python get-pip2.py
+  else
+    printf "---------- pip already installed, skipping...\n"
+  fi
+  
+  printf "=========> install python neovim support...\n"
+  pip install neovim
 
-# PYTHON3 SUPPORT
-if ! command -v pip3 &> /dev/null
-then
-	printf "pip3 not found, installing...\n"
-  curl https://bootstrap.pypa.io/get-pip.py -o get-pip3.py
-	sudo python3 get-pip3.py
-fi
-pip install neovim
-pip3 install neovim
+  if !(command -v "python3" &> /dev/null)
+  then
+    printf "=========> install python3...\n"
+    sudo $PACKAGE_MANAGER -y install python3
+  else
+    printf "---------- python3 already installed, skipping...\n"
+  fi
+
+  if !(command -v "pip3" &> /dev/null)
+  then
+    printf "=========> install pip3...\n"
+    curl https://bootstrap.pypa.io/get-pip.py -o get-pip3.py
+	  sudo python3 get-pip3.py
+  else
+    printf "---------- pip3 already installed, skipping...\n"
+  fi
+
+  printf "=========> install python3 neovim support...\n"
+  pip3 install neovim
 
 # printf "Python: install virtualenv & create .virtualenvs...\n"
 # printf "================================\n"
@@ -210,31 +265,42 @@ pip3 install neovim
 # virtualenv py3 -p $(which python3)
 # source py3/bin/activate
 # pip install neovim
-
-# NODE SUPPORT
-printf "NodeJS: install neovim support (required by CoC)\n"
-printf "================================\n"
-sudo npm install -g neovim
-
-# RUBY SUPPORT
-printf "Ruby: install neovim support\n"
-printf "================================\n"
-if ! command -v gem &> /dev/null
-then
-	printf "gem could not be found\n"
-	exit
-else
-	gem install neovim
 fi
 
-# install vim-plug @see https://github.com/junegunn/vim-plug
-printf "Installing NeoVim plugin manager: junegunn/vim-plug...\n"
-printf "================================\n"
-sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-       https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+if [[ " ${aArgs[*]} " =~ "ruby" ]] || [[ $1 == "all" ]]
+then
+  # RUBY SUPPORT
+  if !(command -v "ruby" &> /dev/null)
+  then
+    printf "=========> install ruby...\n"
+    sudo $PACKAGE_MANAGER -y install ruby
+  else
+    printf "---------- ruby already installed, skipping...\n"
+  fi
 
-printf "NOTE: run :PlugInstall first time launching nvim\n"
+  printf "=========> install ruby neovim support...\n"
+  gem install neovim
+fi
 
-chsh -s /bin/zsh
-zsh
-printf "DONE!\n"
+if [[ " ${aArgs[*]} " =~ "neovim" ]] || [[ $1 == "all" ]]
+then
+  printf "=========> install neovim...\n"
+  curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+  chmod 755 nvim.appimage
+  sudo mv nvim.appimage /usr/local/bin/nvim
+
+  printf "=========> install symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
+  mkdir -p $NVIM_CONFIG_PATH
+  ln -s $INSTALLERS_FOLDER/vimmy/init.vim $NVIM_CONFIG_PATH/init.vim
+  ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json $NVIM_CONFIG_PATH/coc-settings.json
+  mkdir -p ~/.vim_runtime/undodir
+
+  # install vim-plug @see https://github.com/junegunn/vim-plug
+  printf "=========> instal NeoVim plugin manager: junegunn/vim-plug...\n"
+  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
+
+  printf "=========> NOTE: run :PlugInstall first time launching nvim\n"
+fi
+
+printf "========= DONE! =========\n"
