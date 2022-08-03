@@ -54,6 +54,7 @@ case "$os_type" in
 		export PACKAGE_MANAGER=yum
 		export NVIM_CONFIG_PATH=~/.config/nvim
     sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    sudo yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"

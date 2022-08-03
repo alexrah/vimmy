@@ -50,3 +50,9 @@ example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles
 `./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )`
 
 `./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles`
+
+### Troubleshooting
+
+1. Unable to install coc.nvim (fatal:invalid reference: release)
+	* issues caused by git < 2
+	* SOLUTION: update git to version > 2
