@@ -183,6 +183,8 @@ then
     printf "=========> install nvm (Node Version Manager)...\n"
     curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
     export NVM_DIR="$HOME/.nvm"
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
   else
     printf "---------- nvm already installed, skipping...\n"
   fi
@@ -240,7 +242,7 @@ then
   fi
 
   printf "=========> install python3 neovim support...\n"
-  pip3 install neovim
+  sudo pip3 install neovim
 
 # printf "Python: install virtualenv & create .virtualenvs...\n"
 # printf "================================\n"
