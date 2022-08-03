@@ -57,9 +57,8 @@ case "$os_type" in
 		export PACKAGE_MANAGER=yum
 		export NVIM_CONFIG_PATH=~/.config/nvim
     curl --silent --location https://dl.yarnpkg.com/rpm/yarn.repo | sudo tee /etc/yum.repos.d/yarn.repo
-    rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
-    yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-    curl -sL https://rpm.nodesource.com/setup_14.x | sudo bash -
+    sudo rpm --import https://dl.yarnpkg.com/rpm/pubkey.gpg
+    sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
