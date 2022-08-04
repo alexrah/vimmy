@@ -146,6 +146,7 @@ then
     printf "=========> clone alexrah/vimmy in vimmy folder...\n"
     git clone https://alexrah@github.com/alexrah/vimmy 
     cd ~
+    rm -f .zshrc
     ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
     # ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
     ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
