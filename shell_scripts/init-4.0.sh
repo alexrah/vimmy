@@ -112,10 +112,17 @@ then
     printf "=========> ripgrep already installed, skipping...\n"
   fi
 
+
+  if !(test -d fzf)
+  then
+    printf "=========> clone junegunn/fzf.git in fzf folder...\n"
+    git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
+  else
+    printf "=========> fzf folder already exists, skipping...\n"
+  fi
   if !(command -v "fzf" &> /dev/null)
   then
     printf "=========> install fzf...\n"
-    git clone --depth 1 https://github.com/junegunn/fzf.git $INSTALLERS_FOLDER/fzf
     cd $INSTALLERS_FOLDER/fzf
     ./install --bin
     sudo cp bin/fzf /usr/local/bin/fzf
