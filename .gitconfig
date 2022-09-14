@@ -13,3 +13,5 @@
 [user]
 	email = alexrah@gmail.com
 	name = Alessandro Stoppato
+[receive]
+	advertisePushOptions = true
