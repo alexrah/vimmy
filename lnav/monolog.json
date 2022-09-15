@@ -1,32 +1,42 @@
 {
-    "$schema": "https://lnav.org/schemas/format-v1.schema.json",
-    "monolog": {
-        "title": "Monolog file format for *.log files generated",
-        "description": "Format file generated from regex101 entry -- https://regex101.com/r/E8JThH/2",
-        "url": "https://bitbucket.org/vareseweb/v2media_paywall/raw/e608dd0325aee94d119a6c3440d2c4e8c9a0e641/backend/classes/src/V2mPaywall/Logger.php",
-        "regex": {
-            "std": {
-                "pattern": "^(?<timestamp>\\[\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2}\\]) (?<level>\\w+) >> (?<component>[a-zA-Z0-9\\\\]+) >> (?<message>.+) >> (?<body>.*)$"
-            }
-        },
-        "value": {
-            "component": {
-                "kind": "string"
-            },
-            "level": {
-                "kind": "string"
-            },
-            "message": {
-                "kind": "string"
-            },
-            "timestamp": {
-                "kind": "string"
-            }
-        },
-        "sample": [
-            {
-                "line": "[2022-09-14 17:13:54] WARNING >> V2mPaywall\\BackendUtils >> No paypalData for user: davideligato@gmail.com >> {\"iStatus\":404,\"sMessage\":\"No paypalData for user: davideligato@gmail.com\",\"mPayload\":[],\"0\":"
-            }
-        ]
-    }
-}
+  "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+  "monolog": {
+    "title": "Monolog file format for *.log files generated",
+    "description": "Format file generated from regex101 entry -- https://regex101.com/r/E8JThH/2",
+    "url": "https://bitbucket.org/vareseweb/v2media_paywall/raw/e608dd0325aee94d119a6c3440d2c4e8c9a0e641/backend/classes/src/V2mPaywall/Logger.php",
+    "regex": {
+      "std": {
+        "pattern": "^\\[(?<timestamp>\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}:\\d{2})\\] (?<level>\\w+) >> (?<component>[a-zA-Z0-9\\\\]+) >> (?<message>.+) >> (?<body>.*)$"
+      }
+    },
+    "level-field" : "level",
+    "level": {
+      "error" : "ERROR",
+      "warning" : "WARNING",
+      "debug" : "DEBUG"
+    },
+
+    "value": {
+      "component": {
+        "kind": "string",
+        "identifier" : true
+      },
+      "message": {
+        "kind": "string"
+      },
+      "timestamp": {
+        "kind": "string"
+      },
+      "body": {
+        "kind": "string",
+        "hidden": false
+      }
+
+    },
+    "sample": [
+      {
+        "line": "[2022-09-14 17:13:54] WARNING >> V2mPaywall\\BackendUtils >> No paypalData for user: davideligato@gmail.com >> {\"iStatus\":404,\"sMessage\":\"No paypalData for user: davideligato@gmail.com\",\"mPayload\":[],\"0\":"
+        }
+    ]
+      }
+  }

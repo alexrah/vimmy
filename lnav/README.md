@@ -1,4 +1,5 @@
 @see [LNAV](https://github.com/tstack/lnav/)
+@see [LNAV custom log formats](https://docs.lnav.org/en/latest/formats.html)
 
 - monolog.json
 custom format for monolog generated .log files 
