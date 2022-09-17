@@ -1,0 +1,14 @@
+{
+    "ui": {
+        "keymap-defs": {
+            "default": {
+                "x07": {
+                    "command": ":show-unmarked-lines"
+                },
+                "x08": {
+                    "command": ":hide-unmarked-lines"
+                }
+            }
+        }
+    }
+}
