@@ -77,6 +77,7 @@ alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 
 alias tmux-persistence="$DOTFILES/vimmy/command_line_tools/tmux-persistence/tmux-persist.rb"
 alias tmux-session="$DOTFILES/vimmy/command_line_tools/tmux-persistence/tmux-session"
 alias speedtest="$DOTFILES/vimmy/command_line_tools/speedtest_cli.py"
+alias speedtest3="$DOTFILES/vimmy/command_line_tools/speedtest_cli3.py"
 alias netspeed="$DOTFILES/vimmy/command_line_tools/netspeed.sh"
 # reverse engineer Dockerfile from Docker image
 alias whaler="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
