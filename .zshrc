@@ -104,6 +104,7 @@ alias glt='git log --tags --no-walk'
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
 
 alias phps='open -na "PhpStorm.app" --args "$@"'
+alias pyc='open -na "PyCharm CE.app" --args "$@"'
 
 # Git Repo Cleaner - @see https://rtyley.github.io/bfg-repo-cleaner/
 alias bfg='java -jar $DOTFILES/bfg.jar'
