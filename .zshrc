@@ -163,10 +163,21 @@ then
   export NODE_PATH=`npm root -g`
 fi
 
+# PYTHON
 # make neovim works under python virtual_env
 if [[ -n $VIRTUAL_ENV && -e "${VIRTUAL_ENV}/bin/activate" ]]; then
   source "${VIRTUAL_ENV}/bin/activate"
 fi
 
+if command -v pdm &> /dev/null
+then
+  eval "$(pdm --pep582)"
+fi
+
+#HOST ASCII ART
 # to generate it, got to: https://patorjk.com/software/taag/#p=display&c=echo&f=Big&t=MacBookPro
-source /etc/host.ascii
+HOSTASCIIARTFILE="/etc/host.ascii"
+if test -f $HOSTASCIIARTFILE
+then
+  source $HOSTASCIIARTFILE
+fi
