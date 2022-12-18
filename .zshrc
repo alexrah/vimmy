@@ -32,7 +32,10 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git osx github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm)
+
+# Oh-My-Zsh NVM plugin config
+zstyle ':omz:plugins:nvm' autoload yes
 
 source $ZSH/oh-my-zsh.sh
 
@@ -153,15 +156,6 @@ case "$OSTYPE" in
       export LANG=en_US.UTF-8;;
   esac
 
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-if command -v npm &> /dev/null
-then
-  export NODE_PATH=`npm root -g`
-fi
 
 # PYTHON
 # make neovim works under python virtual_env
