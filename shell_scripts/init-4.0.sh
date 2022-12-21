@@ -31,7 +31,7 @@ IFS=',' read -ra aArgs <<< "$1"
 # CREATE a condition to deal with OS
 if ( test -e /etc/os-release )
 then
-  os_type=$(cat /etc/os-release | head -n 1 | sed -r 's/.*"(.*)\"/\1/g')
+  os_type=$(cat /etc/os-release | grep '^NAME=' | sed -r 's/.*"(.*)\"/\1/g')
 else
   os_type=$OSTYPE
 fi
@@ -216,17 +216,17 @@ if [[ " ${aArgs[*]} " =~ "python" ]] || [[ $1 == "all" ]]
 then
 
 # PYTHON2 SUPPORT
-  if !(command -v "pip" &> /dev/null)
-  then
-    printf "=========> install pip...\n"
-    curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
-	  sudo python get-pip2.py
-  else
-    printf "=========> pip already installed, skipping...\n"
-  fi
-  
-  printf "=========> install python neovim support...\n"
-  pip install neovim
+  # if !(command -v "pip" &> /dev/null)
+  # then
+  #   printf "=========> install pip...\n"
+  #   curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
+	#   sudo python get-pip2.py
+  # else
+  #   printf "=========> pip already installed, skipping...\n"
+  # fi
+  #
+  # printf "=========> install python neovim support...\n"
+  # pip install neovim
 
   if !(command -v "python3" &> /dev/null)
   then
