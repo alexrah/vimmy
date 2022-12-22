@@ -26,12 +26,3 @@ chown 1000:1000 varesenews
 cd varesenews
 su varesenews
 
-# download init-4.0.sh
-curl -O https://raw.githubusercontent.com/alexrah/vimmy/master/shell_scripts/init-4.0.sh
-
-# make it executable
-chmod 755 init-4.0.sh
-
-# launch script
-./init-4.0.sh all
-
