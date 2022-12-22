@@ -19,7 +19,8 @@ Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
-Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+" Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
+Plug 'norcalli/nvim-colorizer.lua'
 Plug 'https://github.com/tomtom/tcomment_vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
@@ -193,6 +194,10 @@ if (has('termguicolors'))
   set termguicolors
 endif
 " MATERIAL.VIM END
+
+" NVIM-COLORIZER.LUA CONFIG START
+lua require 'colorizer'.setup()
+" NVIM-COLORIZER.LUA CONFIG END
 
 " COC CONFIG START
 let g:coc_node_path = trim(system('which node'))
