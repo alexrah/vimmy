@@ -3,6 +3,9 @@
 	eol = lf
 	editor = nvim
   excludesfile = ~/.gitexcludes
+[include]
+  # Custom config file: for instance to add specific credential.helper
+  path = ~/.gitconfig-custom
 [push]
 	default = matching
 [color]
