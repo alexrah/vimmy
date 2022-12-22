@@ -45,8 +45,9 @@ case "$os_type" in
 		printf "OS DETECTED: DEBIAN/UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
 		export NVIM_CONFIG_PATH=~/.config/nvim
-    sudo add-apt-repository ppa:x4121/ripgrep
-    sudo add-apt-repository ppa:git-core/ppa
+    # no longer required on newer versions
+    # sudo add-apt-repository ppa:x4121/ripgrep
+    # sudo add-apt-repository ppa:git-core/ppa
     sudo apt-get update
     ;;
 	"CentOS Linux")
