@@ -287,7 +287,9 @@ then
     printf "=========> install neovim...\n"
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
     chmod 755 nvim.appimage
-    sudo mv nvim.appimage /usr/local/bin/nvim
+    ./nvim.appimage --appimage-extract
+    sudo mv squashfs-root /usr/local/bin/squashfs-root-nvim
+    sudo ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
   fi
 
   printf "=========> install symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
