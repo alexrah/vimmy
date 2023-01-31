@@ -163,8 +163,8 @@ let NERDTreeChDirMode = 2
 " NERDTREE END
 
 " FZF START
+let $FZF_DEFAULT_COMMAND = "rg --hidden --files -g '!.git/'"
 nnoremap <silent> <Leader>f :Files<CR>
-let $FZF_DEFAULT_COMMAND = 'rg --hidden --files'
 
 function! RipgrepFzf(query, fullscreen)
   let command_fmt = 'rg --column --line-number --no-heading --color=always --smart-case -- %s || true'
