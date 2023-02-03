@@ -176,3 +176,6 @@ if test -f $HOSTASCIIARTFILE
 then
   source $HOSTASCIIARTFILE
 fi
+
+#KUBERNETES
+export KUBECONFIG=${HOME}/.kube/docker.config.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/config:${HOME}/.kube/jrliban.kubeconfig.yml
