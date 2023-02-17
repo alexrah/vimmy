@@ -74,5 +74,8 @@
 		"wordpress"
 	],
 	 "diagnostic.checkCurrentLine": true,
-	 "suggest.noselect": false
+	 "suggest.noselect": false,
+    "yaml.schemas": {
+      "kubernetes": "/*.yaml"
+  }
 }
