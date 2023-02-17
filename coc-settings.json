@@ -76,6 +76,6 @@
 	 "diagnostic.checkCurrentLine": true,
 	 "suggest.noselect": false,
     "yaml.schemas": {
-      "kubernetes": "/*.yaml"
+      "kubernetes": ["/*.yaml","/*.yml"]
   }
 }
