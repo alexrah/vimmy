@@ -215,7 +215,8 @@ let g:coc_global_extensions = [
   \ 'coc-sql',
   \ 'coc-db',
   \ 'coc-webpack',
-  \ 'coc-highlight'
+  \ 'coc-highlight',
+  \ 'coc-yaml'
   \ ]
 
 " GoTo code navigation.
