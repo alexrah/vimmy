@@ -108,6 +108,7 @@ alias gm='git submodule foreach git checkout master; git submodule foreach git p
 alias gl='git log --graph'
 alias gla='git log --graph --all'
 alias glt='git log --tags --no-walk'
+alias grso='git remote show origin'
 
 # Fuzzy search preview files
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
