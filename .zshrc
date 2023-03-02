@@ -98,7 +98,6 @@ alias gb='git branch'
 alias gca='git commit -a -m'
 alias gc='git commit -m'
 alias gd='git diff --submodule=log'
-alias gdo='gd | bat'
 alias gt='git checkout'
 alias gf='git fetch'
 alias gfa='git fetch --all'
@@ -109,6 +108,11 @@ alias gl='git log --graph'
 alias gla='git log --graph --all'
 alias glt='git log --tags --no-walk'
 alias grso='git remote show origin'
+
+# Git alias gdo passing arg to gd before piping stdin into bat
+function gdo(){
+  gd $1 | bat
+}
 
 # Fuzzy search preview files
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
