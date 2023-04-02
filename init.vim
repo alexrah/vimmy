@@ -216,7 +216,8 @@ let g:coc_global_extensions = [
   \ 'coc-db',
   \ 'coc-webpack',
   \ 'coc-highlight',
-  \ 'coc-yaml'
+  \ 'coc-yaml',
+  \ 'coc-prisma'
   \ ]
 
 " GoTo code navigation.
