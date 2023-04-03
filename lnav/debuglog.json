@@ -1,0 +1,47 @@
+{
+  "$schema": "https://lnav.org/schemas/format-v1.schema.json",
+  "debuglog": {
+    "title": "Wordpress debug.log file format",
+    "description": "Format file generated from regex101 entry -- https://regex101.com/r/9p3Mym/1",
+    "url": "https://regex101.com/r/9p3Mym/1",
+    "regex": {
+      "std": {
+        "pattern": "^\\[(?<date>\\d{2}-\\w{3}-\\d{4}) (?<timestamp>\\d{2}:\\d{2}:\\d{2} UTC)\\] PHP (?<level>[^:]+):  (?<function>.+): (?<message>[^\\/]+)(?<file>\\D+)(?<line_number>\\d+)"
+      }
+    },
+    "level-field" : "level",
+    "level": {
+      "fatal" : "Fatal error",
+      "warning" : "Warning",
+      "info" : "Deprecated"
+    },
+
+    "value": {
+      "date" : {
+        "kind": "string"
+      },
+      "timestamp": {
+        "kind": "string"
+      },
+      "function": {
+        "kind": "string",
+        "identifier" : true
+      },
+      "message": {
+        "kind": "string",
+        "hidden": false
+      },
+      "file":{
+        "kind": "string"
+      },
+      "line_number": {
+        "kind": "integer"
+      }
+    },
+    "sample": [
+      {
+        "line": "[30-Mar-2023 23:07:47 UTC] PHP Fatal error:  Uncaught Error: Undefined constant \"vaaa\" in /home/varesenews/staging.varesenews.it/wp-content/themes/editheme/feed-alocal.php:11"
+        }
+    ]
+      }
+  }
