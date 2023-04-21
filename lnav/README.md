@@ -1,16 +1,34 @@
 @see [LNAV](https://github.com/tstack/lnav/)
 @see [LNAV custom log formats](https://docs.lnav.org/en/latest/formats.html)
 
+### Install Custom shortcuts
+* CTRL + h => Hide unmarked lines
+* CTRL + g => Show unmarked lines
+
+```bash
+ln -s ~/.dotfiles/vimmy/lnav/config.json ~/.config/lnav/config.json
+```
+
+### Install WP debug.log format
+```bash
+ln -s ~/.dotfiles/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+```
+
+### Install PHP-FPM log format
+```bash
+lnav -i https://github.com/damiankloip/lnav-php.git
+```
+
+### Install Monolog log format
 - monolog.json
 custom format for monolog generated .log files 
 @see implementation here: [Logger.php](https://bitbucket.org/vareseweb/v2media_paywall/raw/e608dd0325aee94d119a6c3440d2c4e8c9a0e641/backend/classes/src/V2mPaywall/Logger.php)
 
-ln -s ~/.dotfiles/vimmy/lnav/config.json ~/.config/lnav/config.json
+```bash
 ln -s ~/.dotfiles/vimmy/lnav/monolog.json ~/.config/lnav/formats/installed/monolog.json
-ln -s ~/.dotfiles/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+```
 
-
-### Monolog requirements
+#### Monolog requirements
 ```
 		/**
 		 * Based on  @see LineFormatter::SIMPLE_FORMAT
