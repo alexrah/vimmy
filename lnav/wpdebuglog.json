@@ -11,7 +11,7 @@
     },
     "level-field" : "level",
     "level": {
-      "fatal" : "Fatal error",
+      "fatal" : "Fatal error|Parse error",
       "warning" : "Warning",
       "info" : "Deprecated"
     },
