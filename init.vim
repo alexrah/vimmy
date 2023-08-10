@@ -20,7 +20,7 @@ Plug 'mattn/emmet-vim'
 Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
-Plug 'norcalli/nvim-colorizer.lua'
+" Plug 'norcalli/nvim-colorizer.lua'
 Plug 'https://github.com/tomtom/tcomment_vim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'https://github.com/zenbro/mirror.vim'
@@ -196,7 +196,7 @@ endif
 " MATERIAL.VIM END
 
 " NVIM-COLORIZER.LUA CONFIG START
-lua require 'colorizer'.setup()
+" lua require 'colorizer'.setup()
 " NVIM-COLORIZER.LUA CONFIG END
 
 " COC CONFIG START
