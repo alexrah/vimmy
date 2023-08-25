@@ -77,5 +77,6 @@
 	 "suggest.noselect": false,
     "yaml.schemas": {
       "kubernetes": ["/*.yaml","/*.yml"]
-  }
+  },
+  "snippets.ultisnips.pythonPrompt": false
 }
