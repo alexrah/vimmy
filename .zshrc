@@ -56,9 +56,8 @@ set -o vi
 export PATH=$PATH:~/.local/bin
 # start alias PATH
 export EDITOR=nvim
-
 # @see https://github.com/zsh-users/zsh-autosuggestions#configuration 
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=8'
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 export DOTFILES=~/.dotfiles
 alias wpscan="~/wpscan/wpscan.rb"
