@@ -17,7 +17,7 @@ Plug 'junegunn/fzf.vim'
 Plug 'https://github.com/rakr/vim-one'
 Plug 'https://github.com/StanAngeloff/php.vim'
 Plug 'mattn/emmet-vim'
-Plug 'SirVer/ultisnips'
+" Plug 'SirVer/ultisnips'
 Plug 'honza/vim-snippets'
 " Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }
 " Plug 'norcalli/nvim-colorizer.lua'
@@ -275,7 +275,7 @@ let g:user_emmet_expandabbr_key = ',,'
 
 " ULTISNIPS CONFIG START
 " ULTISNIPS snippets engine expand keyword
-let g:UltiSnipsExpandTrigger=".."
+" let g:UltiSnipsExpandTrigger=".."
 " ULTISNIPS CONFIG END
 "
 " shift+arrow selection
