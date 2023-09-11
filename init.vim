@@ -203,7 +203,7 @@ lua require 'colorizer'.setup()
 let g:coc_node_path = trim(system('which node'))
 let g:coc_global_extensions = [
   \ 'coc-phpls', 
-  \ 'coc-python',
+  \ 'coc-pyright',
   \ 'coc-sh',
   \ 'coc-tsserver',
   \ 'coc-html',
