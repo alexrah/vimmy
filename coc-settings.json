@@ -76,7 +76,8 @@
 	 "diagnostic.checkCurrentLine": true,
 	 "suggest.noselect": false,
     "yaml.schemas": {
-      "kubernetes": ["/*.yaml","/*.yml"]
+      "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json":["docker-compose.yml"],
+      "kubernetes": ["/*.yaml"]
   },
   "snippets.ultisnips.pythonPrompt": false
 }
