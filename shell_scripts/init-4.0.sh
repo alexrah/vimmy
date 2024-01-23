@@ -42,13 +42,18 @@ case "$os_type" in
 	"cygwin")
 		printf "OS DETECTED: WINDOWS CygWin\n";;
 	"Ubuntu")
-		printf "OS DETECTED: DEBIAN/UBUNTU\n"
+		printf "OS DETECTED: UBUNTU\n"
 		export PACKAGE_MANAGER=apt-get
 		export NVIM_CONFIG_PATH=~/.config/nvim
     # no longer required on newer versions
     # sudo add-apt-repository ppa:x4121/ripgrep
     # sudo add-apt-repository ppa:git-core/ppa
     sudo apt-get update
+    ;;
+  "Debian GNU/Linux")
+		printf "OS DETECTED: DEBIAN\n"
+		export PACKAGE_MANAGER=apt-get
+		export NVIM_CONFIG_PATH=~/.config/nvim
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
@@ -65,6 +70,10 @@ case "$os_type" in
 		printf "OS DETECTED: MacOS\n"
 		export PACKAGE_MANAGER=brew
 		export NVIM_CONFIG_PATH=~/.config/nvim;;
+  *)
+    printf "No OS DETECTED\n"
+    exit
+    ;;
 esac
 
 printf "start installing packages...\n"
