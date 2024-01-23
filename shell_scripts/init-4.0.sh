@@ -54,6 +54,7 @@ case "$os_type" in
 		printf "OS DETECTED: DEBIAN\n"
 		export PACKAGE_MANAGER=apt-get
 		export NVIM_CONFIG_PATH=~/.config/nvim
+    sudo apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
