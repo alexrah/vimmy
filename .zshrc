@@ -40,6 +40,7 @@ zstyle ':omz:plugins:nvm' autoload yes
 # Oh-My-Zsh Docker autocomplete config
 zstyle ':completion:*:*:docker:*' option-stacking yes
 zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':omz:plugins:docker' legacy-completion yes
 
 
 source $ZSH/oh-my-zsh.sh
