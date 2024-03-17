@@ -117,7 +117,7 @@ permission_mode=0
 filetype_mode=1
 free_space=true
 
-left_panel_size=58
+left_panel_size=100
 top_panel_size=0
 horizontal_split=false
 vertical_equal=true
