@@ -12,6 +12,7 @@ then
   printf "zsh-default : set zsh as default shell\n"
   printf "tools : (fzf requires git) install tmux, ripgrep, fzf, bat\n"
   printf "dotfiles : (requires git) install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
+  printf "lnav : install Log File Navigator (lnav) advanced log file viewer with Wordpress debug.log support\n"
   printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
   printf "python : install python pip, python3, pip3 and neovim support\n"
   #  printf "ruby : install ruby and neovim support\n"
@@ -186,6 +187,29 @@ then
   else
     printf "=========> folder oh-my-zsh already exists, skipping...\n"
   fi
+fi
+
+cd $INSTALLERS_FOLDER
+
+if [[ " ${aArgs[*]} " =~ "lnav" ]] || [[ $1 == "all" ]]
+then
+  if !(command -v "lnav" &> /dev/null)
+  then
+    printf "=========> install lnav...\n"
+    cd $INSTALLERS_FOLDER
+    curl -LO https://github.com/tstack/lnav/releases/download/v0.12.2/lnav-0.12.2-linux-musl-x86_64.zip
+    unzip lnav-0.12.2-linux-musl-x86_64.zip
+    sudo mv lnav-0.12.2/lnav /usr/local/bin/lnav
+    # need to launch lnav once to generate defult config in .config folder, then symlinks can be created
+    timeout 1s lnav
+  else
+    printf "=========> lnav already installed, skipping...\n"
+  fi
+
+  printf "=========> lnav symlinks configuration...\n"
+  ln -s $INSTALLERS_FOLDER/vimmy/lnav/config.json ~/.config/lnav/config.json
+  ln -s $INSTALLERS_FOLDER/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+
 fi
 
 cd $INSTALLERS_FOLDER
