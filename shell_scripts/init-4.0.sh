@@ -296,7 +296,14 @@ then
   if !(command -v "nvim" &> /dev/null)
   then
     printf "=========> install neovim...\n"
-    curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    
+    if [[ $PACKAGE_MANAGER == "yum" ]]
+    then
+      curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+    else
+      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+    fi
+
     chmod 755 nvim.appimage
     ./nvim.appimage --appimage-extract
     sudo mv squashfs-root /usr/local/bin/squashfs-root-nvim
