@@ -147,7 +147,7 @@ then
     cd $INSTALLERS_FOLDER
     curl -L https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
     tar xvzf bat.tar.gz
-    cd bat-v0.21.0-x86_64-unknown-linux-musl
+    cd bat-v0.24.0-x86_64-unknown-linux-musl
     sudo mv bat /usr/local/bin/bat
   else
     printf "=========> bat already installed, skipping...\n"
