@@ -183,6 +183,14 @@ then
   # eval "$(pdm --pep582)"
 fi
 
+# initialize pyenv Python Version Manager
+if (command -v "pyenv" &> /dev/null)
+then
+  export PYENV_ROOT="$HOME/.pyenv"
+  eval "$(pyenv init -)"
+fi
+
+
 #HOST ASCII ART
 # to generate it, got to: https://patorjk.com/software/taag/#p=display&c=echo&f=Big&t=MacBookPro
 HOSTASCIIARTFILE="/etc/host.ascii"
