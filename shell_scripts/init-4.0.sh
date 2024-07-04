@@ -356,7 +356,8 @@ then
   printf "=========> NOTE: run :PlugInstall first time launching nvim\n"
 fi
 
-if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
+# if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
+if [[ " ${aArgs[*]} " =~ "zsh-default" ]] 
 then
   printf "=========> set zsh as default shell...\n"
   chsh -s /bin/zsh
