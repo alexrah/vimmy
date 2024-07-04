@@ -200,15 +200,18 @@ then
     curl -LO https://github.com/tstack/lnav/releases/download/v0.12.2/lnav-0.12.2-linux-musl-x86_64.zip
     unzip lnav-0.12.2-linux-musl-x86_64.zip
     sudo mv lnav-0.12.2/lnav /usr/local/bin/lnav
-    # need to launch lnav once to generate defult config in .config folder, then symlinks can be created
-    timeout 1s lnav
   else
     printf "=========> lnav already installed, skipping...\n"
   fi
 
-  printf "=========> lnav symlinks configuration...\n"
-  ln -s $INSTALLERS_FOLDER/vimmy/lnav/config.json ~/.config/lnav/config.json
-  ln -s $INSTALLERS_FOLDER/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+  if !(test -d ~/.config/lnav)
+  then
+    # need to launch lnav once to generate defult config in .config folder, then symlinks can be created
+    timeout 1s lnav
+    printf "=========> lnav symlinks configuration...\n"
+    ln -s $INSTALLERS_FOLDER/vimmy/lnav/config.json ~/.config/lnav/config.json
+    ln -s $INSTALLERS_FOLDER/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+  fi
 
 fi
 
