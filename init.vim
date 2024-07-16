@@ -217,7 +217,8 @@ let g:coc_global_extensions = [
   \ 'coc-webpack',
   \ 'coc-highlight',
   \ 'coc-yaml',
-  \ 'coc-prisma'
+  \ 'coc-prisma',
+  \ '@yaegassy/coc-pylsp'
   \ ]
 
 " GoTo code navigation.
