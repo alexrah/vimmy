@@ -79,5 +79,6 @@
       "https://raw.githubusercontent.com/compose-spec/compose-spec/master/schema/compose-spec.json":["docker-compose.yml"],
       "kubernetes": ["/*.yaml"]
   },
-  "snippets.ultisnips.pythonPrompt": false
+  "snippets.ultisnips.pythonPrompt": false,
+  "python.pythonPath":"~/.dotfiles/vimmy/shell_scripts/coc-pyright-venv-support.sh"
 }
