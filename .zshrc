@@ -200,6 +200,6 @@ then
 fi
 
 #KUBERNETES
-export KUBECONFIG=${HOME}/.kube/docker.config.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/config:${HOME}/.kube/jrliban.kubeconfig.yml:${HOME}/.kube/minikube.kubeconfig.yml
+export KUBECONFIG=${HOME}/.kube/docker.config.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/minikube.kubeconfig.yml:${HOME}/.kube/pctdev.kubeconfig.yml
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
