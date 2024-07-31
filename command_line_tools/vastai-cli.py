@@ -331,14 +331,20 @@ class CliCommands:
         vastai_cli_search_query = ''
 
         if self.parsed_args.search_level == 'high':
-            pass
+            vastai_cli_search_query = (
+                '"disk_space>=16 verified=True rentable=True dph<=0.60 total_flops>=130 gpu_ram>=24 '
+                'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=150 inet_down_cost<=0.001 '
+                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
         elif self.parsed_args.search_level == 'mid':
             vastai_cli_search_query = (
                 '"disk_space>=16 verified=True rentable=True dph<=0.30 total_flops>=50 gpu_ram>=24 '
                 'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=100 inet_down_cost<=0.001 '
                 'inet_up_cost<=0.001 reliability>=0.95 external=False "')
         elif self.parsed_args.search_level == 'low':
-            pass
+            vastai_cli_search_query = (
+                '"disk_space>=16 verified=True rentable=True dph<=0.15 total_flops>=20 gpu_ram>=15 '
+                'cpu_cores_effective>=8 cpu_ram>=32 dlperf>=20 inet_down_cost<=0.001 '
+                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
 
         vastai_cli_search_query_output = '--raw'
         vastai_cli_search_query_order = '-o dlperf-'
