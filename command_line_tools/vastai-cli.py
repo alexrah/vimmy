@@ -1,11 +1,9 @@
 #!/usr/bin/python3
 import os
 import json
-from typing import TypedDict, List, Dict, Literal, Union
+from typing import List, Optional, Literal, Union, cast
 from dataclasses import dataclass
-
-
-# print(f'argument: {sys.argv[1]}')
+import argparse
 
 
 def print_table(dict_data, col_list=None):
@@ -131,7 +129,7 @@ json_string = """[
 """
 
 results_dict = json.loads(json_string)
-
+# print_table(results_dict)
 
 @dataclass
 class FieldsToKeep:
@@ -238,6 +236,10 @@ class FieldsRaw:
     webpage: Union[None, str]
 
 
+@dataclass
+class ParsedArgs:
+    search_level: Optional[Literal['high', 'mid', 'low']]
+
 # class FieldsProcessed(TypedDict):
 #     id: int
 #     cuda_max_good: float
@@ -245,11 +247,12 @@ class FieldsRaw:
 #     gpu_name:
 #
 
+
 class FieldsMapper:
 
     def __init__(self, fields: List[FieldsRaw]) -> None:
         self.__fields_list_raw = fields
-        self.__fields_list_processed = []
+        self.__fields_list_processed: List = []
         self.__process_fields()
 
     __fields_to_keep: List[FieldsToKeep] = [
@@ -310,25 +313,64 @@ class FieldsMapper:
         return self.__fields_list_processed
 
 
-vastai_cli_search_base_command = 'vastai search offers'
-vastai_cli_search_query_highend = (
-    '"disk_space>=16 verified=True rentable=True dph<=0.30 total_flops>=50 gpu_ram>=24 '
-    'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=100 inet_down_cost<=0.003 '
-    'inet_up_cost<=0.003 reliability>=0.95 external=False "')
+class CliCommands:
+    command_type: Literal['search']
+    parsed_args: ParsedArgs
 
-json_formatter = '([\'ID\',\'NAME\'] | (., map(length*\'-\'))), (.[] | [.id, .gpu_name]) | @tsv'
-# vastai_cli_search_query_output = f"--raw | jq -r \"{json_formatter}\" | column -t"
-vastai_cli_search_query_output = '--raw'
-vastai_cli_search_query_order = '-o dlperf-'
+    def __init__(self):
+        self.__parse_args()
+        if self.parsed_args.search_level is not None:
+            self.__search()
 
-search_highend_stream = os.popen(f"{vastai_cli_search_base_command}"
-                                 f" {vastai_cli_search_query_highend}"
-                                 f" {vastai_cli_search_query_order}"
-                                 f" {vastai_cli_search_query_output}")
+    def __search(self):
+        vastai_cli_search_base_command = 'vastai search offers'
 
-search_results = [FieldsRaw(**item) for item in json.loads(search_highend_stream.read())]
+        vastai_cli_search_query = ''
 
-fields = FieldsMapper(search_results)
-print_table(fields.get_fields())
+        if self.parsed_args.search_level == 'high':
+            pass
+        elif self.parsed_args.search_level == 'mid':
+            vastai_cli_search_query = (
+                '"disk_space>=16 verified=True rentable=True dph<=0.30 total_flops>=50 gpu_ram>=24 '
+                'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=100 inet_down_cost<=0.001 '
+                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
+        elif self.parsed_args.search_level == 'low':
+            pass
 
-# print_table(results_dict)
+        vastai_cli_search_query_output = '--raw'
+        vastai_cli_search_query_order = '-o dlperf-'
+
+        search_stream = os.popen(f"{vastai_cli_search_base_command}"
+                                         f" {vastai_cli_search_query}"
+                                         f" {vastai_cli_search_query_order}"
+                                         f" {vastai_cli_search_query_output}")
+
+        search_data = search_stream.read()
+        search_results = ''
+        try:
+            search_results = [FieldsRaw(**item) for item in json.loads(search_data)]
+        except ValueError:
+            print('Decoding JSON has failed')
+            print(search_data)
+
+        if len(search_results) > 0:
+            fields = FieldsMapper(search_results)
+            print_table(fields.get_fields())
+        else:
+            print('No search results')
+
+    def __parse_args(self):
+        parser = argparse.ArgumentParser()
+        # parser.add_argument('search', help='Search command', choices=['high', 'mid', 'low'])
+        #
+        search_subparser = parser.add_subparsers()
+        search_parser = search_subparser.add_parser('search', help='Search command')
+        search_parser.add_argument('search_level', help='GPU types', choices=['high', 'mid', 'low'])
+        # search_parser.add_argument('mid', help='mid-end GPUs')
+        # search_parser.add_argument('low', help='low-end GPUs')
+
+        self.parsed_args = cast(ParsedArgs, parser.parse_args())
+
+
+if __name__ == '__main__':
+    CliCommands()
