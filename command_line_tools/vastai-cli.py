@@ -239,6 +239,9 @@ class FieldsRaw:
 @dataclass
 class ParsedArgs:
     search_level: Optional[Literal['high', 'mid', 'low']]
+    search_create: bool
+    return_first_machine_id: bool
+
 
 # class FieldsProcessed(TypedDict):
 #     id: int
@@ -314,12 +317,12 @@ class FieldsMapper:
 
 
 class CliCommands:
-    command_type: Literal['search']
     parsed_args: ParsedArgs
+    first_machine_id_returned: int
 
     def __init__(self):
         self.__parse_args()
-        if self.parsed_args.search_level is not None:
+        if hasattr(self.parsed_args, 'search_level'):
             self.__search()
 
     def __search(self):
@@ -355,9 +358,22 @@ class CliCommands:
 
         if len(search_results) > 0:
             fields = FieldsMapper(search_results)
-            print_table(fields.get_fields())
+            fields_data = fields.get_fields()
+            self.first_machine_id_returned = fields_data[0].get('ID')
+
+            if self.parsed_args.return_first_machine_id:
+                print(self.first_machine_id_returned)
+            else:
+                print_table(fields_data)
+
+            if self.parsed_args.search_create:
+                self.__create()
+
         else:
             print('No search results')
+
+    def __create(self):
+        print(f"creating instance from machine id: {self.first_machine_id_returned}")
 
     def __parse_args(self):
         parser = argparse.ArgumentParser()
@@ -366,8 +382,8 @@ class CliCommands:
         search_subparser = parser.add_subparsers()
         search_parser = search_subparser.add_parser('search', help='Search command')
         search_parser.add_argument('search_level', help='GPU types', choices=['high', 'mid', 'low'])
-        # search_parser.add_argument('mid', help='mid-end GPUs')
-        # search_parser.add_argument('low', help='low-end GPUs')
+        search_parser.add_argument('--create', help='Create instance using first item returned', action='store_true', dest='search_create')
+        search_parser.add_argument('--first-id', help='Return only the first machine ID', action='store_true', dest='return_first_machine_id')
 
         self.parsed_args = cast(ParsedArgs, parser.parse_args())
 
