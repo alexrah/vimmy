@@ -1,9 +1,9 @@
 #!/usr/bin/python3
-import sys
 import os
 import json
 from typing import TypedDict, List, Dict, Literal, Union
 from dataclasses import dataclass
+
 
 # print(f'argument: {sys.argv[1]}')
 
@@ -137,7 +137,7 @@ results_dict = json.loads(json_string)
 class FieldsToKeep:
     name: str
     label: str
-    transform: Literal[None, 'count', 'mb_to_gb', 'float_to_int', 'float_to_float', 'minutes_to_days']
+    transform: Literal[None, 'count', 'mb_to_gb', 'gb_to_tb', 'float_to_int', 'float_to_float', 'minutes_to_days', 'hours_to_week', 'hours_to_month']
 
 
 @dataclass
@@ -249,7 +249,6 @@ class FieldsMapper:
 
     def __init__(self, fields: List[FieldsRaw]) -> None:
         self.__fields_list_raw = fields
-        print(self.__fields_list_raw)
         self.__fields_list_processed = []
         self.__process_fields()
 
@@ -264,11 +263,13 @@ class FieldsMapper:
         FieldsToKeep(name='cpu_ram', label='RAM', transform='mb_to_gb'),
         FieldsToKeep(name='disk_space', label='Disk(GB)', transform='float_to_int'),
         FieldsToKeep(name='dph_total', label='$/hr', transform='float_to_float'),
+        FieldsToKeep(name='dph_total', label='$/w', transform='hours_to_week'),
+        FieldsToKeep(name='dph_total', label='$/m', transform='hours_to_month'),
         FieldsToKeep(name='dlperf', label='DLP', transform='float_to_float'),
         FieldsToKeep(name='inet_up', label='UP Mbps', transform=None),
-        FieldsToKeep(name='inet_up_cost', label='UP $', transform='float_to_float'),
+        FieldsToKeep(name='inet_up_cost', label='UP T/$', transform='gb_to_tb'),
         FieldsToKeep(name='inet_down', label='DOWN Mbps', transform=None),
-        FieldsToKeep(name='inet_down_cost', label='DOWN $', transform='float_to_float'),
+        FieldsToKeep(name='inet_down_cost', label='DOWN T/$', transform='gb_to_tb'),
         FieldsToKeep(name='duration', label='MaxDays', transform='minutes_to_days'),
         FieldsToKeep(name='geolocation', label='Location', transform=None),
     ]
@@ -279,6 +280,9 @@ class FieldsMapper:
     def mb_to_gb(self, value: float) -> str:
         return "{:.2f}".format(value / 1024)
 
+    def gb_to_tb(self, value: float) -> str:
+        return "{:.2f}".format(value * 1024)
+
     def float_to_int(self, value: float) -> int:
         return int(value)
 
@@ -288,13 +292,15 @@ class FieldsMapper:
     def minutes_to_days(self, value: float) -> int:
         return int(value / 60 / 60 / 24)
 
-    def __process_fields(self):
+    def hours_to_week(self, value: float) -> float:
+        return float("{:.3f}".format(value * 24 * 7))
 
-        # print(self.__getattribute__('count')([1, 2, 3]))
+    def hours_to_month(self, value: float) -> float:
+        return float("{:.3f}".format(value * 24 * 30))
+
+    def __process_fields(self):
         for fields_raw in self.__fields_list_raw:
             processed_data = {}
-            print(processed_data)
-            # field_to_keep = self.get_field_to_keep(fields_raw)
             for field_to_keep in self.__fields_to_keep:
                 processed_data[field_to_keep.label] = self.__getattribute__(field_to_keep.transform)(fields_raw.__getattribute__(field_to_keep.name)) \
                     if field_to_keep.transform else fields_raw.__getattribute__(field_to_keep.name)
@@ -320,14 +326,9 @@ search_highend_stream = os.popen(f"{vastai_cli_search_base_command}"
                                  f" {vastai_cli_search_query_order}"
                                  f" {vastai_cli_search_query_output}")
 
-
-# print(search_highend_stream.read())
-
 search_results = [FieldsRaw(**item) for item in json.loads(search_highend_stream.read())]
-
 
 fields = FieldsMapper(search_results)
 print_table(fields.get_fields())
 
 # print_table(results_dict)
-
