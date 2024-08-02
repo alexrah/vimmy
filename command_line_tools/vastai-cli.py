@@ -129,13 +129,16 @@ json_string = """[
 """
 
 results_dict = json.loads(json_string)
+
+
 # print_table(results_dict)
 
 @dataclass
 class FieldsToKeep:
     name: str
     label: str
-    transform: Literal[None, 'count', 'mb_to_gb', 'gb_to_tb', 'float_to_int', 'float_to_float', 'minutes_to_days', 'hours_to_week', 'hours_to_month']
+    transform: Literal[
+        None, 'count', 'mb_to_gb', 'gb_to_tb', 'float_to_int', 'float_to_float', 'minutes_to_days', 'hours_to_week', 'hours_to_month', 'hours_to_day']
 
 
 @dataclass
@@ -276,6 +279,7 @@ class FieldsMapper:
         FieldsToKeep(name='inet_up_cost', label='UP T/$', transform='gb_to_tb'),
         FieldsToKeep(name='inet_down', label='DOWN Mbps', transform=None),
         FieldsToKeep(name='inet_down_cost', label='DOWN T/$', transform='gb_to_tb'),
+        FieldsToKeep(name='storage_total_cost', label='$/30GB/day', transform='hours_to_day'),
         FieldsToKeep(name='duration', label='MaxDays', transform='minutes_to_days'),
         FieldsToKeep(name='geolocation', label='Location', transform=None),
     ]
@@ -284,7 +288,7 @@ class FieldsMapper:
         return len(value)
 
     def mb_to_gb(self, value: float) -> str:
-        return "{:.2f}".format(value / 1024)
+        return "{:.2f}".format(round(value / 1024, 2))
 
     def gb_to_tb(self, value: float) -> str:
         return "{:.2f}".format(value * 1024)
@@ -294,6 +298,9 @@ class FieldsMapper:
 
     def float_to_float(self, value: float) -> float:
         return float("{:.3f}".format(value))
+
+    def hours_to_day(self, value: float) -> float:
+        return float("{:.3f}".format(value * 24))
 
     def minutes_to_days(self, value: float) -> int:
         return int(value / 60 / 60 / 24)
@@ -308,7 +315,8 @@ class FieldsMapper:
         for fields_raw in self.__fields_list_raw:
             processed_data = {}
             for field_to_keep in self.__fields_to_keep:
-                processed_data[field_to_keep.label] = self.__getattribute__(field_to_keep.transform)(fields_raw.__getattribute__(field_to_keep.name)) \
+                processed_data[field_to_keep.label] = self.__getattribute__(field_to_keep.transform)(
+                    fields_raw.__getattribute__(field_to_keep.name)) \
                     if field_to_keep.transform else fields_raw.__getattribute__(field_to_keep.name)
             self.__fields_list_processed.append(processed_data)
 
@@ -332,27 +340,29 @@ class CliCommands:
 
         if self.parsed_args.search_level == 'high':
             vastai_cli_search_query = (
-                '"disk_space>=16 verified=True rentable=True dph<=0.60 total_flops>=130 gpu_ram>=24 '
+                '"disk_space>=30 verified=True rentable=True dph<=0.60 total_flops>=130 gpu_ram>=24 '
                 'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=150 inet_down_cost<=0.001 '
-                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
+                'inet_up_cost<=0.001 reliability>=0.95 external=False storage_cost<=0.25"')
         elif self.parsed_args.search_level == 'mid':
             vastai_cli_search_query = (
-                '"disk_space>=16 verified=True rentable=True dph<=0.30 total_flops>=50 gpu_ram>=24 '
+                '"disk_space>=30 verified=True rentable=True dph<=0.30 total_flops>=50 gpu_ram>=24 '
                 'cpu_cores_effective>=16 cpu_ram>=64 dlperf>=100 inet_down_cost<=0.001 '
-                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
+                'inet_up_cost<=0.001 reliability>=0.95 external=False storage_cost<=0.25"')
         elif self.parsed_args.search_level == 'low':
             vastai_cli_search_query = (
-                '"disk_space>=16 verified=True rentable=True dph<=0.15 total_flops>=20 gpu_ram>=15 '
+                '"disk_space>=30 verified=True rentable=True dph<=0.15 total_flops>=20 gpu_ram>=15 '
                 'cpu_cores_effective>=8 cpu_ram>=32 dlperf>=20 inet_down_cost<=0.001 '
-                'inet_up_cost<=0.001 reliability>=0.95 external=False "')
+                'inet_up_cost<=0.001 reliability>=0.95 external=False storage_cost<=0.25"')
 
         vastai_cli_search_query_output = '--raw'
         vastai_cli_search_query_order = '-o dlperf-'
+        vastai_cli_search_query_storage = '--storage=30'
 
         search_stream = os.popen(f"{vastai_cli_search_base_command}"
-                                         f" {vastai_cli_search_query}"
-                                         f" {vastai_cli_search_query_order}"
-                                         f" {vastai_cli_search_query_output}")
+                                 f" {vastai_cli_search_query}"
+                                 f" {vastai_cli_search_query_order}"
+                                 f" {vastai_cli_search_query_storage}"
+                                 f" {vastai_cli_search_query_output}")
 
         search_data = search_stream.read()
         search_results = ''
@@ -388,8 +398,10 @@ class CliCommands:
         search_subparser = parser.add_subparsers()
         search_parser = search_subparser.add_parser('search', help='Search command')
         search_parser.add_argument('search_level', help='GPU types', choices=['high', 'mid', 'low'])
-        search_parser.add_argument('--create', help='Create instance using first item returned', action='store_true', dest='search_create')
-        search_parser.add_argument('--first-id', help='Return only the first machine ID', action='store_true', dest='return_first_machine_id')
+        search_parser.add_argument('--create', help='Create instance using first item returned', action='store_true',
+                                   dest='search_create')
+        search_parser.add_argument('--first-id', help='Return only the first machine ID', action='store_true',
+                                   dest='return_first_machine_id')
 
         self.parsed_args = cast(ParsedArgs, parser.parse_args())
 
