@@ -153,6 +153,16 @@ then
   else
     printf "=========> bat already installed, skipping...\n"
   fi
+
+  if !(command -v "jq" &> /dev/null)
+  then
+    printf "=========> install jq (JSON processor)...\n"
+    sudo $PACKAGE_MANAGER -y install jq
+  else
+    printf "=========> jq (JSON processor) already installed, skipping...\n"
+  fi
+
+
 fi
 
 if [[ " ${aArgs[*]} " =~ "dotfiles" ]] || [[ $1 == "all" ]]
