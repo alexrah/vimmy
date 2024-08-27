@@ -237,6 +237,7 @@ class FieldsRaw:
     verification: Literal[None, 'verified']
     vram_costperhour: float
     webpage: Union[None, str]
+    vms_enabled: bool
 
 
 @dataclass
