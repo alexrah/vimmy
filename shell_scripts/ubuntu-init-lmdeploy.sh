@@ -1,5 +1,8 @@
 #!/usr/bin/sh
 
+# install nvtop to monitor GPU usage
+apt install nvtop
+
 # fix locales
 apt-get -y install locales
 echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
