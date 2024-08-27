@@ -4,7 +4,7 @@
 apt -y install nvtop
 
 # fix locales
-apt-get -y install locales
+apt -y install locales
 echo "en_US.UTF-8 UTF-8" | sudo tee -a /etc/locale.gen
 locale-gen
 export LC_ALL=en_US.UTF-8
@@ -13,7 +13,7 @@ export LC_ALL=en_US.UTF-8
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 (echo; echo 'eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"') >> /root/.zshrc
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-sudo apt-get install build-essential
+apt -y install build-essential
 
 # install pyenv to manage multiple python versions
 brew install pyenv
@@ -29,8 +29,9 @@ apt -y install python3.10-venv
 curl -sSL https://pdm-project.org/install-pdm.py | python3 -
 
 # install LMDeploy
+source ~/.zshrc
 cd ~
 mkdir lmdeploy
 cd lmdeploy
-pdm init
+pdm init -n
 pdm add lmdeploy
