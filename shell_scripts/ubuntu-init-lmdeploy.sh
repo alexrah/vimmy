@@ -1,7 +1,7 @@
 #!/usr/bin/sh
 
 # install nvtop to monitor GPU usage
-apt install nvtop
+apt -y install nvtop
 
 # fix locales
 apt-get -y install locales
@@ -25,7 +25,7 @@ echo 'eval "$(pyenv init -)"' >> ~/.zshrc
 ln -s /usr/bin/python3 /usr/local/bin/python
 
 # Install PDM (Python Package Manager)
-apt install python3.10-venv
+apt -y install python3.10-venv
 curl -sSL https://pdm-project.org/install-pdm.py | python3 -
 
 # install LMDeploy
