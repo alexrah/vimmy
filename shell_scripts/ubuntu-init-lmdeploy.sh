@@ -34,4 +34,5 @@ cd ~
 mkdir lmdeploy
 cd lmdeploy
 pdm init -n
+pdm add decord
 pdm add lmdeploy
