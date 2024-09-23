@@ -221,6 +221,8 @@ then
     printf "=========> lnav symlinks configuration...\n"
     ln -s $INSTALLERS_FOLDER/vimmy/lnav/config.json ~/.config/lnav/config.json
     ln -s $INSTALLERS_FOLDER/vimmy/lnav/wpdebuglog.json ~/.config/lnav/formats/installed/wpdebuglog.json
+    ln -s $INSTALLERS_FOLDER/vimmy/lnav/config.json ~/.lnav/config.json
+    ln -s $INSTALLERS_FOLDER/vimmy/lnav/wpdebuglog.json ~/.lnav/formats/installed/wpdebuglog.json
   fi
 
 fi
