@@ -1,2 +1,5 @@
 [credential]
 	helper = cache --timeout=3600
+[user]
+	email = alexrah@gmail.com
+	name = Alessandro Stoppato
