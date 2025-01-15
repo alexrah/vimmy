@@ -91,6 +91,7 @@ alias tmux-session="$DOTFILES/vimmy/command_line_tools/tmux-persistence/tmux-ses
 alias speedtest="$DOTFILES/vimmy/command_line_tools/speedtest_cli.py"
 alias speedtest3="$DOTFILES/vimmy/command_line_tools/speedtest_cli3.py"
 alias netspeed="$DOTFILES/vimmy/command_line_tools/netspeed.sh"
+alias openssl-check-certs="$DOTFILES/vimmy/command_line_tools/openssl-check-certs.sh"
 # reverse engineer Dockerfile from Docker image
 alias whaler="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
 # alias composer="php /usr/local/bin/composer.phar"
