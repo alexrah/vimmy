@@ -218,7 +218,8 @@ let g:coc_global_extensions = [
   \ 'coc-highlight',
   \ 'coc-yaml',
   \ 'coc-prisma',
-  \ '@yaegassy/coc-pylsp'
+  \ '@yaegassy/coc-pylsp',
+  \ 'coc-rust-analyzer'
   \ ]
 
 " GoTo code navigation.
