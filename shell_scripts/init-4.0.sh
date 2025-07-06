@@ -44,7 +44,7 @@ case "$os_type" in
 		printf "OS DETECTED: WINDOWS CygWin\n";;
 	"Ubuntu")
 		printf "OS DETECTED: UBUNTU\n"
-		export PACKAGE_MANAGER=apt-get
+		export PACKAGE_MANAGER="sudo apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     # no longer required on newer versions
     # sudo add-apt-repository ppa:x4121/ripgrep
@@ -53,20 +53,20 @@ case "$os_type" in
     ;;
   "Debian GNU/Linux")
 		printf "OS DETECTED: DEBIAN\n"
-		export PACKAGE_MANAGER=apt-get
+		export PACKAGE_MANAGER="sudo apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     sudo apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
-		export PACKAGE_MANAGER=yum
+		export PACKAGE_MANAGER="sudo yum"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     sudo yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
-		export PACKAGE_MANAGER=apt
+		export PACKAGE_MANAGER=pkg
 		export NVIM_CONFIG_PATH=~/.config/nvim;;
 	darwin*)
 		printf "OS DETECTED: MacOS\n"
@@ -89,7 +89,7 @@ then
   if !(command -v "git" &> /dev/null)
   then
     printf "=========> install git...\n"
-    sudo $PACKAGE_MANAGER -y install git
+    $PACKAGE_MANAGER -y install git
   else
     printf "=========> git already installed, skipping...\n"
   fi
@@ -100,7 +100,7 @@ then
   if !(command -v "zsh" &> /dev/null)
   then
     printf "=========> install zsh...\n"
-    sudo $PACKAGE_MANAGER -y install zsh
+    $PACKAGE_MANAGER -y install zsh
   else
     printf "=========> zsh already installed, skipping...\n"
   fi
@@ -111,7 +111,7 @@ then
   if !(command -v "tmux" &> /dev/null)
   then
     printf "=========> install tmux...\n"
-    sudo $PACKAGE_MANAGER -y install tmux
+    $PACKAGE_MANAGER -y install tmux
   else
     printf "=========> tmux already installed, skipping...\n"
   fi
@@ -119,7 +119,7 @@ then
   if !(command -v "rg" &> /dev/null)
   then
     printf "=========> install ripgrep...\n"
-    sudo $PACKAGE_MANAGER -y install ripgrep
+    $PACKAGE_MANAGER -y install ripgrep
   else
     printf "=========> ripgrep already installed, skipping...\n"
   fi
@@ -157,7 +157,7 @@ then
   if !(command -v "jq" &> /dev/null)
   then
     printf "=========> install jq (JSON processor)...\n"
-    sudo $PACKAGE_MANAGER -y install jq
+    $PACKAGE_MANAGER -y install jq
   else
     printf "=========> jq (JSON processor) already installed, skipping...\n"
   fi
@@ -281,7 +281,7 @@ then
   if !(command -v "python3" &> /dev/null)
   then
     printf "=========> install python3...\n"
-    sudo $PACKAGE_MANAGER -y install python3
+    $PACKAGE_MANAGER -y install python3
   else
     printf "=========> python3 already installed, skipping...\n"
   fi
@@ -320,7 +320,7 @@ fi
 #   if !(command -v "ruby" &> /dev/null)
 #   then
 #     printf "=========> install ruby...\n"
-#     sudo $PACKAGE_MANAGER -y install ruby
+#     $PACKAGE_MANAGER -y install ruby
 #   else
 #     printf "=========> ruby already installed, skipping...\n"
 #   fi
@@ -336,7 +336,7 @@ then
   then
     printf "=========> install neovim...\n"
     
-    if [[ $PACKAGE_MANAGER == "yum" ]]
+    if [[ $PACKAGE_MANAGER == "sudo yum" ]]
     then
       curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
     else
@@ -358,7 +358,7 @@ then
   if !(command -v "which" &> /dev/null)
   then
     printf "=========> install which (required by CoC plugin)...\n"
-    sudo $PACKAGE_MANAGER -y install which
+    $PACKAGE_MANAGER -y install which
   else
     printf "=========> which already installed, skipping...\n"
   fi
