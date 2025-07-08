@@ -41,11 +41,14 @@ printf "OS: $os_type\n"
 printf "================================\n"
 case "$os_type" in
 	"cygwin")
-		printf "OS DETECTED: WINDOWS CygWin\n";;
+		printf "OS DETECTED: WINDOWS CygWin\n"
+    exit
+    ;;
 	"Ubuntu")
 		printf "OS DETECTED: UBUNTU\n"
 		export PACKAGE_MANAGER="sudo apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
+    os_family=linux
     # no longer required on newer versions
     # sudo add-apt-repository ppa:x4121/ripgrep
     # sudo add-apt-repository ppa:git-core/ppa
@@ -55,23 +58,29 @@ case "$os_type" in
 		printf "OS DETECTED: DEBIAN\n"
 		export PACKAGE_MANAGER="sudo apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
+    os_family=linux
     sudo apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER="sudo yum"
 		export NVIM_CONFIG_PATH=~/.config/nvim
+    os_family=linux
     sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     sudo yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=pkg
-		export NVIM_CONFIG_PATH=~/.config/nvim;;
+		export NVIM_CONFIG_PATH=~/.config/nvim
+    os_family=linux
+    ;;
 	darwin*)
 		printf "OS DETECTED: MacOS\n"
 		export PACKAGE_MANAGER=brew
-		export NVIM_CONFIG_PATH=~/.config/nvim;;
+		export NVIM_CONFIG_PATH=~/.config/nvim
+    os_family=mac
+    ;;
   *)
     printf "No OS DETECTED\n"
     exit
@@ -336,15 +345,27 @@ then
   then
     printf "=========> install neovim...\n"
     
-    if [[ $PACKAGE_MANAGER == "sudo yum" ]]
+    if [[ $os_family == "linux"]]
     then
-      curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+      # need to check currenct glibc version
+      glibc_version=$(ldd --version | grep '^ldd' | sed -r 's/ldd \(.*\) (.*)/\1/g')
+      # install bc for floating point arithmetic
+      $PACKAGE_MANAGER -y install bc
+
+      if (( $(echo "$glibc_version < 2.32" | bc -l) ))
+      then
+        curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+      else
+        curl -LO https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
+      fi
+
     else
-      curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
+      # if system is MacOS always install the latest version
+      curl -LO https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
     fi
 
-    chmod 755 nvim.appimage
-    ./nvim.appimage --appimage-extract
+    chmod 755 NVIM-linux-x86_64.appimage
+    ./NVIM-linux-x86_64.appimage --appimage-extract
     sudo mv squashfs-root /usr/local/bin/squashfs-root-nvim
     sudo ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
   fi
