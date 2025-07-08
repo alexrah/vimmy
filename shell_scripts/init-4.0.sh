@@ -354,18 +354,18 @@ then
 
       if (( $(echo "$glibc_version < 2.32" | bc -l) ))
       then
-        curl -LO https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
+        curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
       else
-        curl -LO https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
+        curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
       fi
 
     else
       # if system is MacOS always install the latest version
-      curl -LO https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
+      curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
     fi
 
-    chmod 755 NVIM-linux-x86_64.appimage
-    ./NVIM-linux-x86_64.appimage --appimage-extract
+    chmod 755 nvim.appimage
+    ./nvim.appimage --appimage-extract
     sudo mv squashfs-root /usr/local/bin/squashfs-root-nvim
     sudo ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
   fi
