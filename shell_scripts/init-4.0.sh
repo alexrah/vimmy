@@ -37,6 +37,13 @@ else
   os_type=$OSTYPE
 fi
 
+if (command -v "sudo" &> /dev/null)
+then
+  SUDO="sudo"
+else
+  SUDO=""
+fi
+
 printf "OS: $os_type\n"
 printf "================================\n"
 case "$os_type" in
@@ -46,28 +53,25 @@ case "$os_type" in
     ;;
 	"Ubuntu")
 		printf "OS DETECTED: UBUNTU\n"
-		export PACKAGE_MANAGER="sudo apt-get"
+		export PACKAGE_MANAGER="${SUDO} apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     os_family=linux
-    # no longer required on newer versions
-    # sudo add-apt-repository ppa:x4121/ripgrep
-    # sudo add-apt-repository ppa:git-core/ppa
-    sudo apt-get update
+    $SUDO apt-get update
     ;;
   "Debian GNU/Linux")
 		printf "OS DETECTED: DEBIAN\n"
-		export PACKAGE_MANAGER="sudo apt-get"
+		export PACKAGE_MANAGER="${SUDO} apt-get"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     os_family=linux
-    sudo apt-get update
+    ${SUDO} apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
-		export PACKAGE_MANAGER="sudo yum"
+		export PACKAGE_MANAGER="${SUDO} yum"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     os_family=linux
-    sudo yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-    sudo yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+    ${SUDO} yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    ${SUDO} yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
@@ -146,7 +150,7 @@ then
     printf "=========> install fzf...\n"
     cd $INSTALLERS_FOLDER/fzf
     ./install --bin
-    sudo cp bin/fzf /usr/local/bin/fzf
+    ${SUDO} cp bin/fzf /usr/local/bin/fzf
   else
     printf "=========> fzf already installed, skipping...\n"
   fi
@@ -158,7 +162,7 @@ then
     curl -L https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.24.0-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
     tar xvzf bat.tar.gz
     cd bat-v0.24.0-x86_64-unknown-linux-musl
-    sudo mv bat /usr/local/bin/bat
+    ${SUDO} mv bat /usr/local/bin/bat
   else
     printf "=========> bat already installed, skipping...\n"
   fi
@@ -218,7 +222,7 @@ then
     cd $INSTALLERS_FOLDER
     curl -LO https://github.com/tstack/lnav/releases/download/v0.12.2/lnav-0.12.2-linux-musl-x86_64.zip
     unzip lnav-0.12.2-linux-musl-x86_64.zip
-    sudo mv lnav-0.12.2/lnav /usr/local/bin/lnav
+    ${SUDO} mv lnav-0.12.2/lnav /usr/local/bin/lnav
   else
     printf "=========> lnav already installed, skipping...\n"
   fi
@@ -279,7 +283,7 @@ then
   # then
   #   printf "=========> install pip...\n"
   #   curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
-	#   sudo python get-pip2.py
+	#   ${SUDO} python get-pip2.py
   # else
   #   printf "=========> pip already installed, skipping...\n"
   # fi
@@ -299,13 +303,13 @@ then
   then
     printf "=========> install pip3...\n"
     curl https://bootstrap.pypa.io/get-pip.py -o get-pip3.py
-	  sudo python3 get-pip3.py
+	  ${SUDO} python3 get-pip3.py
   else
     printf "=========> pip3 already installed, skipping...\n"
   fi
 
   printf "=========> install python3 neovim support...\n"
-  sudo pip3 install neovim
+  ${SUDO} pip3 install neovim
 
 # printf "Python: install virtualenv & create .virtualenvs...\n"
 # printf "================================\n"
@@ -345,7 +349,7 @@ then
   then
     printf "=========> install neovim...\n"
     
-    if [[ $os_family == "linux"]]
+    if [[ $os_family == "linux" ]]
     then
       # need to check currenct glibc version
       glibc_version=$(ldd --version | grep '^ldd' | sed -r 's/ldd \(.*\) (.*)/\1/g')
@@ -366,8 +370,8 @@ then
 
     chmod 755 nvim.appimage
     ./nvim.appimage --appimage-extract
-    sudo mv squashfs-root /usr/local/bin/squashfs-root-nvim
-    sudo ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
+    ${SUDO} mv squashfs-root /usr/local/bin/squashfs-root-nvim
+    ${SUDO} ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
   fi
 
   printf "=========> install symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
