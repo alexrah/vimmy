@@ -70,7 +70,7 @@ case "$os_type" in
 		export PACKAGE_MANAGER="${SUDO} yum"
 		export NVIM_CONFIG_PATH=~/.config/nvim
     os_family=linux
-    ${SUDO} yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
+    # ${SUDO} yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     ${SUDO} yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
@@ -132,7 +132,14 @@ then
   if !(command -v "rg" &> /dev/null)
   then
     printf "=========> install ripgrep...\n"
-    $PACKAGE_MANAGER -y install ripgrep
+
+    if [[ "$os_type" == "CentOS Linux" ]]
+    then
+      ${SUDO} cp $INSTALLERS_FOLDER/vimmy/ripgrep/centos7/rg /usr/bin/rg
+    else
+      $PACKAGE_MANAGER -y install ripgrep
+    fi
+        
   else
     printf "=========> ripgrep already installed, skipping...\n"
   fi
