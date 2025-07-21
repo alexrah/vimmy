@@ -7,6 +7,14 @@ return {
         n = {
           ["s"] = { "<Plug>(leap)", desc = "Leap" },
           [";"] = { ":" },
+          ["<C-v>"] = { "pi", desc = "Paste using standard shortcut" },
+        },
+        v = {
+          ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
+          ["<C-x>"] = { '"+d<Esc>i', desc = "Cut using standard shortcut" },
+        },
+        i = {
+          ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
         },
       },
     },
