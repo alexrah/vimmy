@@ -6,6 +6,7 @@ return {
       mappings = {
         n = {
           ["s"] = { "<Plug>(leap)", desc = "Leap" },
+          [";"] = { ":" },
         },
       },
     },
