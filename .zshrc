@@ -62,10 +62,10 @@ export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
 export DOTFILES=~/.dotfiles
 alias wpscan="~/wpscan/wpscan.rb"
-alias ls="ls --color=auto"
-alias la="ls -lhA"
-alias lat="ls -lhA --sort=t"
-alias las="ls -lhA --sort=s"
+alias ls="lsd"
+alias la="lsd -lhA"
+alias lat="lsd -lhA --sort=time"
+alias las="lsd -lhA --sort=size"
 alias lr="find . -type d -maxdepth"
 alias psx="ps -Af"
 alias psxg="ps -Af | grep"
