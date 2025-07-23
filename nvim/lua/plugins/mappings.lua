@@ -8,6 +8,7 @@ return {
           ["s"] = { "<Plug>(leap)", desc = "Leap" },
           [";"] = { ":" },
           ["<C-v>"] = { "pi", desc = "Paste using standard shortcut" },
+          ["<Leader>bm"] = { ":Maximize<Enter>", desc = "Toggle maximizing the current window" },
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
