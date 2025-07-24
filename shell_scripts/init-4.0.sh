@@ -401,6 +401,8 @@ then
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
 
   printf "=========> NOTE: run :PlugInstall first time launching nvim\n"
+  printf "=========> SEE: NeoVide.md instructions for NeoVide GUI installation\n"
+
 fi
 
 # if [[ " ${aArgs[*]} " =~ "zsh-default" ]] || [[ $1 == "all" ]]
