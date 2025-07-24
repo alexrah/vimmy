@@ -10,5 +10,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.pack.typescript" },
+  { import = "astrocommunity.pack.php" },
   -- import/override with your plugins folder
 }
