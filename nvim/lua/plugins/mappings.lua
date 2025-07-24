@@ -10,6 +10,8 @@ return {
           ["<C-v>"] = { "pi", desc = "Paste using standard shortcut" },
           ["<Leader>bm"] = { ":Maximize<Enter>", desc = "Toggle maximizing the current window" },
           ["<Leader>fB"] = { function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers" },
+          ["<Leader>gd"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
+          ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },

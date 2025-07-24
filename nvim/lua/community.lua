@@ -11,5 +11,6 @@ return {
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.pack.php" },
+  { import = "astrocommunity.git.diffview-nvim" },
   -- import/override with your plugins folder
 }
