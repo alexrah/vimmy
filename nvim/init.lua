@@ -23,7 +23,8 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
-vim.o.guifont = "0xProto Nerd Font Mono:h15"
+-- vim.o.guifont = "0xProto Nerd Font Mono:h15"
+vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
 require "lazy_setup"
 require "polish"
