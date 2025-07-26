@@ -1,7 +1,15 @@
-local function toggle_virtual_text()
+local function virtual_text_toggle()
   local virtual_text = require("codeium.config").options.virtual_text
   virtual_text.manual = not virtual_text.manual
 end
+
+local function virtual_text_label()
+  -- local virtual_text_manual = require("codeium.config").options.virtual_text.manual and "Off" or "On"
+  -- local status = virtual_text_manual and "Off" or "On"
+  -- return "Toggle Codeium Virtual Text (,,) [" .. status .. "]"
+  return "Toggle Codeium Virtual Text (,,)"
+end
+
 
 return {
   {
@@ -18,7 +26,7 @@ return {
           ["<Leader>gd"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
           ["<Leader>;e"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
-          ["<Leader>;v"] = { toggle_virtual_text, desc = "Toggle Codeium Virtual Text" },
+          ["<Leader>;v"] = { virtual_text_toggle, desc = virtual_text_label() },
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
@@ -26,8 +34,7 @@ return {
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
-          [",,"] = { toggle_virtual_text, desc = "Toggle Codeium Virtual Text",
-          },
+          [",,"] = { virtual_text_toggle, desc = virtual_text_label() },
         },
       },
     },
