@@ -21,6 +21,10 @@ return {
           ["s"] = { "<Plug>(leap)", desc = "Leap" },
           [";"] = { ":" },
           ["<C-v>"] = { "pi", desc = "Paste using standard shortcut" },
+          ["<S-Up>"] = { "v<Up>" },
+          ["<S-Down>"] = { "v<Down>" },
+          ["<S-Left>"] = { "v<Left>" },
+          ["<S-Right>"] = { "v<Right>" },
           ["<Leader>bm"] = { ":Maximize<Enter>", desc = "Toggle maximizing the current window" },
           ["<Leader>fB"] = { function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers" },
           ["<Leader>gd"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
@@ -31,6 +35,10 @@ return {
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
           ["<C-x>"] = { '"+d<Esc>i', desc = "Cut using standard shortcut" },
+          ["<S-Up>"] = { "<Up>" },
+          ["<S-Down>"] = { "<Down>" },
+          ["<S-Left>"] = { "<Left>" },
+          ["<S-Right>"] = { "<Right>" },
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
