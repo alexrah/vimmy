@@ -20,17 +20,23 @@ return {
         n = {
           ["s"] = { "<Plug>(leap)", desc = "Leap" },
           [";"] = { ":" },
+
           ["<C-v>"] = { "pi", desc = "Paste using standard shortcut" },
           ["<S-Up>"] = { "v<Up>" },
           ["<S-Down>"] = { "v<Down>" },
           ["<S-Left>"] = { "v<Left>" },
           ["<S-Right>"] = { "v<Right>" },
           ["<Leader>bm"] = { ":Maximize<Enter>", desc = "Toggle maximizing the current window" },
+
           ["<Leader>fB"] = { function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers" },
+
           ["<Leader>gd"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
+
           ["<Leader>;e"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
           ["<Leader>;v"] = { virtual_text_toggle, desc = virtual_text_label() },
+
+          ["<Leader>fy"] = { function () vim.cmd "Telescope lsp_dynamic_workspace_symbols" end, desc = "Workspace Symbols" },
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
