@@ -13,5 +13,6 @@ return {
   { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.completion.codeium-nvim" },
+  { import = "astrocommunity.search.grug-far-nvim" }
   -- import/override with your plugins folder
 }
