@@ -1,5 +1,7 @@
 #!/bin/bash
 
+# TODO: install lsd (https://github.com/lsd-rs/lsd)
+
 if [ "$1" == "help" ] || !( test -n "$1" )
 then
   printf "========================\n"
