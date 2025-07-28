@@ -9,5 +9,14 @@ return {
       },
       -- hijack_netrw_behavior = "disabled"
     },
+    default_component_configs = {
+      file_size = {
+        required_width = 50
+      },
+      last_modified = {
+        required_width = 40
+      }
+
+    }
   },
 }
