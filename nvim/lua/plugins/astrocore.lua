@@ -15,6 +15,7 @@ return {
       opt = { -- vim.opt.<key>
         relativenumber = false, -- sets vim.opt.relativenumber
         wrap = true, -- sets vim.opt.wrap
+        diffopt = "vertical", -- sets vim.opt.diffopts
       },
     },
   },
