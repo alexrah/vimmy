@@ -47,6 +47,8 @@ else
   SUDO=""
 fi
 
+NVIM_CONFIG_PATH=~/.config
+	
 printf "OS: $os_type\n"
 printf "================================\n"
 case "$os_type" in
@@ -57,35 +59,30 @@ case "$os_type" in
 	"Ubuntu")
 		printf "OS DETECTED: UBUNTU\n"
 		export PACKAGE_MANAGER="${SUDO} apt-get"
-		export NVIM_CONFIG_PATH=~/.config/nvim
-    os_family=linux
+    os_family=debian
     $SUDO apt-get update
     ;;
   "Debian GNU/Linux")
 		printf "OS DETECTED: DEBIAN\n"
 		export PACKAGE_MANAGER="${SUDO} apt-get"
-		export NVIM_CONFIG_PATH=~/.config/nvim
-    os_family=linux
+    os_family=debian
     ${SUDO} apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
 		export PACKAGE_MANAGER="${SUDO} yum"
-		export NVIM_CONFIG_PATH=~/.config/nvim
-    os_family=linux
+    os_family=centos
     # ${SUDO} yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
     ${SUDO} yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
 		export PACKAGE_MANAGER=pkg
-		export NVIM_CONFIG_PATH=~/.config/nvim
-    os_family=linux
+    os_family=debian
     ;;
 	darwin*)
 		printf "OS DETECTED: MacOS\n"
 		export PACKAGE_MANAGER=brew
-		export NVIM_CONFIG_PATH=~/.config/nvim
     os_family=mac
     ;;
   *)
@@ -359,22 +356,11 @@ then
   then
     printf "=========> install neovim...\n"
     
-    if [[ $os_family == "linux" ]]
+    if [[ $os_family == "centos" ]]
     then
-      # need to check currenct glibc version
-      glibc_version=$(ldd --version | grep '^ldd' | sed -r 's/ldd \(.*\) (.*)/\1/g')
-      # install bc for floating point arithmetic
-      $PACKAGE_MANAGER -y install bc
-
-      if (( $(echo "$glibc_version < 2.32" | bc -l) ))
-      then
-        curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/download/v0.9.5/nvim.appimage
-      else
-        curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
-      fi
-
+      # install best-efforts build made with glibc 2.17
+      curl -L -o nvim.appimage https://github.com/neovim/neovim-releases/releases/download/v0.11.3/nvim-linux-x86_64.appimage
     else
-      # if system is MacOS always install the latest version
       curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
     fi
 
@@ -384,26 +370,10 @@ then
     ${SUDO} ln -s /usr/local/bin/squashfs-root-nvim/usr/bin/nvim /usr/local/bin/nvim
   fi
 
-  printf "=========> install symlinks: init.vim & coc-settings.json in "$NVIM_CONFIG_PATH"\n"
-  mkdir -p $NVIM_CONFIG_PATH
-  ln -s $INSTALLERS_FOLDER/vimmy/init.vim $NVIM_CONFIG_PATH/init.vim
-  ln -s $INSTALLERS_FOLDER/vimmy/coc-settings.json $NVIM_CONFIG_PATH/coc-settings.json
+  printf "=========> install symlinks: nvim in "$NVIM_CONFIG_PATH"\n"
+  ln -s $INSTALLERS_FOLDER/vimmy/nvim $NVIM_CONFIG_PATH/nvim
   mkdir -p ~/.vim_runtime/undodir
 
-  if !(command -v "which" &> /dev/null)
-  then
-    printf "=========> install which (required by CoC plugin)...\n"
-    $PACKAGE_MANAGER -y install which
-  else
-    printf "=========> which already installed, skipping...\n"
-  fi
-
-  # install vim-plug @see https://github.com/junegunn/vim-plug
-  printf "=========> install NeoVim plugin manager: junegunn/vim-plug...\n"
-  sh -c 'curl -fLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-
-  printf "=========> NOTE: run :PlugInstall first time launching nvim\n"
   printf "=========> SEE: NeoVide.md instructions for NeoVide GUI installation\n"
 
 fi
