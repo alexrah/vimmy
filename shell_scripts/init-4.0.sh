@@ -1,7 +1,4 @@
 #!/bin/bash
-# TODO: update nvim installation script to use AstroNvim based config for NeoVim versions > 0.10.0
-# TODO: install lsd (https://github.com/lsd-rs/lsd)
-# TODO: install fd (https://github.com/sharkdp/fd) find replacement with improved performance used by NeoVim nvim-neo-tree
 
 if [ "$1" == "help" ] || !( test -n "$1" )
 then
@@ -13,7 +10,7 @@ then
   printf "git : install only git\n"
   printf "zsh : install only zsh\n"
   printf "zsh-default : set zsh as default shell\n"
-  printf "tools : (fzf requires git) install tmux, ripgrep, fzf, bat\n"
+  printf "tools : (fzf requires git) install tmux, ripgrep, fzf, bat, lsd, fd\n"
   printf "dotfiles : (requires git) install repos alexrah/vimmy & alexrah/oh-my-zsh & create symlinks\n"
   printf "lnav : install Log File Navigator (lnav) advanced log file viewer with Wordpress debug.log support\n"
   printf "node : (nvm requires dotfiles) install node stack ( nvm, node, npm, yarn )\n"
@@ -182,6 +179,39 @@ then
     printf "=========> jq (JSON processor) already installed, skipping...\n"
   fi
 
+  if !(command -v "lsd" &> /dev/null)
+  then
+    printf "=========> install lsd...\n"
+    if [[ "$os_family" == "centos" ]]
+    then
+      cd $INSTALLERS_FOLDER
+      curl -L https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-v1.1.5-x86_64-unknown-linux-musl.tar.gz -o lsd.tar.gz
+      tar xvzf lsd.tar.gz
+      cd lsd-v1.1.5-x86_64-unknown-linux-musl
+      ${SUDO} mv lsd /usr/local/bin/lsd
+    else
+      $PACKAGE_MANAGER install lsd
+    fi
+  else
+    printf "=========> lsd already installed, skipping...\n"
+  fi
+
+  if !(command -v "fd" &> /dev/null)
+  then
+    printf "=========> install fd...\n"
+    if [[ "$os_family" == "centos" ]]
+    then
+      cd $INSTALLERS_FOLDER
+      curl -L https://github.com/sharkdp/fd/releases/download/v10.2.0/fd-v10.2.0-x86_64-unknown-linux-musl.tar.gz -o fd.tar.gz
+      tar xvzf fd.tar.gz
+      cd fd-v10.2.0-x86_64-unknown-linux-musl
+      ${SUDO} mv fd /usr/local/bin/fd
+    else
+      $PACKAGE_MANAGER install fd
+    fi
+  else
+    printf "=========> fd already installed, skipping...\n"
+  fi
 
 fi
 
