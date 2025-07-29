@@ -7,6 +7,14 @@ return {
       filtered_items = {
         visible = true,
       },
+    find_args = {  -- you can specify extra args to pass to the find command.
+     fd = {
+       "--exclude", ".git",
+       "--exclude",  "node_modules",
+       "--exclude",  ".next",
+       "--exclude",  ".idea",
+     }
+    },
       -- hijack_netrw_behavior = "disabled"
     },
     default_component_configs = {
