@@ -1,6 +1,7 @@
 #!/bin/bash
-
+# TODO: update nvim installation script to use AstroNvim based config for NeoVim versions > 0.10.0
 # TODO: install lsd (https://github.com/lsd-rs/lsd)
+# TODO: install fd (https://github.com/sharkdp/fd) find replacement with improved performance used by NeoVim nvim-neo-tree
 
 if [ "$1" == "help" ] || !( test -n "$1" )
 then
