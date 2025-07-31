@@ -30,7 +30,7 @@ return {
 
           ["<Leader>fB"] = { function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers" },
 
-          ["<Leader>gd"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
+          ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
           ["<Leader>;e"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
