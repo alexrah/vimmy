@@ -23,6 +23,9 @@ if not pcall(require, "lazy") then
   vim.cmd.quit()
 end
 
+-- disable default keymaps
+vim.keymap.set("n", "<C-y>", "<nop>")
+
 -- vim.o.guifont = "0xProto Nerd Font Mono:h15"
 vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
