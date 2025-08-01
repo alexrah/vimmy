@@ -1,7 +1,6 @@
-
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
-require("which-key").add({
+require("which-key").add {
   { "<Leader>y", group = "Upload / Download", icon = "" },
   {
     "<Leader>yd",
@@ -33,13 +32,30 @@ require("which-key").add({
     desc = "Upload to remote server (scp)",
     icon = { color = "green", icon = "󰕒" },
   },
-})
+}
 
 return {
   "coffebar/transfer.nvim",
   lazy = true,
-  cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat"  },
+  cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
   opts = {
     close_diffview_mapping = "<Leader>yc",
+    config_template = [[
+return {
+  ["server1"] = {
+    host = "server1",
+    username = "user",
+    mappings = {
+      {
+        ["local"] = "domains/example.com",
+        ["remote"] = "/var/www/example.com",
+      },
+    },
+    -- excludedPaths = {
+    --   "src", -- local path relative to project root
+    -- },
+  },
+}
+]],
   },
 }
