@@ -59,6 +59,8 @@ return {
           end,
           desc = "diff with remote",
         },
+        ["/"] = "noop",
+        ["fz"] = "fuzzy_finder",
       },
     },
   },
