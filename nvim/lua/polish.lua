@@ -9,11 +9,3 @@ local WinSeparatorFg = "#5A616B"
 
 -- set colors for split separators
 vim.api.nvim_set_hl(0, 'WinSeparator', { fg =  WinSeparatorFg })
-
-require("catppuccin").setup {
-    custom_highlights = function(colors)
-        return {
-            WinSeparator = { fg = WinSeparatorFg },
-        }
-    end
-}
