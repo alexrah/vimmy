@@ -41,6 +41,8 @@ return {
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
 
+          ["<C-Tab>"] = { function() require("snacks").picker.buffers() end, desc = "Find buffers" }
+
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },

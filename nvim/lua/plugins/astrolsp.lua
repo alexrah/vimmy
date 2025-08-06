@@ -26,6 +26,7 @@ return {
         ["gd"] = { function() vim.lsp.buf.definition() end, desc = "vim.lsp.buf.declaration()" },
         ["gb"] = { function() vim.lsp.buf.references() end, desc = "vim.lsp.buf.references()" },
         ["<C-b>"] = { function() require("snacks.picker").lsp_references() end, desc = "vim.lsp.buf.references()" },
+        ["<C-d>"] = { function() require("snacks.picker").lsp_definitions({auto_confirm = false}) end, desc = "vim.lsp.buf.definition()" },
         ["<C-y>"] = { function () require("snacks.picker").lsp_type_definitions() end, desc = "vim.lsp.buf.type_definition()" }
       },
     },
