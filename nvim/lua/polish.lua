@@ -7,5 +7,15 @@
 
 local WinSeparatorFg = "#5A616B"
 
--- set colors for split separators
-vim.api.nvim_set_hl(0, 'WinSeparator', { fg =  WinSeparatorFg })
+local function set_win_separator()
+  vim.api.nvim_set_hl(0, "WinSeparator", { fg = WinSeparatorFg })
+end
+
+-- set colors for split separators on colorscheme change
+vim.api.nvim_create_autocmd("ColorScheme", {
+  pattern = "*",
+  callback = set_win_separator,
+})
+
+-- Set color on startup
+set_win_separator()
