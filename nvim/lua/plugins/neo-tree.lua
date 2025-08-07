@@ -19,10 +19,10 @@ return {
     },
     default_component_configs = {
       file_size = {
-        required_width = 50
+        required_width = 60
       },
       last_modified = {
-        required_width = 40
+        required_width = 50
       }
 
     },
