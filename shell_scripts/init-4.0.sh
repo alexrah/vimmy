@@ -207,8 +207,9 @@ then
       cd fd-v10.2.0-x86_64-unknown-linux-musl
       ${SUDO} mv fd /usr/local/bin/fd
     else
-      $PACKAGE_MANAGER install fd
+      $PACKAGE_MANAGER install fd-find
     fi
+    printf "=========> fd binary is called fdfind, check if fd is available and then ln -s \$(which fdfind) /usr/local/bin/fd\n"
   else
     printf "=========> fd already installed, skipping...\n"
   fi
