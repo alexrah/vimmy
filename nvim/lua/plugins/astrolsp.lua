@@ -16,6 +16,7 @@ return {
       format_on_save = {
         enabled = false, -- enable or disable format on save globally
       },
+      timeout_ms = 2000, -- default format timeout
     },
     mappings = {
       n = {
