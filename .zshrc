@@ -32,7 +32,7 @@ COMPLETION_WAITING_DOTS="true"
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode)
+plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode zsh-pnpm-completions)
 
 # Oh-My-Zsh NVM plugin config
 zstyle ':omz:plugins:nvm' autoload yes
