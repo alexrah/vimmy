@@ -14,5 +14,6 @@ return {
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.completion.codeium-nvim" },
   { import = "astrocommunity.search.grug-far-nvim" },
+  { import = "astrocommunity.recipes.heirline-mode-text-statusline"}
   -- import/override with your plugins folder
 }
