@@ -12,9 +12,13 @@ To run it, node must be available in $PATH even outside an interactive shell.
 
 Since I'm using NVM (Node Version Manager) which is loaded dynamically in ZSH,
 node is not available outside shell, therefore NeoVide can't find it.
-To fix this, create a `.zprofile` in the $HOME directory to initialize NVM even
-outside an interactive shell.
 
+to fix this, launch Neovide from a shell (see the CLI support section below)
+
+~~to fix this, create a `.zprofile` in the $HOME directory to initialize NVM even
+outside an interactive shell.~~
+
+the following snippet **WON'T WORK** because conflicts with NVM logic to auto-switch node version based 
 ```bash
 # ~/.zprofile
 
