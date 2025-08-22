@@ -33,7 +33,7 @@ return {
           ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
-          ["<Leader>;e"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
+          ["<Leader>;t"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
           ["<Leader>;v"] = { virtual_text_toggle, desc = virtual_text_label() },
 
           ["<Leader>fy"] = { function () vim.cmd "Telescope lsp_dynamic_workspace_symbols" end, desc = "Workspace Symbols" },
