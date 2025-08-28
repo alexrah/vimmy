@@ -124,7 +124,14 @@ return {
           handler = tools.flexi_handler,
           prompt = "Explain the following code, please only return the explanation",
           opts = {
-            enter_flexible_window = true,
+            enter_flexible_window = true, -- [optinal] set your llm model
+            url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            model = "gemini-2.5-flash",
+            api_type = "openai",
+            max_tokens = 8192,
+            temperature = 0.3,
+            top_p = 0.7,
+            fetch_key = function() return vim.env.GEMINI_API_KEY end,
           },
         },
         DocString = {
@@ -142,6 +149,14 @@ You must:
           handler = tools.action_handler,
           opts = {
             only_display_diff = true,
+            -- url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            -- model = "gemini-2.5-flash",
+            -- api_type = "openai",
+            -- max_tokens = 8192,
+            -- temperature = 0.3,
+            -- top_p = 0.7,
+            -- fetch_key = function() return vim.env.GEMINI_API_KEY end,
+
             templates = {
               lua = [[- For the Lua language, you should use the LDoc style.
 - Start all comment lines with "---".
