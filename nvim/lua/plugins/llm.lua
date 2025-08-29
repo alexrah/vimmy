@@ -2,19 +2,45 @@
 
 return {
   "Kurama622/llm.nvim",
+  dev = true,
   dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "echasnovski/mini.diff" },
   cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
   config = function()
     local tools = require "llm.tools"
     require("llm").setup {
-      url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-      model = "gemini-2.5-pro",
-      api_type = "openai",
-      max_tokens = 8192,
-      temperature = 0.3,
-      top_p = 0.7,
-      fetch_key = function() return vim.env.GEMINI_API_KEY end,
 
+      models = {
+        {
+          name = "GEMINI-2.5-pro",
+          url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+          model = "gemini-2.5-pro",
+          fetch_key = function() return vim.env.GEMINI_API_KEY end,
+          api_type = "openai",
+          max_tokens = 8192,
+          temperature = 0.3,
+          top_p = 0.7,
+        },
+        {
+          name = "DeepSeek 3.1",
+          url = "https://openrouter.ai/api/v1/chat/completions",
+          model = "deepseek/deepseek-chat-v3.1:free",
+          fetch_key = function() return vim.env.OPENROUTER_API_KEY end,
+          api_type = "openai",
+          max_tokens = 8192,
+          temperature = 0.3,
+          top_p = 0.7,
+        },
+        -- {
+        --   url = "https://codestral.mistral.ai/v1/chat/completions",
+        --   model = "codestral-2405",
+        --   fetch_key = function() return vim.env.MISTRAL_API_KEY end,
+        --   api_type = "openai",
+        --   max_tokens = 8192,
+        --   temperature = 0.3,
+        --   top_p = 0.7,
+        --
+        -- },
+      },
       prompt = "You are a helpful programming assistant.",
 
       spinner = {
@@ -55,6 +81,13 @@ return {
         -- The keyboard mapping for the output and input windows in "float" style.
         ["Session:Toggle"] = { mode = "n", key = "<leader>;c" },
         ["Session:Close"] = { mode = "n", key = { "<esc>", "Q" } },
+
+        -- float style
+        ["Input:ModelsNext"] = { mode = { "n", "i" }, key = "<C-S-J>" },
+        ["Input:ModelsPrev"] = { mode = { "n", "i" }, key = "<C-S-K>" },
+
+        -- Applicable to AI tools with split style and UI interfaces
+        ["Session:Models"] = { mode = "n", key = { "<C-m>" } },
       },
       -- display diff [require by action_handler]
       display = {
@@ -125,13 +158,14 @@ return {
           prompt = "Explain the following code, please only return the explanation",
           opts = {
             enter_flexible_window = true, -- [optinal] set your llm model
+
             url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
             model = "gemini-2.5-flash",
+            fetch_key = function() return vim.env.GEMINI_API_KEY end,
             api_type = "openai",
             max_tokens = 8192,
             temperature = 0.3,
             top_p = 0.7,
-            fetch_key = function() return vim.env.GEMINI_API_KEY end,
           },
         },
         DocString = {
@@ -149,13 +183,14 @@ You must:
           handler = tools.action_handler,
           opts = {
             only_display_diff = true,
-            -- url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-            -- model = "gemini-2.5-flash",
-            -- api_type = "openai",
-            -- max_tokens = 8192,
-            -- temperature = 0.3,
-            -- top_p = 0.7,
-            -- fetch_key = function() return vim.env.GEMINI_API_KEY end,
+
+            url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            model = "gemini-2.5-flash",
+            fetch_key = function() return vim.env.GEMINI_API_KEY end,
+            api_type = "openai",
+            max_tokens = 8192,
+            temperature = 0.3,
+            top_p = 0.7,
 
             templates = {
               lua = [[- For the Lua language, you should use the LDoc style.
@@ -173,8 +208,8 @@ You must:
     }
   end,
   keys = {
-    { "<leader>;c", mode = "n", "<cmd>LLMSessionToggle<cr>", desc = "Chat with GEMINI-2.5-pro" },
-    { "<leader>;a", mode = { "x", "n" }, "<cmd>LLMAppHandler Ask<cr>", desc = "Ask GEMINI-2.5-pro" },
+    { "<leader>;c", mode = "n", "<cmd>LLMSessionToggle<cr>", desc = "Chat" },
+    { "<leader>;a", mode = { "x", "n" }, "<cmd>LLMAppHandler Ask<cr>", desc = "Ask" },
     { "<leader>;e", mode = { "x" }, "<cmd>LLMAppHandler CodeExplain<cr>", desc = "Explain Code" },
     { "<leader>;d", mode = { "x" }, "<cmd>LLMAppHandler DocString<cr>", desc = "Write Docstring" },
   },
