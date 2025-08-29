@@ -41,7 +41,13 @@ return {
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
 
-          ["<C-Tab>"] = { function() require("snacks").picker.buffers() end, desc = "Find buffers" }
+          ["<C-Tab>"] = { function() require("snacks").picker.buffers() end, desc = "Find buffers" },
+
+          -- remap default delete byndings to m (move) and change default delete to not override yank
+          ["m"] = { 'd' },
+          ["M"] = { 'D' },
+          ["d"] = { '"_d' },
+          ["mm"] = { 'dd' },
 
         },
         v = {
@@ -51,6 +57,10 @@ return {
           ["<S-Down>"] = { "<Down>" },
           ["<S-Left>"] = { "<Left>" },
           ["<S-Right>"] = { "<Right>" },
+
+          ["m"] = { 'd' },
+          ["d"] = { '"_d' },
+
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
