@@ -6,6 +6,7 @@ return {
   opts = {
     -- Optionally disable cmp source if using virtual text only
     enable_cmp_source = true,
+    enable_chat = false,
     virtual_text = {
       enabled = true,
 
