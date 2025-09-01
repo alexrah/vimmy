@@ -1,4 +1,4 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 return {
   "folke/ts-comments.nvim",
@@ -14,7 +14,7 @@ return {
         spread_element = "// %s",
         statement_block = "// %s",
       },
-      typescript = { "/** %s */", "// %s" }, -- langs can have multiple commentstrings
+      typescript = { "/* %s */", "// %s" }, -- langs can have multiple commentstrings
     },
   },
   event = "VeryLazy",
