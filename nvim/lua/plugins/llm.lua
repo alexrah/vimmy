@@ -2,7 +2,7 @@
 
 return {
   "Kurama622/llm.nvim",
-  dev = true,
+  dev = false,
   dependencies = { "nvim-lua/plenary.nvim", "MunifTanjim/nui.nvim", "echasnovski/mini.diff" },
   cmd = { "LLMSessionToggle", "LLMSelectedTextHandler", "LLMAppHandler" },
   config = function()
