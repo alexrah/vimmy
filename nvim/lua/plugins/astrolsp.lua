@@ -18,6 +18,19 @@ return {
       },
       timeout_ms = 2000, -- default format timeout
     },
+    -- customize language server configuration options passed to `lspconfig`
+    ---@diagnostic disable: missing-fields
+    config = {
+      -- clangd = { capabilities = { offsetEncoding = "utf-8" } },
+      tailwindcss = {
+        settings = {
+          tailwindCSS = {
+            classAttributes = { "class", "className", "ngClass", "class:list", "containerClassName" },
+            classFunctions = { "cn", "clsx", "twMerge" },
+          },
+        },
+      },
+    },
     mappings = {
       n = {
         ["<leader>lb"] = { function() vim.lsp.buf.definition() end, desc = "Go to definition" },
@@ -26,9 +39,18 @@ return {
         ["grD"] = { function() vim.lsp.buf.declaration() end, desc = "vim.lsp.buf.declaration()" },
         ["gd"] = { function() vim.lsp.buf.definition() end, desc = "vim.lsp.buf.declaration()" },
         ["gb"] = { function() vim.lsp.buf.references() end, desc = "vim.lsp.buf.references()" },
-        ["<C-b>"] = { function() require("snacks.picker").lsp_references({auto_confirm = false}) end, desc = "vim.lsp.buf.references()" },
-        ["<C-s>"] = { function() require("snacks.picker").lsp_definitions({auto_confirm = false}) end, desc = "vim.lsp.buf.definition()" },
-        ["<C-y>"] = { function () require("snacks.picker").lsp_type_definitions({auto_confirm = false}) end, desc = "vim.lsp.buf.type_definition()" }
+        ["<C-b>"] = {
+          function() require("snacks.picker").lsp_references { auto_confirm = false } end,
+          desc = "vim.lsp.buf.references()",
+        },
+        ["<C-s>"] = {
+          function() require("snacks.picker").lsp_definitions { auto_confirm = false } end,
+          desc = "vim.lsp.buf.definition()",
+        },
+        ["<C-y>"] = {
+          function() require("snacks.picker").lsp_type_definitions { auto_confirm = false } end,
+          desc = "vim.lsp.buf.type_definition()",
+        },
       },
     },
   },
