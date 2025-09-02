@@ -30,6 +30,22 @@ return {
           },
         },
       },
+      html = {
+        filetypes = { "html", "php" },
+      },
+      emmet_ls = {
+        filetypes = {
+          "css",
+          "html",
+          "javascriptreact",
+          "scss",
+          "typescriptreact",
+          "php",
+        },
+        cssls = {
+          filetypes = { "css", "scss", "less", "php", "html" },
+        },
+      },
     },
     mappings = {
       n = {
