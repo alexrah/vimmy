@@ -13,6 +13,10 @@ return {
       ensure_installed = {
         -- install language servers
         "lua-language-server",
+        "eslint-lsp",
+        "bash-language-server",
+        "prettierd",
+        "rust-analyzer",
 
         -- install formatters
         "stylua",
