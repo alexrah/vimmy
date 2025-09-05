@@ -36,8 +36,6 @@ return {
           ["<Leader>;t"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
           ["<Leader>;v"] = { virtual_text_toggle, desc = virtual_text_label() },
 
-          ["<Leader>fy"] = { function () vim.cmd "Telescope lsp_dynamic_workspace_symbols" end, desc = "Workspace Symbols" },
-
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
 

@@ -67,6 +67,10 @@ return {
           function() require("snacks.picker").lsp_type_definitions { auto_confirm = false } end,
           desc = "vim.lsp.buf.type_definition()",
         },
+        ["<Leader>fy"] = {
+          function() require("snacks.picker").lsp_workspace_symbols() end,
+          desc = "Workspace Symbols",
+        },
       },
     },
   },
