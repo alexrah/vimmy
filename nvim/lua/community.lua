@@ -15,6 +15,7 @@ return {
   { import = "astrocommunity.completion.codeium-nvim" },
   { import = "astrocommunity.search.grug-far-nvim" },
   { import = "astrocommunity.recipes.heirline-mode-text-statusline"},
-  { import = "astrocommunity.pack.tailwindcss"}
+  { import = "astrocommunity.pack.tailwindcss"},
+  { import = "astrocommunity.pack.python"}
   -- import/override with your plugins folder
 }
