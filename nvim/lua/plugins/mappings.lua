@@ -43,7 +43,7 @@ return {
 
           -- remap default delete byndings to m (move) and change default delete to not override yank
           ["m"] = { 'd' },
-          ["M"] = { 'D' },
+          -- ["M"] = { 'D' },
           ["d"] = { '"_d' },
           ["mm"] = { 'dd' },
           ["c"] = { '"_c' },
