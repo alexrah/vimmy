@@ -10,7 +10,6 @@ return {
   { import = "astrocommunity.pack.lua" },
   { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.pack.typescript" },
-  -- { import = "astrocommunity.pack.php" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.completion.codeium-nvim" },
   { import = "astrocommunity.search.grug-far-nvim" },
