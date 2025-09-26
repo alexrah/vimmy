@@ -42,8 +42,15 @@ return {
           "typescriptreact",
           "php",
         },
-        cssls = {
-          filetypes = { "css", "scss", "less", "php", "html" },
+      },
+      cssls = {
+        filetypes = { "css", "scss", "less", "php", "html" },
+      },
+      vtsls = {
+        settings = {
+          vtsls = {
+            autoUseWorkspaceTsdk = true,
+          },
         },
       },
     },
