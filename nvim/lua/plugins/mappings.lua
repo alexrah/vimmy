@@ -48,6 +48,7 @@ return {
           ["mm"] = { 'dd' },
           ["c"] = { '"_c' },
 
+          ["<Leader>uW"] = { ":ASToggle<CR>", desc = "Toggle AutoSave" },
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
