@@ -44,12 +44,22 @@ return {
         },
       },
       cssls = {
-        filetypes = { "css", "scss", "less", "php", "html" },
+        filetypes = { "css", "scss", "less", "html" },
       },
       vtsls = {
         settings = {
           vtsls = {
             autoUseWorkspaceTsdk = true,
+          },
+        },
+      },
+      intelephense = {
+        settings = {
+          intelephense = {
+            diagnostics = {
+              undefinedMethods = true,
+              undefinedProperties = true,
+            },
           },
         },
       },
