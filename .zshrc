@@ -201,7 +201,7 @@ then
 fi
 
 #KUBERNETES
-export KUBECONFIG=${HOME}/.kube/docker.config.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/minikube.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml
+export KUBECONFIG=${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$PATH:${HOME}/.cargo/bin"
