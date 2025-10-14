@@ -17,6 +17,7 @@ return {
         "bash-language-server",
         "prettierd",
         "rust-analyzer",
+        "yaml-language-server",
 
         -- install formatters
         "stylua",
