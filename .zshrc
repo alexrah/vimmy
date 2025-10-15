@@ -205,3 +205,4 @@ export KUBECONFIG=${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeco
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$PATH:${HOME}/.cargo/bin"
+export PATH="$PATH:${HOME}/go/bin"
