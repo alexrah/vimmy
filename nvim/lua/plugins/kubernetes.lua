@@ -1,5 +1,22 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+local function command_exists(cmd)
+    -- Use 'which' on Unix/Linux/macOS or 'where' on Windows
+    local check_cmd = package.config:sub(1,1) == '\\' and 'where' or 'which'
+    local handle = io.popen(check_cmd .. ' ' .. cmd .. ' 2>/dev/null')
+    if not handle then
+        return false
+    end
+    local result = handle:read("*a")
+    handle:close()
+    return result ~= nil and result ~= ""
+end
+
+
+if not command_exists("kubectl") then
+  return {}
+end
+
 return {
   "diogo464/kubernetes.nvim",
   opts = {
