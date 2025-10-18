@@ -34,7 +34,7 @@ return {
         },
       },
       html = {
-        filetypes = { "html", "php" },
+        filetypes = { "html" },
       },
       emmet_ls = {
         filetypes = {
