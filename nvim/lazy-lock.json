@@ -60,7 +60,7 @@
   "snacks.nvim": { "branch": "main", "commit": "da230e3ca8146da4b73752daaf0a1d07d343c12d" },
   "todo-comments.nvim": { "branch": "main", "commit": "304a8d204ee787d2544d8bc23cd38d2f929e7cc5" },
   "toggleterm.nvim": { "branch": "main", "commit": "50ea089fc548917cc3cc16b46a8211833b9e3c7c" },
-  "transfer.nvim": { "branch": "main", "commit": "44f0b54f456b98d10d406630d44635e895f109a5" },
+  "transfer.nvim": { "branch": "main", "commit": "cc42f7854b9b705335053a409ff67f4dd415ba06" },
   "ts-comments.nvim": { "branch": "main", "commit": "1bd9d0ba1d8b336c3db50692ffd0955fe1bb9f0c" },
   "tsc.nvim": { "branch": "main", "commit": "8c1b4ec6a48d038a79ced8674cb15e7db6dd8ef0" },
   "vcl-vim-plugin": { "branch": "master", "commit": "ab58e19c2db6a0a89a6e1d8fef8180a2595ae378" },
