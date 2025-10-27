@@ -1,5 +1,11 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+-- NOTE: useful commands for diffing files:
+-- 1. do - Get changes from other window into the current window
+-- 2. dp - Put the changes from current window into the other window.
+-- 3. ]c - Jump to the next change.
+-- 4. [c - Jump to the previous change.
+
 require("which-key").add {
   { "<Leader>y", group = "Upload / Download", icon = "" },
   {
@@ -37,6 +43,7 @@ require("which-key").add {
 return {
   "coffebar/transfer.nvim",
   lazy = true,
+  dev = false,
   cmd = { "TransferInit", "DiffRemote", "TransferUpload", "TransferDownload", "TransferDirDiff", "TransferRepeat" },
   opts = {
     close_diffview_mapping = "<Leader>yc",
@@ -54,6 +61,7 @@ return {
     -- excludedPaths = {
     --   "src", -- local path relative to project root
     -- },
+    -- upload_on_save = false
   },
 }
 ]],
