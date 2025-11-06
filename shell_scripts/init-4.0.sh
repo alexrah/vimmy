@@ -45,6 +45,7 @@ else
 fi
 
 NVIM_CONFIG_PATH=~/.config
+mkdir $NVIM_CONFIG_PATH
 	
 printf "OS: $os_type\n"
 printf "================================\n"
