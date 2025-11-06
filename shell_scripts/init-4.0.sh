@@ -18,6 +18,7 @@ then
   #  printf "ruby : install ruby and neovim support\n"
   printf "neovim : install or update nvim, configuration files, plugin manager\n"
   printf "example: ./init-4.0.sh all #install everything\n"
+  printf "example: ./init-4.0.sh all compatible #install everything, lsd & neovim compatible versions\n"
   printf "example: ./init-4.0.sh help #show this message\n"
   printf "example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )\n"
   printf "example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles\n"
@@ -183,7 +184,7 @@ then
   if !(command -v "lsd" &> /dev/null)
   then
     printf "=========> install lsd...\n"
-    if [[ "$os_family" == "centos" ]]
+    if [[ "$os_family" == "centos" || $2 == "compatible" ]]
     then
       cd $INSTALLERS_FOLDER
       curl -L https://github.com/lsd-rs/lsd/releases/download/v1.1.5/lsd-v1.1.5-x86_64-unknown-linux-musl.tar.gz -o lsd.tar.gz
@@ -388,7 +389,7 @@ then
   then
     printf "=========> install neovim...\n"
     
-    if [[ $os_family == "centos" ]]
+    if [[ $os_family == "centos" || $2 == "compatible" ]]
     then
       # install best-efforts build made with glibc 2.17
       curl -L -o nvim.appimage https://github.com/neovim/neovim-releases/releases/download/v0.11.3/nvim-linux-x86_64.appimage
