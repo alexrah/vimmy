@@ -28,7 +28,7 @@ return {
       tailwindcss = {
         settings = {
           tailwindCSS = {
-            classAttributes = { "class", "className", "ngClass", "class:list", "containerClassName" },
+            classAttributes = { "class", "className", "ngClass", "class:list", "containerClassName", "elementClassName" },
             classFunctions = { "cn", "clsx", "twMerge" },
           },
         },
