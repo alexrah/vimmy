@@ -1,7 +1,9 @@
 # vim: set ft=zsh:
 
+# Kurama622/llm.nvim
 export GEMINI_API_KEY=
-# export LLM_KEY=AIzaSyAEtx_lkbed-uAA9frYbEOr2nYivD7d6R8
+# export LLM_KEY=
 export MISTRAL_API_KEY=
 export OPENROUTER_API_KEY=
+
 export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml:${HOME}/.kube/kind-test-ingress.kubeconfig.yml:${HOME}/.kube/kind-test-nginx-gateway.kubeconfig.yml:${HOME}/.kube/vn-staging.kubeconfig.yml:${HOME}/.kube/vn-prod.kubeconfig.yml:${HOME}/.kube/pct-2025.kubeconfig.yml
