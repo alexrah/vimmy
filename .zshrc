@@ -201,7 +201,7 @@ then
 fi
 
 #KUBERNETES
-export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml:${HOME}/.kube/kind-test.kubeconfig.yml:${HOME}/.kube/kind-test-ingress.kubeconfig.yml:${HOME}/.kube/vn-staging.kubeconfig.yml:${HOME}/.kube/vn-prod.kubeconfig.yml
+export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml:${HOME}/.kube/kind-test-ingress.kubeconfig.yml:${HOME}/.kube/kind-test-nginx-gateway.kubeconfig.yml:${HOME}/.kube/vn-staging.kubeconfig.yml:${HOME}/.kube/vn-prod.kubeconfig.yml:${HOME}/.kube/pct-2025.kubeconfig.yml
 
 export PATH="${KREW_ROOT:-$HOME/.krew}/bin:$PATH"
 export PATH="$PATH:${HOME}/.cargo/bin"
