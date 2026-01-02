@@ -12,6 +12,15 @@ end
 
 if not command_exists "kubectl" then return {} end
 
+vim.api.nvim_create_autocmd("User", {
+  pattern = "K8sContextChanged",
+  callback = function(ctx)
+    local results =
+      require("kubectl.actions.commands").shell_command("kubectl", { "config", "use-context", ctx.data.context })
+    if not results then vim.notify(results, vim.log.levels.INFO) end
+  end,
+})
+
 return {
   {
     "diogo464/kubernetes.nvim",
@@ -35,11 +44,42 @@ return {
     cmd = { "Kubectl", "Kubectx", "Kubens" },
     dependencies = "saghen/blink.download",
     keys = {
-      { "<leader>k", function() require("kubectl").toggle { tab = true } end },
-      { "<C-k>", "<Plug>(kubectl.kill)", ft = "k8s_*" },
-      { "7", "<Plug>(kubectl.view_nodes)", ft = "k8s_*" },
-      { "8", "<Plug>(kubectl.view_overview)", ft = "k8s_*" },
+      { "<leader>k", desc = " 󱃾 Kubernetes" },
+      { "<leader>kt", function() require("kubectl").toggle { tab = true } end, desc = "Open/Close kubectl" },
+      { "g?", "<Plug>(kubectl.help)", ft = "k8s_*", desc = "Help" },
+      { "<leader>k?", "<Plug>(kubectl.help)", ft = "k8s_*", desc = "Help" },
+      { "<C-k>", "<Plug>(kubectl.view_drift)", ft = "k8s_*", desc = "Drift" },
+      { "gy", "<Plug>(kubectl.yaml)", ft = "k8s_*", desc = "view YAML" },
+      { "1", "<Plug>(kubectl.view_deployments)", ft = "k8s_*" },
+      { "<leader>k1", "<Plug>(kubectl.view_deployments)", ft = "k8s_*", desc = "Deployments" },
+      { "2", "<Plug>(kubectl.view_pods)", ft = "k8s_*" },
+      { "<leader>k2", "<Plug>(kubectl.view_pods)", ft = "k8s_*", desc = "Pods" },
+      { "3", "<Plug>(kubectl.view_configmaps)", ft = "k8s_*" },
+      { "<leader>k3", "<Plug>(kubectl.view_configmaps)", ft = "k8s_*", desc = "Configmaps" },
+      { "4", "<Plug>(kubectl.view_secrets)", ft = "k8s_*" },
+      { "<leader>k4", "<Plug>(kubectl.view_secrets)", ft = "k8s_*", desc = "Secrets" },
+      { "5", "<Plug>(kubectl.view_services)", ft = "k8s_*" },
+      { "<leader>k5", "<Plug>(kubectl.view_services)", ft = "k8s_*", desc = "Services" },
+      { "6", "<Plug>(kubectl.view_ingresses)", ft = "k8s_*" },
+      { "<leader>k6", "<Plug>(kubectl.view_ingresses)", ft = "k8s_*", desc = "Ingresses" },
+      { "7", function() vim.cmd "Kubectl get gateways.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "Gateways" },
+      { "<leader>k7", function() vim.cmd "Kubectl get gateways.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "Gateways" },
+      { "8", "<Plug>(kubectl.view_crds)", ft = "k8s_*" },
+      { "<leader>k8", "<Plug>(kubectl.view_crds)", ft = "k8s_*", desc = "CRDs" },
+      { "9", "<Plug>(kubectl.view_overview)", ft = "k8s_*" },
+      { "<leader>k9", "<Plug>(kubectl.view_overview)", ft = "k8s_*", desc = "Overview" },
+      { "<leader>ko", "<Plug>(kubectl.view_nodes)", ft = "k8s_*", desc = "Nodes" },
       { "<C-t>", "<Plug>(kubectl.view_top)", ft = "k8s_*" },
+      { "<C-a>", "<Plug>(kubectl.alias_view)", ft = "k8s_*", desc = "Aliases" },
+      { "<leader>ka", "<Plug>(kubectl.alias_view)", ft = "k8s_*", desc = "Aliases <C-a>" },
+      { "<C-p>", "<Plug>(kubectl.picker_view)", ft = "k8s_*", desc = "Pickers" },
+      { "<leader>kp", "<Plug>(kubectl.picker_view)", ft = "k8s_*", desc = "Pickers <C-p>" },
+      { "<C-x>", "<Plug>(kubectl.contexts_view)", ft = "k8s_*", desc = "Contexts" },
+      { "<leader>kx", "<Plug>(kubectl.contexts_view)", ft = "k8s_*", desc = "Contexts <C-x>" },
+      { "<C-f>", "<Plug>(kubectl.filter_view)", ft = "k8s_*", desc = "Filter" },
+      { "<leader>kf", "<Plug>(kubectl.filter_view)", ft = "k8s_*", desc = "Filter <C-f>" },
+      { "<C-n>", "<Plug>(kubectl.namespace_view)", ft = "k8s_*", desc = "Namespaces" },
+      { "<leader>kn", "<Plug>(kubectl.namespace_view)", ft = "k8s_*", desc = "Namespaces <C-n>" },
     },
     config = function() require("kubectl").setup() end,
   },
