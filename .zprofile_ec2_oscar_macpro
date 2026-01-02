@@ -1,8 +1,0 @@
-alias www="cd /Applications/XAMPP/xamppfiles/htdocs/"
-alias free="python ~/.vim/command_line_tools/free.py"
-export JAVA_HOME="/Library/Java/Home"
-export EC2_HOME="/usr/local/ec2-api-tools-1.6.8.1"
-export AWS_ACCESS_KEY=AKIAIHXCKDW3QZKS4ARQ
-export AWS_SECRET_KEY=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
-export PATH=$PATH:"$EC2_HOME/bin"
-export EC2_URL=https://ec2.eu-west-1.amazonaws.com
