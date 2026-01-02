@@ -1,0 +1,3 @@
+# vim: set ft=zsh:
+
+export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml
