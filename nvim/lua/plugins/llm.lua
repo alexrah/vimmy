@@ -1,5 +1,12 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+---@class vim.env
+---@field OPENROUTER_API_KEY string|nil
+---@field GEMINI_API_KEY string|nil
+---@field MISTRAL_API_KEY string|nil
+---@field DEEPSEEK_API_KEY string|nil 
+local env = vim.env
+
 return {
   "Kurama622/llm.nvim",
   dev = false,
@@ -11,29 +18,39 @@ return {
 
       models = {
         {
-          name = "GEMINI-2.5-pro",
-          url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-          model = "gemini-2.5-pro",
-          fetch_key = function() return vim.env.GEMINI_API_KEY end,
+          name = "DeepSeek v3.2",
+          url = "https://api.deepseek.com/chat/completions",
+          model = "deepseek-chat",
+          fetch_key = function() return env.DEEPSEEK_API_KEY end,
           api_type = "openai",
-          max_tokens = 8192,
-          temperature = 0.3,
-          top_p = 0.7,
-        },
-        {
-          name = "DeepSeek 3.1",
-          url = "https://openrouter.ai/api/v1/chat/completions",
-          model = "deepseek/deepseek-chat-v3.1:free",
-          fetch_key = function() return vim.env.OPENROUTER_API_KEY end,
-          api_type = "openai",
-          max_tokens = 8192,
+          max_tokens = 4066,
           temperature = 0.3,
           top_p = 0.7,
         },
         -- {
+        --   name = "Devstral 2",
+        --   url = "https://openrouter.ai/api/v1/chat/completions",
+        --   model = "mistralai/devstral-2512:free",
+        --   fetch_key = function() return env.OPENROUTER_API_KEY end,
+        --   api_type = "openai",
+        --   max_tokens = 8192,
+        --   temperature = 0.3,
+        --   top_p = 0.7,
+        -- },
+        -- {
+        --   name = "GEMINI-2.5-pro",
+        --   url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        --   model = "gemini-2.5-pro",
+        --   fetch_key = function() return env.GEMINI_API_KEY end,
+        --   api_type = "openai",
+        --   max_tokens = 8192,
+        --   temperature = 0.3,
+        --   top_p = 0.7,
+        -- },
+        -- {
         --   url = "https://codestral.mistral.ai/v1/chat/completions",
         --   model = "codestral-2405",
-        --   fetch_key = function() return vim.env.MISTRAL_API_KEY end,
+        --   fetch_key = function() return env.MISTRAL_API_KEY end,
         --   api_type = "openai",
         --   max_tokens = 8192,
         --   temperature = 0.3,
@@ -117,7 +134,7 @@ return {
             -- url = "https://api.chatanywhere.tech/v1/chat/completions",
             -- model = "gpt-4o-mini",
             -- api_type = "openai",
-            -- fetch_key = function() return vim.env.CHAT_ANYWHERE_KEY end,
+            -- fetch_key = function() return env.CHAT_ANYWHERE_KEY end,
 
             -- display diff
             display = {
@@ -160,8 +177,8 @@ return {
             enter_flexible_window = true, -- [optinal] set your llm model
 
             url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-            model = "gemini-2.5-flash",
-            fetch_key = function() return vim.env.GEMINI_API_KEY end,
+            model = "gemini-3-flash",
+            fetch_key = function() return env.GEMINI_API_KEY end,
             api_type = "openai",
             max_tokens = 8192,
             temperature = 0.3,
@@ -185,8 +202,8 @@ You must:
             only_display_diff = true,
 
             url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-            model = "gemini-2.5-flash",
-            fetch_key = function() return vim.env.GEMINI_API_KEY end,
+            model = "gemini-3-flash",
+            fetch_key = function() return env.GEMINI_API_KEY end,
             api_type = "openai",
             max_tokens = 8192,
             temperature = 0.3,
