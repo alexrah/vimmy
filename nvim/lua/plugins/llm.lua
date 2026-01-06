@@ -4,7 +4,7 @@
 ---@field OPENROUTER_API_KEY string|nil
 ---@field GEMINI_API_KEY string|nil
 ---@field MISTRAL_API_KEY string|nil
----@field DEEPSEEK_API_KEY string|nil 
+---@field DEEPSEEK_API_KEY string|nil
 local env = vim.env
 
 return {
@@ -176,13 +176,13 @@ return {
           opts = {
             enter_flexible_window = true, -- [optinal] set your llm model
 
-            url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-            model = "gemini-3-flash",
-            fetch_key = function() return env.GEMINI_API_KEY end,
-            api_type = "openai",
-            max_tokens = 8192,
-            temperature = 0.3,
-            top_p = 0.7,
+            -- url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            -- model = "gemini-2.5-flash",
+            -- fetch_key = function() return env.GEMINI_API_KEY end,
+            -- api_type = "openai",
+            -- max_tokens = 8192,
+            -- temperature = 0.3,
+            -- top_p = 0.7,
           },
         },
         DocString = {
@@ -201,13 +201,13 @@ You must:
           opts = {
             only_display_diff = true,
 
-            url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
-            model = "gemini-3-flash",
-            fetch_key = function() return env.GEMINI_API_KEY end,
-            api_type = "openai",
-            max_tokens = 8192,
-            temperature = 0.3,
-            top_p = 0.7,
+            -- url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+            -- model = "gemini-2.5-flash",
+            -- fetch_key = function() return env.GEMINI_API_KEY end,
+            -- api_type = "openai",
+            -- max_tokens = 8192,
+            -- temperature = 0.3,
+            -- top_p = 0.7,
 
             templates = {
               lua = [[- For the Lua language, you should use the LDoc style.
@@ -221,6 +221,47 @@ You must:
             },
           },
         },
+        AttachToChat = {
+          handler = tools.attach_to_chat_handler,
+          opts = {
+            is_codeblock = true,
+            inline_assistant = true,
+            diagnostic = { vim.diagnostic.severity.ERROR, vim.diagnostic.severity.WARN },
+            language = "English",
+            -- display diff
+            display = {
+              mapping = {
+                mode = "n",
+                keys = { "d" },
+              },
+              action = nil,
+            },
+            -- accept diff
+            accept = {
+              mapping = {
+                mode = "n",
+                keys = { "Y", "y" },
+              },
+              action = nil,
+            },
+            -- reject diff
+            reject = {
+              mapping = {
+                mode = "n",
+                keys = { "N", "n" },
+              },
+              action = nil,
+            },
+            -- close diff
+            close = {
+              mapping = {
+                mode = "n",
+                keys = { "<esc>" },
+              },
+              action = nil,
+            },
+          },
+        },
       },
     }
   end,
@@ -229,5 +270,6 @@ You must:
     { "<leader>;a", mode = { "x", "n" }, "<cmd>LLMAppHandler Ask<cr>", desc = "Ask" },
     { "<leader>;e", mode = { "x" }, "<cmd>LLMAppHandler CodeExplain<cr>", desc = "Explain Code" },
     { "<leader>;d", mode = { "x" }, "<cmd>LLMAppHandler DocString<cr>", desc = "Write Docstring" },
+    { "<leader>;v", mode = { "x" }, "<cmd>LLMAppHandler AttachToChat<cr>", desc = "Chat with selected code" },
   },
 }
