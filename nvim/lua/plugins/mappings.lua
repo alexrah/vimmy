@@ -1,3 +1,5 @@
+-- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+
 local function virtual_text_toggle()
   local virtual_text = require("codeium.config").options.virtual_text
   virtual_text.manual = not virtual_text.manual
