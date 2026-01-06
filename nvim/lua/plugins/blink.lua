@@ -8,20 +8,34 @@ return {
     },
   },
   opts = function(plugin, opts)
-    -- kubectl.nvim integration
-    if vim.bo.filetype:match "^k8s_" then
-      vim.notify('filetype'..vim.bo.filetype, 2)
-      -- Return true if filetype starts with "k8s_"
-      opts.enabled = function() return true end
+    -- Store original enabled function if it exists
+    local original_enabled = opts.enabled
 
-      -- set icons for blink.cmp results
-      opts.completion.menu.draw.components.kind_icon.text = function(ctx)
+    -- kubectl.nvim integration
+    -- Create a new enabled function that checks filetype dynamically
+    opts.enabled = function()
+      -- First check if we're in a k8s filetype
+      if vim.bo.filetype:match "^k8s_" then return true end
+
+      -- If not k8s, use original enabled function if it exists
+      if original_enabled then return original_enabled() end
+
+      -- Default to true if no original function
+      return true
+    end
+
+    -- Custom icons 
+    local original_kind_icon = opts.completion.menu.draw.components.kind_icon.text
+    opts.completion.menu.draw.components.kind_icon.text = function(ctx)
+      if vim.bo.filetype:match "^k8s_" then
         if ctx.kind == "Namespace" then return "󰘧" end
         if ctx.kind == "History" then return "󰋚" end
         if ctx.kind == "Context" then return "" end
         if ctx.kind == "View" then return "" end
         return "󱃾"
       end
+      if original_kind_icon then return original_kind_icon(ctx) end
+      return ""
     end
 
     -- Codeium integration
