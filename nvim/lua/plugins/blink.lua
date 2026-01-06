@@ -24,7 +24,7 @@ return {
       return true
     end
 
-    -- Custom icons 
+    -- Custom icons
     local original_kind_icon = opts.completion.menu.draw.components.kind_icon.text
     opts.completion.menu.draw.components.kind_icon.text = function(ctx)
       if vim.bo.filetype:match "^k8s_" then
@@ -40,6 +40,14 @@ return {
 
     -- Codeium integration
     table.insert(opts.sources.default, "codeium")
-    opts.sources.providers.codeium = { name = "Codeium", module = "codeium.blink", async = true }
+    opts.sources.providers.codeium = {
+      name = "Codeium",
+      module = "codeium.blink",
+      async = true,
+      enabled = function()
+        -- Disable Codeium when buffer type is "prompt"
+        return vim.bo.buftype ~= "prompt"
+      end,
+    }
   end,
 }
