@@ -1,6 +1,8 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
--- INFO: UI configuration is defined in llm_dynaimc_ui.lua and loaded in polish.lua to select vsplit on larger windows & float on smaller ones 
+-- INFO: {style} configuration is defined in llm_ui.lua and loaded in polish.lua to
+-- dynamically select UI based on window size:
+-- right panel on larger windows & bottom panel on smaller ones 
 
 ---@class vim.env
 ---@field OPENROUTER_API_KEY string|nil
@@ -116,6 +118,85 @@ return {
           opts = { "internal", "filler", "closeoff", "algorithm:patience", "followwrap", "linematch:120" },
           provider = "mini_diff", -- default|mini_diff
           disable_diagnostic = true, -- Whether to show diagnostic information when displaying diff
+        },
+      },
+      chat_ui_opts = {
+        input = {
+          split = {
+            relative = "win",
+            position = {
+              row = "80%",
+              col = "50%",
+            },
+            border = {
+              text = {
+                top = "  Enter Your Question ",
+                top_align = "center",
+              },
+            },
+            win_options = {
+              winblend = 0,
+              winhighlight = "Normal:String,FloatBorder:LlmYellowLight,FloatTitle:LlmYellowNormal",
+            },
+            size = { height = 2, width = "80%" },
+          },
+        },
+        output = {
+          split = {
+            size = "40%",
+          },
+        },
+        history = {
+          split = {
+            -- Default: true.
+            -- If the window flickers when the cursor moves on macOS, you can set enable_fzf_focus_print = false.
+            enable_fzf_focus_print = false,
+            size = "60%",
+          },
+        },
+        models = {
+          split = {
+            relative = "win",
+            size = { height = "30%", width = "60%" },
+          },
+        },
+      },
+      -- popup window options
+      popwin_opts = {
+        relative = "cursor",
+        enter = true,
+        focusable = true,
+        zindex = 50,
+        position = { row = -7, col = 15 },
+        size = { height = 15, width = "50%" },
+        border = { style = "single", text = { top = " Explain ", top_align = "center" } },
+        win_options = {
+          winblend = 0,
+          winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
+        },
+
+        -- move popwin
+        move = {
+          left = {
+            mode = "n",
+            keys = "<left>",
+            distance = 5,
+          },
+          right = {
+            mode = "n",
+            keys = "<right>",
+            distance = 5,
+          },
+          up = {
+            mode = "n",
+            keys = "<up>",
+            distance = 2,
+          },
+          down = {
+            mode = "n",
+            keys = "<down>",
+            distance = 2,
+          },
         },
       },
       app_handler = {

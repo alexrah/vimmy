@@ -38,7 +38,7 @@ end
 set_ft_option({'php'}, 'shiftwidth', 4)
 set_ft_option({'php'}, 'tabstop', 4)
 
-local llm_apply_dynamic_config = require('llm_dynamic_ui').llm_apply_dynamic_config
+local llm_apply_dynamic_config = require('llm_ui').llm_apply_dynamic_config
 
 -- Set up autocommand to trigger on window resize
 vim.api.nvim_create_autocmd("VimResized", {
