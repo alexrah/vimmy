@@ -24,6 +24,12 @@ return {
       return true
     end
 
+    -- Delay before showing the completion menu while typing
+    opts.completion.menu.auto_show_delay_ms = 1000
+
+    -- Disable automatically showing the menu while typing, instead press `<C-space>` (by default) to show it manually
+    -- opts.completion.menu.auto_show = false
+
     -- Custom icons
     local original_kind_icon = opts.completion.menu.draw.components.kind_icon.text
     opts.completion.menu.draw.components.kind_icon.text = function(ctx)
