@@ -1,15 +1,23 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
-local function virtual_text_toggle()
+local function codeium_virtual_text_toggle()
   local virtual_text = require("codeium.config").options.virtual_text
   virtual_text.manual = not virtual_text.manual
 end
 
-local function virtual_text_label()
+local function codeium_virtual_text_label()
   -- local virtual_text_manual = require("codeium.config").options.virtual_text.manual and "Off" or "On"
   -- local status = virtual_text_manual and "Off" or "On"
   -- return "Toggle Codeium Virtual Text (,,) [" .. status .. "]"
   return "Toggle Codeium Virtual Text (,,)"
+end
+
+local function codeium_toggle()
+  vim.cmd "Codeium Toggle"
+end
+
+local function codeium_label()
+  return "Enable/Disable Codeium"
 end
 
 
@@ -35,8 +43,8 @@ return {
           ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
-          ["<Leader>;t"] = { function() vim.cmd "Codeium Toggle" end, desc = "Enable/Disable Codeium" },
-          ["<Leader>;v"] = { virtual_text_toggle, desc = virtual_text_label() },
+          ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
+          ["<Leader>;v"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
 
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
@@ -69,7 +77,8 @@ return {
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
-          [",,"] = { virtual_text_toggle, desc = virtual_text_label() },
+          [",,"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
+          [",."] = { codeium_toggle, desc = codeium_label() },
         },
       },
     },
