@@ -8,3 +8,12 @@ export OPENROUTER_API_KEY=
 export DEEPSEEK_API_KEY=
 
 export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubeconfig.yml:${HOME}/.kube/pct-test.kubeconfig.yml:${HOME}/.kube/pct-dev-personal.kubeconfig.yml:${HOME}/.kube/kind-test-ingress.kubeconfig.yml:${HOME}/.kube/kind-test-nginx-gateway.kubeconfig.yml:${HOME}/.kube/vn-staging.kubeconfig.yml:${HOME}/.kube/vn-prod.kubeconfig.yml:${HOME}/.kube/pct-2025.kubeconfig.yml
+
+
+# Claude Code with DeepSeek API
+export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
+export ANTHROPIC_AUTH_TOKEN=${DEEPSEEK_API_KEY}
+export API_TIMEOUT_MS=600000
+export ANTHROPIC_MODEL=deepseek-chat
+export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
+export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
