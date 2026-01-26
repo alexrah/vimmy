@@ -8,7 +8,6 @@
 return {
   "AstroNvim/astrocommunity",
   { import = "astrocommunity.pack.lua" },
-  { import = "astrocommunity.motion.leap-nvim" },
   { import = "astrocommunity.pack.typescript" },
   { import = "astrocommunity.git.diffview-nvim" },
   { import = "astrocommunity.completion.codeium-nvim" },
