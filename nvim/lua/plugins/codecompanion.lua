@@ -1,4 +1,7 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+--
+-- Check if DEEPSEEK_API_KEY is defined and not empty
+if not vim.env.DEEPSEEK_API_KEY or vim.env.DEEPSEEK_API_KEY == "" then return {} end
 
 local adapterACP = "claude_code"
 local adapterHTTP = { name = "deepseek", model = "deepseek-chat" }
@@ -39,6 +42,14 @@ return {
     },
     opts = {
       -- log_level = "DEBUG",
+    },
+    extensions = {
+      history = {
+        enabled = true,
+        opts = {
+          auto_save = true,
+        },
+      },
     },
   },
   dependencies = {
