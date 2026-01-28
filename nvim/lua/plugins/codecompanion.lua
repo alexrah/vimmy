@@ -32,10 +32,13 @@ return {
     display = {
       chat = {
         window = {
-          position = "bottom",
-          layout = "horizontal",
+          position = "right",
+          layout = "vertical",
         },
       },
+    },
+    opts = {
+      -- log_level = "DEBUG",
     },
   },
   dependencies = {

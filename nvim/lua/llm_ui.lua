@@ -25,7 +25,11 @@ local function code_companion_apply_dynamic_config()
   local width = vim.api.nvim_win_get_width(0)
   -- vim.notify("win width: " .. width, 2)
 
-  local existing_config = require("codecompanion").config or {}
+  local existing_config = require("codecompanion.config").config or {}
+
+  existing_config.constants = nil
+
+  -- vim.notify("config " .. vim.inspect(existing_config), 2)
 
   if width > min_width then
     -- vim.notify("Window is wide enough - Vsplit UI", 2)
@@ -58,3 +62,4 @@ return {
   llm_apply_dynamic_config = llm_apply_dynamic_config,
   code_companion_apply_dynamic_config = code_companion_apply_dynamic_config,
 }
+

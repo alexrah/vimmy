@@ -49,6 +49,7 @@ return {
           ["<C-a>"] = { '<cmd>CodeCompanionActions<cr>', desc = "CodeCompanionActions" },
           ["<Leader>;;"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle <C-;>" },
           ["<C-;>"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle" },
+          -- ["<C-'>"] = { function() require("codecompanion").toggle({ window_opts = { layout = "horizontal", width = 0.4, position = 'bottom'}}) end, desc = "CodeCompanionChat Toggle" },
 
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
