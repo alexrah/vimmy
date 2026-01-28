@@ -45,6 +45,10 @@ return {
 
           ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
           ["<Leader>;v"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
+          ["<Leader>;a"] = { '<cmd>CodeCompanionActions<cr>', desc = "CodeCompanionActions <C-a>" },
+          ["<C-a>"] = { '<cmd>CodeCompanionActions<cr>', desc = "CodeCompanionActions" },
+          ["<Leader>;;"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle <C-;>" },
+          ["<C-;>"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle" },
 
           ["zO"] = { function () return require('fold-cycle').open_all() end, desc = "Open all folds" },
           ["zC"] = { function () return require('fold-cycle').close_all() end, desc = "Close all folds" },
@@ -74,11 +78,18 @@ return {
           ["c"] = { '"_c' },
           ["x"] = { '"_x' },
 
+          ["<C-a>"] = { '<cmd>CodeCompanionActions<cr>', desc = "CodeCompanionActions" },
+          ["<C-;>"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle" },
+          ["<Leader>;a"] = { '<cmd>CodeCompanionChat Add<cr>', desc = "Add visually selected to chat <C-a><C-a>" },
+          ["<C-a><C-a>"] = { '<cmd>CodeCompanionChat Add<cr>', desc = "Add visually selected to chat" },
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
           [",,"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
           [",."] = { codeium_toggle, desc = codeium_label() },
+
+          ["<C-a>"] = { '<cmd>CodeCompanionActions<cr>', desc = "CodeCompanionActions" },
+          ["<C-;>"] = { '<cmd>CodeCompanionChat Toggle<cr>', desc = "CodeCompanionChat Toggle" },
         },
       },
     },
