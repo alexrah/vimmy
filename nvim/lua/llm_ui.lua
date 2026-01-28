@@ -1,4 +1,10 @@
 local function llm_apply_dynamic_config()
+
+  local ok, _ = pcall(require, "llm")
+  if not ok then
+    return
+  end
+
   -- INFO: Define the minimum width threshold
   local min_width = 130 -- You can adjust this value as needed
 
@@ -18,6 +24,12 @@ local function llm_apply_dynamic_config()
 end
 
 local function code_companion_apply_dynamic_config()
+  -- Check if codecompanion is available
+  local ok, _ = pcall(require, "codecompanion")
+  if not ok then
+    return
+  end
+
   -- INFO: Define the minimum width threshold
   local min_width = 130 -- You can adjust this value as needed
 
@@ -62,4 +74,5 @@ return {
   llm_apply_dynamic_config = llm_apply_dynamic_config,
   code_companion_apply_dynamic_config = code_companion_apply_dynamic_config,
 }
+
 
