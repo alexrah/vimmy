@@ -1,6 +1,6 @@
 # vim: set ft=zsh:
 
-# Kurama622/llm.nvim
+# Kurama622/llm.nvim | olimorris/codecompanion.nvim | Claude Code
 export GEMINI_API_KEY=
 # export LLM_KEY=
 export MISTRAL_API_KEY=
@@ -17,3 +17,6 @@ export API_TIMEOUT_MS=600000
 export ANTHROPIC_MODEL=deepseek-chat
 export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+
+# ChunkHound Agent Indexer: required to generate embeddings
+export VOYAGE_API_KEY=
