@@ -1,4 +1,4 @@
--- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
+if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
 -- INFO: {style} configuration is defined in llm_ui.lua and loaded in polish.lua to
 -- dynamically select UI based on window size:
@@ -43,7 +43,7 @@ return {
         -- },
         -- {
         --   name = "GEMINI-2.5-pro",
-        --   url = "https://generativelanguage.googleapis.com/v1beta/openai/chat/completions",
+        --   url = "https://gmenerativelanguage.googleapis.com/v1beta/openai/chat/completions",
         --   model = "gemini-2.5-pro",
         --   fetch_key = function() return env.GEMINI_API_KEY end,
         --   api_type = "openai",
