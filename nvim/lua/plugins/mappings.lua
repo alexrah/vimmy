@@ -42,6 +42,7 @@ return {
 
           ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
+          ["<Leader>gx"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
           ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
           ["<Leader>;v"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
