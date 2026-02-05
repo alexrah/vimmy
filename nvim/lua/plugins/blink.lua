@@ -53,7 +53,8 @@ return {
       enabled = function()
         -- Disable Codeium when buffer type is "prompt"
         return vim.bo.buftype ~= "prompt"
-      end
+      end,
+      score_offset = -1
     }
   end
 }
