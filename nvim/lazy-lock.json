@@ -23,6 +23,7 @@
   "grug-far.nvim": { "branch": "main", "commit": "794f03c97afc7f4b03fb6ec5111be507df1850cf" },
   "guess-indent.nvim": { "branch": "main", "commit": "84a4987ff36798c2fc1169cbaff67960aed9776f" },
   "heirline.nvim": { "branch": "master", "commit": "fae936abb5e0345b85c3a03ecf38525b0828b992" },
+  "image.nvim": { "branch": "master", "commit": "446a8a5cc7a3eae3185ee0c697732c32a5547a0b" },
   "kubectl.nvim": { "branch": "main", "commit": "04c15d23e6aaa80adf1ad0a5a421e40a55ea2a14" },
   "kubernetes.nvim": { "branch": "main", "commit": "44daf998345628a1a7034e3aaa31f4e05e4dde7c" },
   "lazy.nvim": { "branch": "main", "commit": "85c7ff3711b730b4030d03144f6db6375044ae82" },
