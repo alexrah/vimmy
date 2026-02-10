@@ -310,22 +310,9 @@ then
 
 fi
 
-if [[ " ${aArgs[*]} " =~ "python" ]] || [[ $1 == "all" ]]
+# PYTHON3 SUPPORT
+if [[ " ${aArgs[*]} " =~ "python" ]]
 then
-
-# PYTHON2 SUPPORT
-  # if !(command -v "pip" &> /dev/null)
-  # then
-  #   printf "=========> install pip...\n"
-  #   curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip2.py
-	#   ${SUDO} python get-pip2.py
-  # else
-  #   printf "=========> pip already installed, skipping...\n"
-  # fi
-  #
-  # printf "=========> install python neovim support...\n"
-  # pip install neovim
-
   if !(command -v "python3" &> /dev/null)
   then
     printf "=========> install python3...\n"
@@ -343,39 +330,17 @@ then
     printf "=========> pip3 already installed, skipping...\n"
   fi
 
-  printf "=========> install python3 neovim support...\n"
-  ${SUDO} pip3 install neovim
 
-# printf "Python: install virtualenv & create .virtualenvs...\n"
-# printf "================================\n"
-# PYTHON VIRTUALENV SUPPORT
-# pip3 install virtualenv
-# mkdir -p ~/.virtualenvs/neovm-python2
-# cd ~/.virtualenvs/neovim-python2
-# virtualenv py2 -p $(which python)
-# source py2/bin/activate
-# pip install neovim
-#
-# mkdir -p ~/.virtualenvs/neovim-python3
-# cd ~/.virtualenvs/neovim-python3
-# virtualenv py3 -p $(which python3)
-# source py3/bin/activate
-# pip install neovim
+  printf "Python: install virtualenv & create .virtualenvs...\n"
+  printf "================================\n"
+  mkdir -p ~/.virtualenvs/
+  python3 -m venv ~/.virtualenvs/neovim-python3 # create a new venv
+  cd ~/.virtualenvs/neovim-python3
+  source bin/activate
+  pip install pynvim jupyter_client cairosvg plotly kaleido pnglatex pyperclip
+  deactivate
 fi
 
-# if [[ " ${aArgs[*]} " =~ "ruby" ]] || [[ $1 == "all" ]]
-# then
-#   if !(command -v "ruby" &> /dev/null)
-#   then
-#     printf "=========> install ruby...\n"
-#     $PACKAGE_MANAGER -y install ruby
-#   else
-#     printf "=========> ruby already installed, skipping...\n"
-#   fi
-#
-#   printf "=========> install ruby neovim support...\n"
-#   gem install neovim
-# fi
 
 if [[ " ${aArgs[*]} " =~ "neovim" ]] || [[ $1 == "all" ]]
 then
