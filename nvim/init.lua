@@ -32,5 +32,13 @@ vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 -- neovide alt key on macos
 vim.g.neovide_input_macos_option_key_is_meta = 'both'
 
+local python3_venv_path = '~/.virtualenvs/neovim-python3'
+
+-- Check if Python virtual environment folder exists and set python3_host_prog
+if vim.fn.isdirectory(vim.fn.expand(python3_venv_path)) == 1 then
+  vim.g.python3_host_prog = vim.fn.expand(python3_venv_path .. '/bin/python')
+end
+
 require "lazy_setup"
 require "polish"
+
