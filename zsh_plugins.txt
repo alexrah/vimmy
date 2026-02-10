@@ -1,0 +1,30 @@
+# vi: ft=conf 
+# frameworks like oh-my-zsh are supported
+getantidote/use-omz        # handle OMZ dependencies
+ohmyzsh/ohmyzsh path:lib   # load OMZ's library
+ohmyzsh/ohmyzsh path:plugins/git
+ohmyzsh/ohmyzsh path:plugins/github
+ohmyzsh/ohmyzsh path:plugins/colored-man-pages
+ohmyzsh/ohmyzsh path:plugins/bower
+ohmyzsh/ohmyzsh path:plugins/gem
+ohmyzsh/ohmyzsh path:plugins/web-search
+ohmyzsh/ohmyzsh path:plugins/yum
+ohmyzsh/ohmyzsh path:plugins/history-substring-search
+ohmyzsh/ohmyzsh path:plugins/nvm
+ohmyzsh/ohmyzsh path:plugins/kubectl
+ohmyzsh/ohmyzsh path:plugins/helm
+ohmyzsh/ohmyzsh path:plugins/wp-cli
+ohmyzsh/ohmyzsh path:plugins/docker
+ohmyzsh/ohmyzsh path:plugins/tmux
+ohmyzsh/ohmyzsh path:plugins/npm
+ohmyzsh/ohmyzsh path:plugins/rust
+ohmyzsh/ohmyzsh path:plugins/kind
+ohmyzsh/ohmyzsh path:plugins/uv
+
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-syntax-highlighting
+alexrah/zsh-python-venv-prompt
+MichaelAquilina/zsh-autoswitch-virtualenv
+# alexrah/zsh-claudecode-plugin
+michakfromparis/zsh-pnpm-completions
+superbrothers/zsh-kubectl-prompt.git

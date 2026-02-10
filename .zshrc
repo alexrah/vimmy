@@ -1,6 +1,9 @@
 INSTALLERS_FOLDER=~/.dotfiles
 # Path to your oh-my-zsh configuration.
 ZSH=$INSTALLERS_FOLDER/oh-my-zsh
+DOTFILES=$INSTALLERS_FOLDER/vimmy
+
+if false; then
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -33,6 +36,37 @@ COMPLETION_WAITING_DOTS="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode zsh-pnpm-completions zsh-kubectl-prompt kind uv)
+
+fi
+
+if true; then
+
+ZSH_THEME="dstkph"
+# Source prompt theme
+source $DOTFILES/dstkph.zsh-theme
+
+# source antidote
+source $INSTALLERS_FOLDER/antidote/antidote.zsh
+
+# Set the root name of the plugins files (.txt and .zsh) antidote will use.
+zsh_plugins=${DOTFILES}/zsh_plugins
+
+# Ensure the .zsh_plugins.txt file exists so you can add plugins.
+[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
+
+# Lazy-load antidote from its functions directory.
+fpath=($INSTALLERS_FOLDER/antidote/functions $fpath)
+autoload -Uz antidote
+
+# Generate a new static file whenever .zsh_plugins.txt is updated.
+if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+fi
+
+# Source your static plugins file.
+source ${zsh_plugins}.zsh
+
+fi
 
 # Oh-My-Zsh NVM plugin config
 zstyle ':omz:plugins:nvm' autoload yes
@@ -208,3 +242,4 @@ export PATH="$PATH:${HOME}/.cargo/bin"
 
 # GO
 export PATH="$PATH:${HOME}/go/bin"
+
