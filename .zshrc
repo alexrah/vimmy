@@ -41,6 +41,9 @@ fi
 
 if true; then
 
+# add zfunc folder to fpath list of zsh folders 
+fpath=($DOTFILES/zfunc $fpath)
+
 ZSH_THEME="dstkph"
 # Source prompt theme
 source $DOTFILES/dstkph.zsh-theme
@@ -67,6 +70,8 @@ fi
 source ${zsh_plugins}.zsh
 
 fi
+
+
 
 # Oh-My-Zsh NVM plugin config
 zstyle ':omz:plugins:nvm' autoload yes
