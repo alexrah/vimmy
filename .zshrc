@@ -99,7 +99,6 @@ export EDITOR=nvim
 # @see https://github.com/zsh-users/zsh-autosuggestions#configuration 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE='fg=cyan'
 
-export DOTFILES=~/.dotfiles
 alias wpscan="~/wpscan/wpscan.rb"
 alias ls="lsd"
 alias la="lsd -lhA"
@@ -112,25 +111,25 @@ alias cs50="cd ~/Insync/alexrah@gmail.com/PROJECTS/110715_CS50/"
 alias grepp="grep -A 2 -B 2 -i"
 alias grepi="grep -i"
 alias gitw="git whatchanged -p --color"
-alias ipinfo="sh $DOTFILES/vimmy/command_line_tools/ipinfo.sh"
+alias ipinfo="sh $DOTFILES/command_line_tools/ipinfo.sh"
 # alias web2png="python ~/.vim/command_line_tools/webkit2png-0.5.py"
-alias web2png="$DOTFILES/vimmy/command_line_tools/webkit2png-0.8.py"
+alias web2png="$DOTFILES/command_line_tools/webkit2png-0.8.py"
 alias svi="sudo vim"
 alias mdfindo="mdfind -onlyin ./"
 alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/bin/cscope -b;rm ./cscope.files"
-alias yuic="java -jar $DOTFILES/vimmy/command_line_tools/yuicompressor-2.4.8pre.jar"
+alias yuic="java -jar $DOTFILES/command_line_tools/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias folder-size="du -ch -d 1 | sort -h" # calculate folder size 
 alias top-ten-global="du -a / | sort -n -r | head -n 10" # calculate top 10 biggest folder/files on disk
 alias top-ten-local="du -a ./ | sort -n -r | head -n 10" # calculate top 10 biggest folder/files in working directory
 alias disk-size="df -H" # display all disks size
 alias showip="curl -s checkip.dyndns.org|sed -e 's/.*Current IP Address: //' -e 's/<.*$//'"
-alias tmux-persistence="$DOTFILES/vimmy/command_line_tools/tmux-persistence/tmux-persist.rb"
-alias tmux-session="$DOTFILES/vimmy/command_line_tools/tmux-persistence/tmux-session"
-alias speedtest="$DOTFILES/vimmy/command_line_tools/speedtest_cli.py"
-alias speedtest3="$DOTFILES/vimmy/command_line_tools/speedtest_cli3.py"
-alias netspeed="$DOTFILES/vimmy/command_line_tools/netspeed.sh"
-alias openssl-check-certs="$DOTFILES/vimmy/command_line_tools/openssl-check-certs.sh"
+alias tmux-persistence="$DOTFILES/command_line_tools/tmux-persistence/tmux-persist.rb"
+alias tmux-session="$DOTFILES/command_line_tools/tmux-persistence/tmux-session"
+alias speedtest="$DOTFILES/command_line_tools/speedtest_cli.py"
+alias speedtest3="$DOTFILES/command_line_tools/speedtest_cli3.py"
+alias netspeed="$DOTFILES/command_line_tools/netspeed.sh"
+alias openssl-check-certs="$DOTFILES/command_line_tools/openssl-check-certs.sh"
 # reverse engineer Dockerfile from Docker image
 alias whaler="docker run -v /var/run/docker.sock:/var/run/docker.sock --rm alpine/dfimage"
 # alias composer="php /usr/local/bin/composer.phar"
