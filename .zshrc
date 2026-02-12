@@ -37,9 +37,19 @@ COMPLETION_WAITING_DOTS="true"
 # Example format: plugins=(rails git textmate ruby lighthouse)
 plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode zsh-pnpm-completions zsh-kubectl-prompt kind uv)
 
+source $ZSH/oh-my-zsh.sh
+
 fi
 
 if true; then
+
+# Oh-My-Zsh NVM plugin config
+zstyle ':omz:plugins:nvm' autoload yes
+
+# Oh-My-Zsh Docker autocomplete config
+zstyle ':completion:*:*:docker:*' option-stacking yes
+zstyle ':completion:*:*:docker-*:*' option-stacking yes
+zstyle ':omz:plugins:docker' legacy-completion yes
 
 # add zfunc folder to fpath list of zsh folders (ie. completion functions)
 fpath=($DOTFILES/zfunc $fpath)
@@ -71,18 +81,6 @@ source ${zsh_plugins}.zsh
 
 fi
 
-
-
-# Oh-My-Zsh NVM plugin config
-zstyle ':omz:plugins:nvm' autoload yes
-
-# Oh-My-Zsh Docker autocomplete config
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
-zstyle ':omz:plugins:docker' legacy-completion yes
-
-
-source $ZSH/oh-my-zsh.sh
 
 # Customize to your needs...
 #
