@@ -21,7 +21,8 @@
 ####
 ####
 # URL="http://api.ipinfodb.com/v3/ip-city/?key=eda56af160ebde0b764b1f4ef8ffe3f58bb55feecd65143aebc7bae1c4d1238d&ip="
-URL="http://api.db-ip.com/addrinfo?api_key=6b09072e22548aef0d5c114467d5780fdbcc7ade&addr="
+# URL="http://api.db-ip.com/addrinfo?api_key=6b09072e22548aef0d5c114467d5780fdbcc7ade&addr="
+URL="http://api.db-ip.com/v2/free/"
 #
 WGET_OPTION="=-b -q --wait=3 --waitretry=2 --random-wait --limit-rate=9578 "
 WGET_AGENT="Mozilla/4.0 (compatible; MSIE 6.0; Windows NT 5.1)"
