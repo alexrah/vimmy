@@ -41,7 +41,7 @@ fi
 
 if true; then
 
-# add zfunc folder to fpath list of zsh folders 
+# add zfunc folder to fpath list of zsh folders (ie. completion functions)
 fpath=($DOTFILES/zfunc $fpath)
 
 ZSH_THEME="dstkph"
@@ -107,16 +107,13 @@ alias las="lsd -lhA --sort=size"
 alias lr="find . -type d -maxdepth"
 alias psx="ps -Af"
 alias psxg="ps -Af | grep"
-alias cs50="cd ~/Insync/alexrah@gmail.com/PROJECTS/110715_CS50/"
 alias grepp="grep -A 2 -B 2 -i"
 alias grepi="grep -i"
 alias gitw="git whatchanged -p --color"
 alias ipinfo="sh $DOTFILES/command_line_tools/ipinfo.sh"
 # alias web2png="python ~/.vim/command_line_tools/webkit2png-0.5.py"
 alias web2png="$DOTFILES/command_line_tools/webkit2png-0.8.py"
-alias svi="sudo vim"
 alias mdfindo="mdfind -onlyin ./"
-alias csc="/usr/bin/find . -name '*.*' > ./cscope.files;/usr/bin/cscope -b;rm ./cscope.files"
 alias yuic="java -jar $DOTFILES/command_line_tools/yuicompressor-2.4.8pre.jar"
 alias findo="find . -maxdepth 2 -type d -exec ls -ld "{}" \;"
 alias folder-size="du -ch -d 1 | sort -h" # calculate folder size 
@@ -144,8 +141,7 @@ alias gd='git diff --submodule=log'
 alias gt='git checkout'
 alias gf='git fetch'
 alias gfa='git fetch --all'
-alias gk='gitk --all&'
-alias gx='gitx --all'
+alias gx='/Applications/GitX.app/Contents/MacOS/GitX ./'
 alias gm='git submodule foreach git checkout master; git submodule foreach git pull origin master'
 alias gl='git log --graph'
 alias gla='git log --graph --all'
@@ -161,10 +157,15 @@ function gdo(){
 alias fp='rg --files | fzf --preview "bat --color=always --decorations=always {}"'
 
 alias phps='open -na "PhpStorm.app" --args "$@"'
-alias pyc='open -na "PyCharm.app" --args "$@"'
 
 # Git Repo Cleaner - @see https://rtyley.github.io/bfg-repo-cleaner/
 alias bfg='java -jar $DOTFILES/bfg.jar'
+
+# Kitty terminal aliases
+alias icat='kitten icat'
+alias kssh='kitten ssh'
+alias ksudo="sudo $(which kitty) run-shell"
+alias knvim="open -na KittyNvim.app --args '$(pwd)'"
 
 # Auto-completion (worsks with ** + TAB)
 # ---------------
@@ -246,4 +247,5 @@ export PATH="$PATH:${HOME}/.cargo/bin"
 
 # GO
 export PATH="$PATH:${HOME}/go/bin"
+
 
