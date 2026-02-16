@@ -29,8 +29,11 @@ vim.keymap.set("n", "<C-y>", "<nop>")
 -- vim.o.guifont = "0xProto Nerd Font Mono:h15"
 vim.o.guifont = "JetBrainsMono Nerd Font:h13"
 
--- neovide alt key on macos
+-- NeoVide
+-- alt key on macos
 vim.g.neovide_input_macos_option_key_is_meta = 'both'
+-- auto theme switch
+vim.g.neovide_theme = 'auto'
 
 local python3_venv_path = '~/.virtualenvs/neovim-python3'
 
