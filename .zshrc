@@ -160,10 +160,20 @@ alias phps='open -na "PhpStorm.app" --args "$@"'
 alias bfg='java -jar $DOTFILES/bfg.jar'
 
 # Kitty terminal aliases
+
+function knvim(){
+   if [[ -n "$1" ]]; then
+      cd "$1"
+   fi
+   /Applications/kitty.app/Contents/MacOS/kitty \
+   -o map="cmd+n launch --type os-window nvim" \
+   -o macos_quit_when_last_window_closed="yes" \
+   nvim > /dev/null 2>&1 &
+}
+
 alias icat='kitten icat'
 alias kssh='kitten ssh'
 alias ksudo="sudo $(which kitty) run-shell"
-alias knvim="open -na KittyNvim.app --args '$(pwd)'"
 
 # Auto-completion (worsks with ** + TAB)
 # ---------------
