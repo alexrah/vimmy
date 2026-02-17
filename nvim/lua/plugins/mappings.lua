@@ -36,7 +36,6 @@ return {
           ["<Leader>fB"] = { function() require("snacks").picker.grep_buffers() end, desc = "Grep Open Buffers" },
 
           ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
-          ["<Leader>gD"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
           ["<Leader>gx"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
           ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
