@@ -64,7 +64,7 @@ return {
       },
     },
     keys = {
-      {"<leader>ie", '<cmd>MoltenEvaluateVisual<cr>' , ft = {"python" }, mode = "v",  desc = "Molten Evaluate Visual"},
+      {"<leader>iv", '<cmd>MoltenEvaluateVisual<cr>' , ft = {"python" }, mode = "v",  desc = "Molten Evaluate Visual"},
       {"<leader>ir", '<cmd>MoltenReevaluateCell<cr>' , ft = {"python" }, desc = "Molten ReEvaluate"},
       {"<leader>id", '<cmd>MoltenDelete<cr>' , ft = {"python" }, desc = "Molten Delete"},
     }
@@ -99,7 +99,7 @@ return {
     },
     keys = {
       {"<leader>ip", '<cmd>QuartoPreview<cr>' , ft = {"quarto" },  desc = "Quarto Preview"},
-      {"<leader>is", '<cmd>QuartoSend<cr>' , ft = {"quarto" },  desc = "Quarto Run Cell"},
+      {"<leader>ic", '<cmd>QuartoSend<cr>' , ft = {"quarto" },  desc = "Quarto Run Cell"},
       {"<leader>ia", '<cmd>QuartoSendAll<cr>' , ft = {"quarto" },  desc = "Quarto Run All"},
     }
   },
