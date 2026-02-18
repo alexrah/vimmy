@@ -31,12 +31,12 @@
 BLK                   38;5;68
 CAPABILITY            38;5;17
 CHR                   38;5;113;1
-DIR                   38;5;30
+DIR                   38;5;32
 DOOR                  38;5;127
 EXEC                  38;5;166;1
 FIFO                  38;5;126
-FILE                  38;5;253
-LINK                  target
+FILE                  38;5;76
+LINK                  38;5;80
 MULTIHARDLINK         38;5;220;1
 NORMAL                38;5;254
 ORPHAN                48;5;196;38;5;232;1
@@ -87,7 +87,7 @@ STICKY_OTHER_WRITABLE 48;5;235;38;5;139;3
 .json                 38;5;199
 .jsp                  38;5;45
 .lisp                 38;5;204;1
-.log                  38;5;190
+.log                  38;5;183
 .lua                  38;5;34;1
 .map                  38;5;58;3
 .markdown             38;5;184
