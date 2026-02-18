@@ -194,6 +194,11 @@ then
     else
       $PACKAGE_MANAGER install lsd
     fi
+    printf "=========> configure lsd...\n"
+    mkdir -p ~/.config/lsd
+    cd ~/.config/lsd
+    ln -s $INSTALLERS_FOLDER/vimmy/lsd/config.yaml
+    ls -s $INSTALLERS_FOLDER/vimmy/lsd/colors.yaml
   else
     printf "=========> lsd already installed, skipping...\n"
   fi
@@ -231,7 +236,7 @@ then
     rm -f .zshrc
     ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
     # ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
-    ln -s $INSTALLERS_FOLDER/vimmy/.dir_colors.NEW .dir_colors
+    ln -s $INSTALLERS_FOLDER/vimmy/colors/.dir_colors .dir_colors
     ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
     ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
   else
