@@ -166,8 +166,6 @@ function knvim(){
       cd "$1"
    fi
    /Applications/kitty.app/Contents/MacOS/kitty \
-   -o map="cmd+n launch --type os-window nvim" \
-   -o macos_quit_when_last_window_closed="yes" \
    nvim > /dev/null 2>&1 &
 }
 
