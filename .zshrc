@@ -1,9 +1,10 @@
 INSTALLERS_FOLDER=~/.dotfiles
 # Path to your oh-my-zsh configuration.
-ZSH=$INSTALLERS_FOLDER/oh-my-zsh
 DOTFILES=$INSTALLERS_FOLDER/vimmy
 
 if false; then
+
+ZSH=$INSTALLERS_FOLDER/oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -54,7 +55,6 @@ zstyle ':omz:plugins:docker' legacy-completion yes
 # add zfunc folder to fpath list of zsh folders (ie. completion functions)
 fpath=($DOTFILES/zfunc $fpath)
 
-ZSH_THEME="dstkph"
 # Source prompt theme
 source $DOTFILES/dstkph.zsh-theme
 
