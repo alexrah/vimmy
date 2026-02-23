@@ -44,6 +44,9 @@ fi
 
 if true; then
 
+# Git prompt config
+zstyle ':omz:alpha:lib:git' async-prompt yes
+
 # Oh-My-Zsh NVM plugin config
 zstyle ':omz:plugins:nvm' autoload yes
 
@@ -54,9 +57,6 @@ zstyle ':omz:plugins:docker' legacy-completion yes
 
 # add zfunc folder to fpath list of zsh folders (ie. completion functions)
 fpath=($DOTFILES/zfunc $fpath)
-
-# Source prompt theme
-source $DOTFILES/dstkph.zsh-theme
 
 # source antidote
 source $INSTALLERS_FOLDER/antidote/antidote.zsh
@@ -78,6 +78,9 @@ fi
 
 # Source your static plugins file.
 source ${zsh_plugins}.zsh
+
+# Source prompt theme
+source $DOTFILES/dstkph.zsh-theme
 
 fi
 
