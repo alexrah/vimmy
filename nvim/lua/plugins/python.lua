@@ -1,5 +1,6 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+local is_kitty = vim.env.TERM == "xterm-kitty"
 
 -- change the configuration when editing a python file
 vim.api.nvim_create_autocmd("BufEnter", {
@@ -44,7 +45,7 @@ return {
     build = ":UpdateRemotePlugins",
     init = function()
       -- these are examples, not defaults. Please see the readme
-      vim.g.molten_image_provider = "image.nvim"
+      vim.g.molten_image_provider = is_kitty and "image.nvim" or "none"
       vim.g.molten_output_win_max_height = 20
       -- vim.g.molten_virt_text_output = true
     end,
@@ -64,9 +65,9 @@ return {
       },
     },
     keys = {
-      {"<leader>iv", '<cmd>MoltenEvaluateVisual<cr>' , ft = {"python" }, mode = "v",  desc = "Molten Evaluate Visual"},
-      {"<leader>ir", '<cmd>MoltenReevaluateCell<cr>' , ft = {"python" }, desc = "Molten ReEvaluate"},
-      {"<leader>id", '<cmd>MoltenDelete<cr>' , ft = {"python" }, desc = "Molten Delete"},
+      {"<leader>iv", '<cmd>MoltenEvaluateVisual<cr>' , ft = {"python", "quarto" }, mode = "v",  desc = "Molten Evaluate Visual"},
+      {"<leader>ir", '<cmd>MoltenReevaluateCell<cr>' , ft = {"python", "quarto" }, desc = "Molten ReEvaluate"},
+      {"<leader>id", '<cmd>MoltenDelete<cr>' , ft = {"python", "quarto" }, desc = "Molten Delete"},
     }
   },
   {
