@@ -1,6 +1,6 @@
 #!/bin/bash
 
-export INSTALLERS_FOLDER=~/.dotfiles
+INSTALLERS_FOLDER=~/.dotfiles
 
 cd $INSTALLERS_FOLDER
 if !(test -d antidote)
@@ -20,5 +20,5 @@ printf "=========> lsd configuration...\n"
 mkdir ~/.config/lsd
 cd ~/.config/lsd
 ln -s $INSTALLERS_FOLDER/vimmy/lsd/config.yaml
-ls -s $INSTALLERS_FOLDER/vimmy/lsd/colors.yaml
+ln -s $INSTALLERS_FOLDER/vimmy/lsd/colors.yaml
 
