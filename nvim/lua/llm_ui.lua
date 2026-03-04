@@ -31,7 +31,7 @@ local function code_companion_apply_dynamic_config()
   end
 
   -- INFO: Define the minimum width threshold
-  local min_width = 130 -- You can adjust this value as needed
+  local min_width = 135 -- You can adjust this value as needed
 
   -- Get current window di\mensions
   local width = vim.api.nvim_win_get_width(0)
