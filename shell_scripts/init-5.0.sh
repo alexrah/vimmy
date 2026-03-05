@@ -112,7 +112,20 @@ then
   if !(command -v "zsh" &> /dev/null)
   then
     printf "=========> install zsh...\n"
-    $PACKAGE_MANAGER -y install zsh
+
+    if [[ "$os_family" == "centos" ]]
+    then
+      $PACKAGE_MANAGER -y install ncurses-devel
+      cd $INSTALLERS_FOLDER
+      wget https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.tar.gz
+      tar xvf zsh-5.9.tar.gz
+      cd zsh-zsh-5.9
+      ./configure && make
+      ${SUDO} make install
+    else
+      $PACKAGE_MANAGER -y install zsh
+    fi
+
   else
     printf "=========> zsh already installed, skipping...\n"
   fi
