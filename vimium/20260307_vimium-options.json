@@ -1,0 +1,4 @@
+{
+  "keyMappings": "# Insert your preferred key mappings here.\nunmap t\nunmap T\nmap t Vomnibar.activateTabSelection\nmap T createTab",
+  "settingsVersion": "2.4.0"
+}
