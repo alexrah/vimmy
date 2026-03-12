@@ -41,7 +41,7 @@ Sub SetSheetDefaults()
         oCursor = oSheet.createCursor()
         oCursor.gotoStartOfUsedArea(False)
         oCursor.gotoEndOfUsedArea(True)
-        oCursor.CharHeight = 11
+        oCursor.CharHeight = 10.5
 		oCursor.TopBorder    = oBorderLine
         oCursor.BottomBorder = oBorderLine
         oCursor.LeftBorder   = oBorderLine
@@ -52,7 +52,7 @@ Sub SetSheetDefaults()
     oStyles = oDoc.StyleFamilies.getByName("CellStyles")
     oDefaultStyle = oStyles.getByName("Default")
 
-    oDefaultStyle.CharHeight = 11
+    oDefaultStyle.CharHeight = 10.5
 
     oDefaultStyle.ParaLeftMargin       = PtTo100mm(5)
     oDefaultStyle.ParaRightMargin      = PtTo100mm(5)
