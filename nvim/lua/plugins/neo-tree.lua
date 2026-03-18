@@ -61,6 +61,8 @@ return {
         },
         ["/"] = "noop",
         ["fz"] = "fuzzy_finder",
+        ["z"] = "noop",
+        ["C"] = "close_all_nodes",
       },
     },
   },
