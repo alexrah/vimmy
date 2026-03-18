@@ -257,4 +257,6 @@ export PATH="$PATH:${HOME}/.cargo/bin"
 # GO
 export PATH="$PATH:${HOME}/go/bin"
 
-
+# FZF
+# Use ,, as the trigger sequence instead of the default **
+export FZF_COMPLETION_TRIGGER=',,'
