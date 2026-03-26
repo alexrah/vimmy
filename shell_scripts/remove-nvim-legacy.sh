@@ -14,7 +14,7 @@ fi
 printf "Removing neovim legacy...\n"
 printf "================================\n"
 
-if [ "$1" == "all" ] || ( "$1" == "config" )
+if [ "$1" == "all" ] || [ "$1" == "config" ]
 then
   printf "Removing configuration legacy...\n"
   rm -r ~/.config/nvim
@@ -26,7 +26,7 @@ then
   rm ~/.dotfiles/nvim.appimage
 fi
 
-if [ "$1" == "all" ] || ( "$1" == "binary" )
+if [ "$1" == "all" ] || [ "$1" == "binary" ]
 then
   printf "Removing neovim app...\n"
   rm /usr/local/bin/nvim
