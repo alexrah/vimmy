@@ -30,5 +30,5 @@ if [ "$1" == "all" ] || [ "$1" == "binary" ]
 then
   printf "Removing neovim app...\n"
   rm /usr/local/bin/nvim
-  rm /usr/local/bin/squashfs-root-nvim
+  rm -r /usr/local/bin/squashfs-root-nvim
 fi
