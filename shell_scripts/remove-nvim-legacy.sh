@@ -18,7 +18,7 @@ if [ "$1" == "all" ] || [ "$1" == "config" ]
 then
   printf "Removing configuration legacy...\n"
   rm -r ~/.config/nvim
-  rm -r ~/.local/share/nvim
+  rm -rf ~/.local/share/nvim
   rm -r ~/.local/state/nvim
   rm -r ~/.cache/nvim
   printf "Removing neovim artifacts...\n"
