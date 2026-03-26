@@ -2,85 +2,84 @@ INSTALLERS_FOLDER=~/.dotfiles
 # Path to your oh-my-zsh configuration.
 DOTFILES=$INSTALLERS_FOLDER/vimmy
 
-if false; then
+if ! [ -d $INSTALLERS_FOLDER/antidote ]
+then
 
-ZSH=$INSTALLERS_FOLDER/oh-my-zsh
+   ZSH=$INSTALLERS_FOLDER/oh-my-zsh
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
-# ZSH_THEME="dst"
-# ZSH_THEME="kphoen"
-ZSH_THEME="dstkph"
+   # Set name of the theme to load.
+   # Look in ~/.oh-my-zsh/themes/
+   # Optionally, if you set this to "random", it'll load a random theme each
+   # time that oh-my-zsh is loaded.
+   # ZSH_THEME="dst"
+   # ZSH_THEME="kphoen"
+   ZSH_THEME="dstkph"
 
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+   # Example aliases
+   # alias zshconfig="mate ~/.zshrc"
+   # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-# Set to this to use case-sensitive completion
-# CASE_SENSITIVE="true"
+   # Set to this to use case-sensitive completion
+   # CASE_SENSITIVE="true"
 
-# Comment this out to disable weekly auto-update checks
-# DISABLE_AUTO_UPDATE="true"
+   # Comment this out to disable weekly auto-update checks
+   # DISABLE_AUTO_UPDATE="true"
 
-# Uncomment following line if you want to disable colors in ls
-# DISABLE_LS_COLORS="true"
+   # Uncomment following line if you want to disable colors in ls
+   # DISABLE_LS_COLORS="true"
 
-# Uncomment following line if you want to disable autosetting terminal title.
-# DISABLE_AUTO_TITLE="true"
+   # Uncomment following line if you want to disable autosetting terminal title.
+   # DISABLE_AUTO_TITLE="true"
 
-# Uncomment following line if you want red dots to be displayed while waiting for completion
-COMPLETION_WAITING_DOTS="true"
+   # Uncomment following line if you want red dots to be displayed while waiting for completion
+   COMPLETION_WAITING_DOTS="true"
 
-# Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
-# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode zsh-pnpm-completions zsh-kubectl-prompt kind uv)
+   # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
+   # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+   # Example format: plugins=(rails git textmate ruby lighthouse)
+   plugins=(git github colored-man-pages bower gem web-search yum history-substring-search zsh-autosuggestions zsh-syntax-highlighting nvm kubectl helm wp-cli docker tmux npm zsh-python-venv-prompt autoswitch_virtualenv rust claudecode zsh-pnpm-completions zsh-kubectl-prompt kind uv)
 
-source $ZSH/oh-my-zsh.sh
+   source $ZSH/oh-my-zsh.sh
 
-fi
+else
 
-if true; then
+   # Git prompt config
+   zstyle ':omz:alpha:lib:git' async-prompt yes
 
-# Git prompt config
-zstyle ':omz:alpha:lib:git' async-prompt yes
+   # Oh-My-Zsh NVM plugin config
+   zstyle ':omz:plugins:nvm' autoload yes
 
-# Oh-My-Zsh NVM plugin config
-zstyle ':omz:plugins:nvm' autoload yes
+   # Oh-My-Zsh Docker autocomplete config
+   zstyle ':completion:*:*:docker:*' option-stacking yes
+   zstyle ':completion:*:*:docker-*:*' option-stacking yes
+   zstyle ':omz:plugins:docker' legacy-completion yes
 
-# Oh-My-Zsh Docker autocomplete config
-zstyle ':completion:*:*:docker:*' option-stacking yes
-zstyle ':completion:*:*:docker-*:*' option-stacking yes
-zstyle ':omz:plugins:docker' legacy-completion yes
+   # add zfunc folder to fpath list of zsh folders (ie. completion functions)
+   fpath=($DOTFILES/zfunc $fpath)
 
-# add zfunc folder to fpath list of zsh folders (ie. completion functions)
-fpath=($DOTFILES/zfunc $fpath)
+   # source antidote
+   source $INSTALLERS_FOLDER/antidote/antidote.zsh
 
-# source antidote
-source $INSTALLERS_FOLDER/antidote/antidote.zsh
+   # Set the root name of the plugins files (.txt and .zsh) antidote will use.
+   zsh_plugins=${DOTFILES}/zsh_plugins
 
-# Set the root name of the plugins files (.txt and .zsh) antidote will use.
-zsh_plugins=${DOTFILES}/zsh_plugins
+   # Ensure the .zsh_plugins.txt file exists so you can add plugins.
+   [[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
 
-# Ensure the .zsh_plugins.txt file exists so you can add plugins.
-[[ -f ${zsh_plugins}.txt ]] || touch ${zsh_plugins}.txt
+   # Lazy-load antidote from its functions directory.
+   fpath=($INSTALLERS_FOLDER/antidote/functions $fpath)
+   autoload -Uz antidote
 
-# Lazy-load antidote from its functions directory.
-fpath=($INSTALLERS_FOLDER/antidote/functions $fpath)
-autoload -Uz antidote
+   # Generate a new static file whenever .zsh_plugins.txt is updated.
+   if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
+   antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
+   fi
 
-# Generate a new static file whenever .zsh_plugins.txt is updated.
-if [[ ! ${zsh_plugins}.zsh -nt ${zsh_plugins}.txt ]]; then
-  antidote bundle <${zsh_plugins}.txt >|${zsh_plugins}.zsh
-fi
+   # Source your static plugins file.
+   source ${zsh_plugins}.zsh
 
-# Source your static plugins file.
-source ${zsh_plugins}.zsh
-
-# Source prompt theme
-source $DOTFILES/dstkph.zsh-theme
+   # Source prompt theme
+   source $DOTFILES/dstkph.zsh-theme
 
 fi
 
