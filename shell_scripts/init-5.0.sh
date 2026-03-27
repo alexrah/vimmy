@@ -107,6 +107,35 @@ then
   fi
 fi
 
+if [[ " ${aArgs[*]} " =~ "dotfiles" ]] || [[ $1 == "all" ]]
+then
+  #ZSH & DOTFILES
+  printf "=========> install dotfiles...\n"
+  cd $INSTALLERS_FOLDER
+  if !(test -d vimmy)
+  then
+    printf "=========> clone alexrah/vimmy in vimmy folder...\n"
+    git clone https://alexrah@github.com/alexrah/vimmy 
+    cd ~
+    rm -f .zshrc
+    ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
+    # ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
+    ln -s $INSTALLERS_FOLDER/vimmy/colors/.dir_colors .dir_colors
+    ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
+    ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
+  else
+    printf "=========> folder vimmy already exists, skipping...\n"
+  fi
+  cd $INSTALLERS_FOLDER
+  if !(test -d antidote)
+  then
+    printf "=========> clone mattmc3/antidote.git in antidote folder...\n"
+    git clone --depth=1 https://github.com/mattmc3/antidote.git antidote
+  else
+    printf "=========> folder antidote already exists, skipping...\n"
+  fi
+fi
+
 if [[ " ${aArgs[*]} " =~ "zsh" ]] || [[ $1 == "all" ]]
 then
   if !(command -v "zsh" &> /dev/null)
@@ -235,37 +264,6 @@ then
   fi
 
 fi
-
-if [[ " ${aArgs[*]} " =~ "dotfiles" ]] || [[ $1 == "all" ]]
-then
-  #ZSH & DOTFILES
-  printf "=========> install dotfiles...\n"
-  cd $INSTALLERS_FOLDER
-  if !(test -d vimmy)
-  then
-    printf "=========> clone alexrah/vimmy in vimmy folder...\n"
-    git clone https://alexrah@github.com/alexrah/vimmy 
-    cd ~
-    rm -f .zshrc
-    ln -s $INSTALLERS_FOLDER/vimmy/.zshrc
-    # ln -s $INSTALLERS_FOLDER/vimmy/.vimrc
-    ln -s $INSTALLERS_FOLDER/vimmy/colors/.dir_colors .dir_colors
-    ln -s $INSTALLERS_FOLDER/vimmy/.tmux.conf
-    ln -s $INSTALLERS_FOLDER/vimmy/.gitconfig
-  else
-    printf "=========> folder vimmy already exists, skipping...\n"
-  fi
-  cd $INSTALLERS_FOLDER
-  if !(test -d antidote)
-  then
-    printf "=========> clone mattmc3/antidote.git in antidote folder...\n"
-    git clone --depth=1 https://github.com/mattmc3/antidote.git antidote
-  else
-    printf "=========> folder antidote already exists, skipping...\n"
-  fi
-fi
-
-cd $INSTALLERS_FOLDER
 
 if [[ " ${aArgs[*]} " =~ "lnav" ]] || [[ $1 == "all" ]]
 then
