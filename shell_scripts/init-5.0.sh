@@ -176,7 +176,7 @@ then
 
     if [[ "$os_type" == "CentOS Linux" ]]
     then
-      ${SUDO} cp $INSTALLERS_FOLDER/vimmy/ripgrep/centos7/rg /usr/bin/rg
+      ${SUDO} cp $INSTALLERS_FOLDER/vimmy/ripgrep/centos7/rg /usr/local/bin/rg
     else
       $PACKAGE_MANAGER -y install ripgrep
     fi
