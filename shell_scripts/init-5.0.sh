@@ -149,7 +149,7 @@ then
       wget https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.tar.gz
       tar xvf zsh-5.9.tar.gz
       cd zsh-zsh-5.9
-      ./configure && make
+      ./Util/preconfig && ./configure && make
       ${SUDO} make install
     else
       $PACKAGE_MANAGER -y install zsh
