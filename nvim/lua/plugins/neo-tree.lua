@@ -57,7 +57,7 @@ return {
             vim.cmd("TransferDirDiff " .. context_dir)
             vim.cmd("Neotree close")
           end,
-          desc = "diff with remote",
+          desc = "diff dir with remote",
         },
         ["/"] = "noop",
         ["fz"] = "fuzzy_finder",
