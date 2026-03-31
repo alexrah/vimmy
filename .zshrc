@@ -259,3 +259,7 @@ export PATH="$PATH:${HOME}/go/bin"
 # FZF
 # Use ,, as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER=',,'
+
+# BAT
+export BAT_THEME_DARK="Monokai Extended"
+export BAT_THEME_LIGHT="Monokai Extended Light"
