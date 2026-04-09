@@ -1,2 +1,3 @@
 .DS_Store
 zsh_plugins.zsh
+nvim/lazy-lock.json
