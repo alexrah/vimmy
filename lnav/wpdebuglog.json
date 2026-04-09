@@ -6,7 +6,7 @@
     "url": "https://regex101.com/r/FuNiF3/1",
     "regex": {
       "std": {
-        "pattern": "^\\[(?<timestamp>\\d{2}-\\w{3}-\\d{4} \\d{2}:\\d{2}:\\d{2}) UTC\\] PHP (?<level>[^:]+):  (?<function>[a-zA-Z()_]+):? (?<message>[^\\/]+)(?<file>[a-zA-z-0-9_\\-\\/\\.]+)([ a-z]+|:)(?<line_number>\\d+)"
+        "pattern": "^\\[(?<timestamp>\\d{2}-\\w{3}-\\d{4} \\d{2}:\\d{2}:\\d{2}) UTC\\] PHP (?<level>[^:]+):  (?<function>[a-zA-Z()_\\[\\]]+):? (?<message>[^\\/]+)(?<file>[a-zA-z-0-9_\\-\\/\\.]+)?([ a-z]+|:)?(?<line_number>\\d+)?"
       }
     },
     "level-field" : "level",
