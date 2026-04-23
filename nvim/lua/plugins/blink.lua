@@ -2,6 +2,7 @@
 
 return {
   "saghen/blink.cmp",
+  version = "1.*",
   dependencies = {
     {
       "Exafunction/codeium.nvim",
