@@ -222,10 +222,11 @@ then
     if [[ "$os_family" == "centos" || $2 == "compatible" ]]
     then
       cd $INSTALLERS_FOLDER
-      curl -L https://github.com/sharkdp/bat/releases/download/v0.24.0/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
+      curl -L https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
       tar xvzf bat.tar.gz
-      cd bat-v0.24.0-x86_64-unknown-linux-musl
+      cd bat-v0.26.1-x86_64-unknown-linux-musl
       ${SUDO} mv bat /usr/local/bin/bat
+      cd $INSTALLERS_FOLDER
     else
       $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install bat
     fi
