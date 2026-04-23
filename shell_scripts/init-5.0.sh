@@ -167,6 +167,7 @@ fi
 
 if [[ " ${aArgs[*]} " =~ "tools" ]] || [[ $1 == "all" ]]
 then
+  cd $INSTALLERS_FOLDER
   if !(command -v "tmux" &> /dev/null)
   printf "=========> install tmux...\n"
   then
@@ -381,6 +382,7 @@ then
   if !(command -v "nvim" &> /dev/null)
   then
     printf "=========> install neovim...\n"
+    cd $INSTALLERS_FOLDER
     
     if [[ $os_family == "centos" || $2 == "compatible" ]]
     then
