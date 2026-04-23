@@ -171,7 +171,7 @@ then
   if !(command -v "tmux" &> /dev/null)
   printf "=========> install tmux...\n"
   then
-    if [[ $os_family =~ "^(centos|debian)$" ]]
+    if [[ $os_family =~ ^(centos|debian)$ ]]
     then
       curl -L https://github.com/tmux/tmux-builds/releases/download/v3.6a/tmux-3.6a-linux-x86_64.tar.gz -o tmux.tar.gz
       tar xvzf tmux.tar.gz
