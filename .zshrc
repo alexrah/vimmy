@@ -175,9 +175,8 @@ alias icat='kitten icat'
 alias kssh='kitten ssh'
 alias ksudo="sudo $(which kitty) run-shell"
 
-# Auto-completion (worsks with ** + TAB)
-# ---------------
-source ~/.dotfiles/fzf/shell/completion.zsh
+# Mac OSX aliases
+alias cpu-temp='sudo powermetrics --samplers smc | grep -i "CPU die temperature"'
 
 # source aliases for GNU Linux commands,
 # override standard BSD commands
@@ -259,6 +258,8 @@ export PATH="$PATH:${HOME}/go/bin"
 # FZF
 # Use ,, as the trigger sequence instead of the default **
 export FZF_COMPLETION_TRIGGER=',,'
+# Auto-completion (worsks with ** + TAB)
+source ~/.dotfiles/fzf/shell/completion.zsh
 
 # BAT
 export BAT_THEME_DARK="Monokai Extended"
