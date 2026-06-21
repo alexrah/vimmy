@@ -58,6 +58,7 @@ return {
           ["d"] = { '"_d' },
           ["mm"] = { "dd" },
           ["c"] = { '"_c' },
+          ["C"] = { '"_C' },
           ["x"] = { '"_x' },
 
           ["<Leader>uW"] = { ":ASToggle<CR>", desc = "Toggle AutoSave" },
