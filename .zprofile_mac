@@ -14,8 +14,8 @@ export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubecon
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=${DEEPSEEK_API_KEY}
 export API_TIMEOUT_MS=600000
-export ANTHROPIC_MODEL=deepseek-chat
-export ANTHROPIC_SMALL_FAST_MODEL=deepseek-chat
+export ANTHROPIC_MODEL=deepseek-v4-pro
+export ANTHROPIC_SMALL_FAST_MODEL=deepseek-v4-flash
 export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
 
 # ChunkHound Agent Indexer: required to generate embeddings
