@@ -63,7 +63,9 @@ return {
 
           ["<Leader>uW"] = { ":ASToggle<CR>", desc = "Toggle AutoSave" },
 
-          ["<leader>i"] = {desc = " Python"} -- disable default Toggle Explorer Focus
+          ["<leader>i"] = {desc = " Python"}, -- disable default Toggle Explorer Focus
+
+          ["<leader>lk"] = { function() vim.lsp.buf.hover() end, desc = "(K) LSP Hover Info"} -- disable default Toggle Explorer Focus
         },
         v = {
           ["<C-c>"] = { '"+y<Esc>i', desc = "Copy using standard shortcut" },
