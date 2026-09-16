@@ -177,7 +177,10 @@ then
       tar xvzf tmux.tar.gz
       ${SUDO} mv tmux /usr/local/bin/tmux
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install tmux
+      # $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install tmux
+      curl -L https://github.com/tmux/tmux-builds/releases/download/v3.7c/tmux-3.7c-linux-x86_64.tar.gz -o tmux.tar.gz
+      tar xvzf tmux.tar.gz
+      ${SUDO} mv tmux /usr/local/bin/tmux
     fi
   else
     printf "=========> tmux already installed, skipping...\n"
