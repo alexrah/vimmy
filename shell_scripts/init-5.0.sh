@@ -18,10 +18,10 @@ then
   #  printf "ruby : install ruby and neovim support\n"
   printf "neovim : install or update nvim, configuration files, plugin manager\n"
   printf "example: ./init-4.0.sh all #install everything\n"
-  printf "example: ./init-4.0.sh all compatible #install everything, lsd & neovim compatible versions\n"
+  printf "example: ./init-4.0.sh all compatible #install everything: bat, lsd, fdfind & neovim compatible versions\n"
   printf "example: ./init-4.0.sh help #show this message\n"
   printf "example: ./init-4.0.sh node #install node stack ( nvm, node, npm, yarn )\n"
-  printf "example: ./init-4.0.sh nvim,dotfiles #install nvim & install dotfiles\n"
+  printf "example: ./init-4.0.sh neovim,dotfiles #install nvim & install dotfiles\n"
   printf "========================\n"
   exit
 fi
@@ -277,7 +277,7 @@ then
   if !(command -v "fd" &> /dev/null)
   then
     printf "=========> install fd...\n"
-    if [[ "$os_family" == "centos" ]]
+    if [[ "$os_family" == "centos" || $2 == "compatible"  || $os_family == "alpine" ]]
     then
       cd $INSTALLERS_FOLDER
       curl -L https://github.com/sharkdp/fd/releases/download/v10.2.0/fd-v10.2.0-x86_64-unknown-linux-musl.tar.gz -o fd.tar.gz
@@ -324,30 +324,36 @@ cd $INSTALLERS_FOLDER
 
 if [[ " ${aArgs[*]} " =~ "node" ]] || [[ $1 == "all" ]]
 then
-  # Need to be done after sourcing .zshrc because NVM need enviroment var $NVM_DIR
-  if !(command -v "nvm" &> /dev/null)
+  if [[ $os_family == "alpine" ]]
   then
-    printf "=========> install nvm (Node Version Manager)...\n"
-    curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
-    export NVM_DIR="$HOME/.nvm"
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-    [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    printf "=========> install node npm pnpm yarn...\n"
+    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS nodejs npm pnpm yarn
   else
-    printf "=========> nvm already installed, skipping...\n"
-  fi
-  if !(command -v "node" &> /dev/null)
-  then
-    printf "=========> install node...\n"
-    nvm install --lts
-  else
-    printf "=========> node already installed, skipping...\n"
-  fi
-  if !(command -v "yarn" &> /dev/null)
-  then
-    printf "=========> install yarn...\n"
-    corepack enable
-  else
-    printf "=========> yarn already installed, skipping...\n"
+    # Need to be done after sourcing .zshrc because NVM need enviroment var $NVM_DIR
+    if !(command -v "nvm" &> /dev/null)
+    then
+      printf "=========> install nvm (Node Version Manager)...\n"
+      curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.1/install.sh | bash
+      export NVM_DIR="$HOME/.nvm"
+      [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+      [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+    else
+      printf "=========> nvm already installed, skipping...\n"
+    fi
+    if !(command -v "node" &> /dev/null)
+    then
+      printf "=========> install node...\n"
+      nvm install --lts
+    else
+      printf "=========> node already installed, skipping...\n"
+    fi
+    if !(command -v "yarn" &> /dev/null)
+    then
+      printf "=========> install yarn...\n"
+      corepack enable
+    else
+      printf "=========> yarn already installed, skipping...\n"
+    fi
   fi
 
   printf "=========> install node neovim support...\n"
@@ -399,6 +405,9 @@ then
     then
       # install best-efforts build made with glibc 2.17
       curl -L -o nvim.appimage https://github.com/neovim/neovim-releases/releases/download/v0.11.3/nvim-linux-x86_64.appimage
+    elif [[ $os_family == "alpine" ]]
+    then
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS neovim
     else
       curl -L -o nvim.appimage https://github.com/neovim/neovim/releases/latest/download/NVIM-linux-x86_64.appimage
     fi
