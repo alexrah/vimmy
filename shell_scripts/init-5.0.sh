@@ -57,37 +57,44 @@ case "$os_type" in
     ;;
 	"Ubuntu")
 		printf "OS DETECTED: UBUNTU\n"
-		export PACKAGE_MANAGER="${SUDO} apt-get"
+		export PACKAGE_MANAGER="${SUDO} apt-get install"
 		export PACKAGE_MANAGER_ARGS="-y"
     os_family=debian
     $SUDO apt-get update
     ;;
   "Debian GNU/Linux")
 		printf "OS DETECTED: DEBIAN\n"
-		export PACKAGE_MANAGER="${SUDO} apt-get"
+		export PACKAGE_MANAGER="${SUDO} apt-get install"
 		export PACKAGE_MANAGER_ARGS="-y"
     os_family=debian
     ${SUDO} apt-get update
     ;;
 	"CentOS Linux")
 		printf "OS DETECTED: CENTOS\n"
-		export PACKAGE_MANAGER="${SUDO} yum"
+		export PACKAGE_MANAGER="${SUDO} yum install"
 		export PACKAGE_MANAGER_ARGS="-y"
     os_family=centos
     # ${SUDO} yum-config-manager --add-repo=https://copr.fedorainfracloud.org/coprs/carlwgeorge/ripgrep/repo/epel-7/carlwgeorge-ripgrep-epel-7.repo
-    ${SUDO} yum install https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
+    ${SUDO} yum https://packages.endpointdev.com/rhel/7/os/x86_64/endpoint-repo.x86_64.rpm
     ;;
 	"linux-android")
 		printf "OS DETECTED: TERMUX\n"
-		export PACKAGE_MANAGER=pkg
+		export PACKAGE_MANAGER="pkg install"
 		export PACKAGE_MANAGER_ARGS=""
     os_family=debian
     ;;
 	darwin*)
 		printf "OS DETECTED: MacOS\n"
-		export PACKAGE_MANAGER=brew
+		export PACKAGE_MANAGER="brew install"
 		export PACKAGE_MANAGER_ARGS=""
     os_family=mac
+    ;;
+  "Alpine Linux")
+    printf "OS DETECTED: ALPINE\n"
+    export PACKAGE_MANAGER="${SUDO} apk add"
+    export PACKAGE_MANAGER_ARGS=""
+    os_family=alpine
+    ${SUDO} apk update
     ;;
   *)
     printf "No OS DETECTED\n"
@@ -106,7 +113,7 @@ then
   if !(command -v "git" &> /dev/null)
   then
     printf "=========> install git...\n"
-    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install git
+    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS git
   else
     printf "=========> git already installed, skipping...\n"
   fi
@@ -149,7 +156,7 @@ then
 
     if [[ "$os_family" == "centos" ]]
     then
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install ncurses-devel
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS ncurses-devel
       cd $INSTALLERS_FOLDER
       wget https://github.com/zsh-users/zsh/archive/refs/tags/zsh-5.9.tar.gz
       tar xvf zsh-5.9.tar.gz
@@ -157,7 +164,7 @@ then
       ./Util/preconfig && ./configure && make
       ${SUDO} make install
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install zsh
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS zsh
     fi
 
   else
@@ -194,7 +201,7 @@ then
     then
       ${SUDO} cp $INSTALLERS_FOLDER/vimmy/ripgrep/centos7/rg /usr/local/bin/rg
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install ripgrep
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS ripgrep
     fi
         
   else
@@ -231,7 +238,7 @@ then
       ${SUDO} mv bat /usr/local/bin/bat
       cd $INSTALLERS_FOLDER
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install bat
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS bat
     fi
   else
     printf "=========> bat already installed, skipping...\n"
@@ -240,7 +247,7 @@ then
   if !(command -v "jq" &> /dev/null)
   then
     printf "=========> install jq (JSON processor)...\n"
-    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install jq
+    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS jq
   else
     printf "=========> jq (JSON processor) already installed, skipping...\n"
   fi
@@ -256,7 +263,7 @@ then
       cd lsd-v1.1.5-x86_64-unknown-linux-musl
       ${SUDO} mv lsd /usr/local/bin/lsd
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install lsd
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS lsd
     fi
     printf "=========> configure lsd...\n"
     mkdir -p ~/.config/lsd
@@ -278,7 +285,7 @@ then
       cd fd-v10.2.0-x86_64-unknown-linux-musl
       ${SUDO} mv fd /usr/local/bin/fd
     else
-      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install fd-find
+      $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS fd-find
     fi
     printf "=========> fd binary is called fdfind, check if fd is available and then ln -s \$(which fdfind) /usr/local/bin/fd\n"
   else
@@ -354,7 +361,7 @@ then
   if !(command -v "python3" &> /dev/null)
   then
     printf "=========> install python3...\n"
-    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install python3
+    $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS python3
   else
     printf "=========> python3 already installed, skipping...\n"
   fi
