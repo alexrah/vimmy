@@ -14,6 +14,7 @@ cd $INSTALLERS_FOLDER
 
 if [ "$1" == "all" ] || [ "$1" == "antidote" ]
 then
+  cd $INSTALLERS_FOLDER
   if !(test -d antidote)
   then
     printf "=========> clone mattmc3/antidote.git in antidote folder...\n"
@@ -35,4 +36,21 @@ then
   cd ~/.config/lsd
   ln -s $INSTALLERS_FOLDER/vimmy/lsd/config.yaml
   ln -s $INSTALLERS_FOLDER/vimmy/lsd/colors.yaml
+fi
+
+if [[ "$1" == "all" || "$1" == "bat" ]]
+then
+  if ! command -v "bat" &> /dev/null || [[ $(bat --version) != *"0.26.1"* ]]
+  then
+    printf "=========> install bat...\n"
+    ${SUDO} rm /usr/local/bin/bat
+    cd $INSTALLERS_FOLDER
+    curl -L https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
+    tar xvzf bat.tar.gz
+    cd bat-v0.26.1-x86_64-unknown-linux-musl
+    ${SUDO} mv bat /usr/local/bin/bat
+    cd $INSTALLERS_FOLDER
+  fi
+else
+  printf "=========> bat already installed and up to date, skipping...\n"
 fi

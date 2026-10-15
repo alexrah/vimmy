@@ -180,15 +180,14 @@ then
   then
     if [[ $os_family =~ ^(centos|debian)$ ]]
     then
-      curl -L https://github.com/tmux/tmux-builds/releases/download/v3.6a/tmux-3.6a-linux-x86_64.tar.gz -o tmux.tar.gz
-      tar xvzf tmux.tar.gz
-      ${SUDO} mv tmux /usr/local/bin/tmux
+      # Pinned to v3.6a: v3.7c requires a newer glibc than these targets provide
+      TMUX_VERSION="3.6a"
     else
-      # $PACKAGE_MANAGER $PACKAGE_MANAGER_ARGS install tmux
-      curl -L https://github.com/tmux/tmux-builds/releases/download/v3.7c/tmux-3.7c-linux-x86_64.tar.gz -o tmux.tar.gz
-      tar xvzf tmux.tar.gz
-      ${SUDO} mv tmux /usr/local/bin/tmux
+      TMUX_VERSION="3.7c"
     fi
+    curl -L https://github.com/tmux/tmux-builds/releases/download/v${TMUX_VERSION}/tmux-${TMUX_VERSION}-linux-x86_64.tar.gz -o tmux.tar.gz
+    tar xvzf tmux.tar.gz
+    ${SUDO} mv tmux /usr/local/bin/tmux
   else
     printf "=========> tmux already installed, skipping...\n"
   fi
