@@ -1,5 +1,10 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
+local is_linux = vim.uv.os_uname().sysname == "Linux"
+if is_linux then
+  return {}
+end
+
 local is_kitty = vim.env.TERM == "xterm-kitty"
 
 -- change the configuration when editing a python file
