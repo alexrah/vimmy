@@ -45,12 +45,12 @@ then
   if ! command -v "bat" &> /dev/null || [[ $(bat --version) != *"0.26.1"* ]]
   then
     printf "=========> install bat...\n"
-    ${SUDO} rm /usr/local/bin/bat
+    sudo rm /usr/local/bin/bat
     cd $INSTALLERS_FOLDER
     curl -L https://github.com/sharkdp/bat/releases/download/v0.26.1/bat-v0.26.1-x86_64-unknown-linux-musl.tar.gz -o bat.tar.gz
     tar xvzf bat.tar.gz
     cd bat-v0.26.1-x86_64-unknown-linux-musl
-    ${SUDO} mv bat /usr/local/bin/bat
+    sudo mv bat /usr/local/bin/bat
     cd $INSTALLERS_FOLDER
   else
     printf "=========> bat already installed and up to date, skipping...\n"
@@ -67,7 +67,7 @@ then
     TMUX_VERSION="3.6a"
     curl -L https://github.com/tmux/tmux-builds/releases/download/v${TMUX_VERSION}/tmux-${TMUX_VERSION}-linux-x86_64.tar.gz -o tmux.tar.gz
     tar xvzf tmux.tar.gz
-    ${SUDO} mv tmux /usr/local/bin/tmux
+    sudo mv tmux /usr/local/bin/tmux
   else
     printf "=========> tmux already installed, skipping...\n"
   fi
