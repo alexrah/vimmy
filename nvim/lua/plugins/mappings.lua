@@ -61,7 +61,8 @@ return {
           ["C"] = { '"_C' },
           ["x"] = { '"_x' },
 
-          ["<Leader>uW"] = { ":ASToggle<CR>", desc = "Toggle AutoSave" },
+          -- moved to auto-save.lua for better integration
+          -- ["<Leader>uW"] = { function() require("auto-save").on() end, desc = "Toggle AutoSave" },
 
           ["<leader>i"] = {desc = " Python"}, -- disable default Toggle Explorer Focus
 
