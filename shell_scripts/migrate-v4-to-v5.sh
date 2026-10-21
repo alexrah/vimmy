@@ -4,8 +4,10 @@ if [ "$1" == "help" ] || ( test -z "$1" )
 then
   printf "Please provide one of the following option:\n"
   printf "all : remove config and binary\n"
-  printf "symlinks: replace dir_colors & lsd configs \n"
   printf "antidote: replace oh-my-zsh with antidote (requires zsh > 5.5) \n"
+  printf "symlinks: replace dir_colors & lsd configs \n"
+  printf "bat: update to support light themes \n"
+  printf "tmux: update to support extensions \n"
   exit
 fi
 
@@ -50,7 +52,24 @@ then
     cd bat-v0.26.1-x86_64-unknown-linux-musl
     ${SUDO} mv bat /usr/local/bin/bat
     cd $INSTALLERS_FOLDER
+  else
+    printf "=========> bat already installed and up to date, skipping...\n"
   fi
-else
-  printf "=========> bat already installed and up to date, skipping...\n"
 fi
+
+if [[ "$1" == "all" || "$1" == "tmux" ]]
+then
+  cd $INSTALLERS_FOLDER
+  if ! command -v "tmux" &> /dev/null || [[ $(tmux -V) != *"3.6a"* ]]
+  printf "=========> install tmux...\n"
+  then
+    # Pinned to v3.6a: v3.7c requires a newer glibc than these targets provide
+    TMUX_VERSION="3.6a"
+    curl -L https://github.com/tmux/tmux-builds/releases/download/v${TMUX_VERSION}/tmux-${TMUX_VERSION}-linux-x86_64.tar.gz -o tmux.tar.gz
+    tar xvzf tmux.tar.gz
+    ${SUDO} mv tmux /usr/local/bin/tmux
+  else
+    printf "=========> tmux already installed, skipping...\n"
+  fi
+fi
+
