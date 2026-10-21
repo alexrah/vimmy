@@ -2,7 +2,7 @@
 --
 ---@type LazySpec
 return {
-  "pocco81/auto-save.nvim",
+  "okuuva/auto-save.nvim",
   opts = {
     enabled = not require("utils").is_linux(), -- don't autosave on linux
   },
