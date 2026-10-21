@@ -61,9 +61,7 @@ return {
           ["C"] = { '"_C' },
           ["x"] = { '"_x' },
 
-          -- moved to auto-save.lua for better integration
-          -- ["<Leader>uW"] = { function() require("auto-save").on() end, desc = "Toggle AutoSave" },
-
+          ["<Leader>ux"] = { ":ASToggle<CR>", desc = "Toggle AutoSave" },
           ["<leader>i"] = {desc = " Python"}, -- disable default Toggle Explorer Focus
 
           ["<leader>lk"] = { function() vim.lsp.buf.hover() end, desc = "(K) LSP Hover Info"} -- disable default Toggle Explorer Focus

@@ -22,6 +22,6 @@ return {
               autosave.off()
           end
       end,
-    }):map("<leader>uW")
+    }):map("<leader>uX")
   end
 }
