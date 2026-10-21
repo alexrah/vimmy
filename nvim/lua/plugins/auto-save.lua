@@ -4,6 +4,6 @@
 return {
   "pocco81/auto-save.nvim",
   opts = {
-    enabled = true,
+    enabled = not require("utils").is_linux(), -- don't autosave on linux
   },
 }

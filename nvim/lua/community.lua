@@ -19,7 +19,7 @@ local spec = {
   -- import/override with your plugins folder
 }
 
-if not is_linux then
+if not require("utils").is_linux() then
   table.insert(spec, { import = "astrocommunity.pack.python"})
 end
 

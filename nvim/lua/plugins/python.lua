@@ -1,7 +1,6 @@
 -- if true then return {} end -- WARN: REMOVE THIS LINE TO ACTIVATE THIS FILE
 
-local is_linux = vim.uv.os_uname().sysname == "Linux"
-if is_linux then
+if require("utils").is_linux() then
   return {}
 end
 
