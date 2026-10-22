@@ -2,6 +2,7 @@
 
 return {
   'andymass/vim-matchup',
+  commit = 'daddcef7da744947734ef84e3a13b41498ec2402',
   init = function()
     -- modify your configuration vars here
     vim.g.matchup_treesitter_stopline = 500
