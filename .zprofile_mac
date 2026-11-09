@@ -13,10 +13,13 @@ export KUBECONFIG=${HOME}/.kube/current.kubeconfig.yml:${HOME}/.kube/pct.kubecon
 # Claude Code with DeepSeek API
 export ANTHROPIC_BASE_URL=https://api.deepseek.com/anthropic
 export ANTHROPIC_AUTH_TOKEN=${DEEPSEEK_API_KEY}
-export API_TIMEOUT_MS=600000
-export ANTHROPIC_MODEL=deepseek-v4-pro
-export ANTHROPIC_SMALL_FAST_MODEL=deepseek-v4-flash
-export CLAUDE_CODE_DISABLE_NONESSENTIAL_TRAFFIC=1
+export ANTHROPIC_MODEL=deepseek-flash[1m]
+export ANTHROPIC_DEFAULT_OPUS_MODEL=deepseek-flash[1m]
+export ANTHROPIC_DEFAULT_SONNET_MODEL=deepseek-flash[1m]
+export ANTHROPIC_DEFAULT_HAIKU_MODEL=deepseek-flash
+export CLAUDE_CODE_SUBAGENT_MODEL=deepseek-flash
+export CLAUDE_CODE_EFFORT_LEVEL=max
+export CLAUDE_CODE_AUTO_COMPACT_WINDOW=786432
 
 # ChunkHound Agent Indexer: required to generate embeddings
 export VOYAGE_API_KEY=
