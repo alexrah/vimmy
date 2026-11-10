@@ -3,11 +3,11 @@
 return {
   "saghen/blink.cmp",
   version = "1.*",
-  dependencies = {
-    {
-      "Exafunction/codeium.nvim",
-    },
-  },
+  -- dependencies = {
+  --   {
+  --     "Exafunction/codeium.nvim",
+  --   },
+  -- },
   opts = function(plugin, opts)
     -- Store original enabled function if it exists
     local original_enabled = opts.enabled
@@ -46,16 +46,16 @@ return {
     end
 
     -- Codeium integration
-    table.insert(opts.sources.default, "codeium")
-    opts.sources.providers.codeium = {
-      name = "Codeium",
-      module = "codeium.blink",
-      async = true,
-      enabled = function()
-        -- Disable Codeium when buffer type is "prompt"
-        return vim.bo.buftype ~= "prompt"
-      end,
-      score_offset = -1
-    }
+    -- table.insert(opts.sources.default, "codeium")
+    -- opts.sources.providers.codeium = {
+    --   name = "Codeium",
+    --   module = "codeium.blink",
+    --   async = true,
+    --   enabled = function()
+    --     -- Disable Codeium when buffer type is "prompt"
+    --     return vim.bo.buftype ~= "prompt"
+    --   end,
+    --   score_offset = -1
+    -- }
   end
 }

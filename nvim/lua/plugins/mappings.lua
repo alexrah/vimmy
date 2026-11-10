@@ -38,8 +38,8 @@ return {
           ["<Leader>gf"] = { ":DiffviewOpen<Enter>", desc = "Open a Diffview" },
           ["<Leader>gx"] = { ":DiffviewClose<Enter>", desc = "Close a Diffview" },
 
-          ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
-          ["<Leader>;v"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
+          -- ["<Leader>;t"] = { codeium_toggle, desc = codeium_label() },
+          -- ["<Leader>;v"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
           ["<Leader>;a"] = { "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanionActions <C-a>" },
           ["<C-a>"] = { "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanionActions" },
           ["<Leader>;;"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanionChat Toggle <C-;>" },
@@ -86,8 +86,8 @@ return {
         },
         i = {
           ["<C-v>"] = { "<Esc>pi", desc = "Paste using standard shortcut" },
-          [",,"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
-          [",."] = { codeium_toggle, desc = codeium_label() },
+          -- [",,"] = { codeium_virtual_text_toggle, desc = codeium_virtual_text_label() },
+          -- [",."] = { codeium_toggle, desc = codeium_label() },
 
           ["<C-a>"] = { "<cmd>CodeCompanionActions<cr>", desc = "CodeCompanionActions" },
           ["<C-;>"] = { "<cmd>CodeCompanionChat Toggle<cr>", desc = "CodeCompanionChat Toggle" },
