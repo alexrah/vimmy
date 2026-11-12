@@ -59,10 +59,13 @@ return {
       { "<leader>k4", "<Plug>(kubectl.view_configmaps)", ft = "k8s_*", desc = "Configmaps" },
       { "5", "<Plug>(kubectl.view_secrets)", ft = "k8s_*" },
       { "<leader>k5", "<Plug>(kubectl.view_secrets)", ft = "k8s_*", desc = "Secrets" },
-      { "6", "<Plug>(kubectl.view_services)", ft = "k8s_*" },
+      -- fake keymap to override default mapping to "6" for view_ingresses
+      -- without this, mapping "6" to view_services won't work
+      { "1211", "<Plug>(kubectl.view_ingresses)", ft = "k8s_*" },
+      { "6", "<Plug>(kubectl.view_services)", ft = "k8s_*", desc = "Services" },
       { "<leader>k6", "<Plug>(kubectl.view_services)", ft = "k8s_*", desc = "Services" },
-      { "7", "<Plug>(kubectl.view_ingresses)", ft = "k8s_*" },
-      { "<leader>k7", "<Plug>(kubectl.view_ingresses)", ft = "k8s_*", desc = "Ingresses" },
+      { "7", function() vim.cmd "Kubectl view httproutes.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "HTTPRoute" },
+      { "<leader>k7", function() vim.cmd "Kubectl view httproutes.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "HTTPRoute" },
       { "8", function() vim.cmd "Kubectl view gateways.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "Gateways" },
       { "<leader>k8", function() vim.cmd "Kubectl view gateways.gateway.networking.k8s.io" end, ft = "k8s_*", desc = "Gateways" },
       { "9", "<Plug>(kubectl.view_crds)", ft = "k8s_*" },
