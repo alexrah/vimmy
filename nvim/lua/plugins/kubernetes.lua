@@ -89,6 +89,7 @@ return {
       { "<C-r>", "<Plug>(kubectl.view_drift)", ft = "k8s_*", desc = "Drift" },
       { "<leader>kr", "<Plug>(kubectl.view_drift)", ft = "k8s_*", desc = "Drift <C-r>" },
       { "<leader>kl", "<Plug>(kubectl.lineage)", ft = "k8s_*", desc = "Lineage gxx" },
+      { "<leader>kh", "<Plug>(kubectl.toggle_headers)", ft = "k8s_*", desc = "Toggle Headers" },
     },
     config = function() require("kubectl").setup() end,
   },
